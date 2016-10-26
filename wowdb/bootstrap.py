@@ -8,3 +8,7 @@ def bootstrap_db():
             cur.execute("CREATE ROLE wowdb LOGIN PASSWORD 'my_password';")
             cur.execute("CREATE DATABASE wowdb;")
             cur.execute("GRANT ALL PRIVILEGES ON DATABASE wowdb TO wowdb;")
+
+
+if __name__ == '__main__':
+    bootstrap_db()
