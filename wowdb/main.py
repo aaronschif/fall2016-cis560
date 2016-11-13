@@ -3,7 +3,7 @@ from pathlib import Path
 import cherrypy
 from jinja2 import Environment, PackageLoader
 
-from .sql import create_tables
+from .sql import create_tables, cursor
 
 env = Environment(loader=PackageLoader(__package__, 'templates'))
 
@@ -11,8 +11,11 @@ env = Environment(loader=PackageLoader(__package__, 'templates'))
 class Root:
     @cherrypy.expose
     def index(self):
+        with cursor() as cur:
+            cur.execute('select * from gear')
+            gears = cur.fetchall()
         tmpl = env.get_template('index.html')
-        return tmpl.render(salutation='Hello', target='World')
+        return tmpl.render(gears=gears)
 
 conf = {'/static': {
     'tools.staticdir.on': True,
@@ -22,6 +25,6 @@ conf = {'/static': {
         'atom': 'application/atom+xml'}}}
 
 
-if __name__ == '__main__':
+def main():
     create_tables()
     cherrypy.quickstart(Root(), config=conf)

@@ -1,5 +1,19 @@
 {% extends "_layout/main.html" %}
 
 {% block content %}
-{{ salutation }} {{ target }}
+<h1>Gear</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th><th>Tradable</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for id, name, tradable in gears %}
+    <tr>
+      <td>{{ name }}</td><td>{{ tradable }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
