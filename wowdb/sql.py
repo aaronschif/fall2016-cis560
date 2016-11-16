@@ -1,6 +1,7 @@
 import pkgutil
 import psycopg2
 
+
 def get_sql(filename):
     return pkgutil.get_data(__package__, 'sql/'+filename).decode('utf8')
 

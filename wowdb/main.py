@@ -22,6 +22,6 @@ conf = {'/static': {
         'atom': 'application/atom+xml'}}}
 
 
-if __name__ == '__main__':
+def main():
     create_tables()
     cherrypy.quickstart(Root(), config=conf)
