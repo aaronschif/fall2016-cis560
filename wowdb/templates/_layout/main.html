@@ -2,10 +2,12 @@
 <html>
   <head>
     <title>WOW Database</title>
-    <link rel="stylesheet" src="/static/main.css">
+    <link rel="stylesheet" href="/static/main.css">
   </head>
   <body>
     <nav></nav>
-    {% block content %}{% endblock %}
+    <div class="main-content-reader">
+        {% block content %}{% endblock %}
+    </div>
   </body>
 </html>
