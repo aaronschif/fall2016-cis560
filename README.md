@@ -1,4 +1,22 @@
+# Windows Land
 
+## Python 3!
+install python **3**
+
+## PyCharm
+A pretty good python IDE. Install the community addition. It also has git support.
+
+### Set up virtualenv
+pycharm lets you do this
+
+### PGPASSWORD
+Set up PyCharm to run run.py with the PGPASSWORD environment variable set
+
+## pgadmin
+A pretty good postgres database application
+
+
+# Don't Read -- Linux Land
 
 # Quick Start
 - Get python3.5

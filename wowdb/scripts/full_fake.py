@@ -1,6 +1,6 @@
 from faker import Factory
 
-from ..sql import cursor
+from wowdb.sql import cursor
 
 fake = Factory.create()
 
