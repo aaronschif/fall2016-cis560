@@ -37,7 +37,7 @@ create table if not exists gear (
     tradable varchar(100) not null
 );
 
-create table if not exists set (
+create table if not exists "set" (
     set_id serial primary key,
     name varchar(300) not null,
     set_bonus varchar(100) not null,
