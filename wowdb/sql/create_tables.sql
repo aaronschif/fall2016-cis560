@@ -20,6 +20,15 @@ create table if not exists class (
     unique (name)
 );
 
+create table if not exists race_class (
+    race_id serial,
+    class_id serial,
+    foreign key (race_id)
+      references race (id),
+    foreign key (class_id)
+      references class (id)
+);
+
 create table if not exists specialization (
     id serial primary key,
     class_name varchar(100),
@@ -37,6 +46,15 @@ create table if not exists gear (
     tradable varchar(100) not null
 );
 
+create table if not exists specialization_gear (
+    specialization_id serial,
+    gear_id serial,
+    foreign key (specialization_id)
+      references specialization (id),
+    foreign key (gear_id)
+      references gear (id)
+);
+
 create table if not exists "set" (
     set_id serial primary key,
     name varchar(300) not null,
@@ -48,6 +66,15 @@ create table if not exists location (
     id serial primary key,
     map_region varchar(100) not null,
     unique (map_region)
+);
+
+create table if not exists gear_location (
+    gear_id serial,
+    location_id serial,
+    foreign key (gear_id)
+      references gear (id),
+    foreign key (location_id)
+      references location (id)
 );
 
 create table if not exists dungeon (
