@@ -15,7 +15,7 @@ insert into specialization (class_name, specialization_name)
 values ()
 on conflict do nothing;
 
-insert into gear (name, primary_stat, secondary_stat, material, tradable)
+insert into gear (name, primary_stat, secondary_stat_1, secondary_stat_2, material, tradable)
 values ()
 on conflict do nothing;
 

@@ -41,7 +41,8 @@ create table if not exists gear (
     id serial primary key,
     name varchar(300) not null,
     primary_stat varchar(100) not null,
-    secondary_stat varchar(100) not null,
+    secondary_stat_1 varchar(100) not null,
+    secondary_stat_2 varchar(100) not null,
     material varchar(100) not null,
     tradable varchar(100) not null
 );
