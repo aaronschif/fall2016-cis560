@@ -26,5 +26,4 @@ conf = {'/static': {
 
 
 def main():
-    create_tables()
     cherrypy.quickstart(Root(), config=conf)

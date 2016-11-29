@@ -1,10 +1,27 @@
-create table if not exists faction (
+drop table if exists gear_location;
+drop table if exists specialization_gear;
+drop table if exists race_class;
+
+drop table if exists gear;
+drop table if exists vendor;
+drop table if exists raid;
+drop table if exists dungeon;
+drop table if exists location;
+
+drop table if exists specialization;
+drop table if exists "set";
+drop table if exists class;
+drop table if exists race;
+drop table if exists faction;
+
+
+create table faction (
     id serial primary key,
     name varchar(100) not null,
     unique (name)
 );
 
-create table if not exists race (
+create table race (
     id serial primary key,
     name varchar(100) not null,
     racial_trait_1 varchar(100) not null,
@@ -14,13 +31,13 @@ create table if not exists race (
     unique (racial_trait_2)
 );
 
-create table if not exists class (
+create table class (
     id serial primary key,
     name varchar(100) not null,
     unique (name)
 );
 
-create table if not exists race_class (
+create table race_class (
     race_id serial,
     class_id serial,
     foreign key (race_id)
@@ -29,7 +46,7 @@ create table if not exists race_class (
       references class (id)
 );
 
-create table if not exists specialization (
+create table specialization (
     id serial primary key,
     class_name varchar(100),
     specialization_name varchar(100) not null,
@@ -37,7 +54,7 @@ create table if not exists specialization (
       references class(name)
 );
 
-create table if not exists gear (
+create table gear (
     id serial primary key,
     name varchar(300) not null,
     primary_stat varchar(100) not null,
@@ -47,7 +64,7 @@ create table if not exists gear (
     tradable varchar(100) not null
 );
 
-create table if not exists specialization_gear (
+create table specialization_gear (
     specialization_id serial,
     gear_id serial,
     foreign key (specialization_id)
@@ -56,20 +73,20 @@ create table if not exists specialization_gear (
       references gear (id)
 );
 
-create table if not exists "set" (
+create table "set" (
     set_id serial primary key,
     name varchar(300) not null,
     set_bonus varchar(100) not null,
     unique (name)
 );
 
-create table if not exists location (
+create table location (
     id serial primary key,
     map_region varchar(100) not null,
     unique (map_region)
 );
 
-create table if not exists gear_location (
+create table gear_location (
     gear_id serial,
     location_id serial,
     foreign key (gear_id)
@@ -78,7 +95,7 @@ create table if not exists gear_location (
       references location (id)
 );
 
-create table if not exists dungeon (
+create table dungeon (
     id serial,
     dungeon_name varchar(100) not null,
     boss varchar(100) not null,
@@ -88,7 +105,7 @@ create table if not exists dungeon (
       references location (id)
 );
 
-create table if not exists raid (
+create table raid (
     id serial,
     raid_name varchar(100) not null,
     boss varchar(100) not null,
@@ -98,7 +115,7 @@ create table if not exists raid (
       references location (id)
 );
 
-create table if not exists vendor (
+create table vendor (
     id serial,
     first_name varchar(100) not null,
     surname varchar(100),
