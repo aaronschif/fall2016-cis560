@@ -161,5 +161,5 @@ values (1, 'Emerald Nightmare', 'Ursoc'),
 on conflict do nothing;
 
 insert into vendor (id, first_name, surname, price)
-values ()
+values (1, 'casey', 'poole', '2')
 on conflict do nothing;
