@@ -3,7 +3,7 @@ from pathlib import Path
 import cherrypy
 from jinja2 import Environment, PackageLoader
 
-from .sql import create_tables, cursor
+from .sql import cursor
 
 env = Environment(loader=PackageLoader(__package__, 'templates'))
 
