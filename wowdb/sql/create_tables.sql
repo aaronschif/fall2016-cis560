@@ -16,13 +16,13 @@ drop table if exists faction;
 
 
 create table faction (
-    id serial primary key,
+    id int primary key,
     name varchar(100) not null,
     unique (name)
 );
 
 create table race (
-    id serial primary key,
+    id int primary key,
     name varchar(100) not null,
     racial_trait_1 varchar(100) not null,
     racial_trait_2 varchar(100) not null,
@@ -32,14 +32,14 @@ create table race (
 );
 
 create table class (
-    id serial primary key,
+    id int primary key,
     name varchar(100) not null,
     unique (name)
 );
 
 create table race_class (
-    race_id serial,
-    class_id serial,
+    race_id int,
+    class_id int,
     foreign key (race_id)
       references race (id),
     foreign key (class_id)
@@ -47,7 +47,7 @@ create table race_class (
 );
 
 create table specialization (
-    id serial primary key,
+    id int primary key,
     class_name varchar(100),
     specialization_name varchar(100) not null,
     foreign key (class_name)
@@ -55,8 +55,9 @@ create table specialization (
 );
 
 create table gear (
-    id serial primary key,
+    id int primary key,
     name varchar(300) not null,
+    slot varchar(100) not null,
     primary_stat varchar(100) not null,
     secondary_stat_1 varchar(100) not null,
     secondary_stat_2 varchar(100) not null,
@@ -65,8 +66,8 @@ create table gear (
 );
 
 create table specialization_gear (
-    specialization_id serial,
-    gear_id serial,
+    specialization_id int,
+    gear_id int,
     foreign key (specialization_id)
       references specialization (id),
     foreign key (gear_id)
@@ -74,21 +75,21 @@ create table specialization_gear (
 );
 
 create table "set" (
-    set_id serial primary key,
+    set_id int primary key,
     name varchar(300) not null,
     set_bonus varchar(100) not null,
     unique (name)
 );
 
 create table location (
-    id serial primary key,
+    id int primary key,
     map_region varchar(100) not null,
     unique (map_region)
 );
 
 create table gear_location (
-    gear_id serial,
-    location_id serial,
+    gear_id int,
+    location_id int,
     foreign key (gear_id)
       references gear (id),
     foreign key (location_id)
@@ -96,7 +97,7 @@ create table gear_location (
 );
 
 create table dungeon (
-    id serial,
+    id int,
     dungeon_name varchar(100) not null,
     boss varchar(100) not null,
     unique (dungeon_name),
@@ -106,7 +107,7 @@ create table dungeon (
 );
 
 create table raid (
-    id serial,
+    id int,
     raid_name varchar(100) not null,
     boss varchar(100) not null,
     unique (raid_name),
@@ -116,7 +117,7 @@ create table raid (
 );
 
 create table vendor (
-    id serial,
+    id int,
     first_name varchar(100) not null,
     surname varchar(100),
     price money,
