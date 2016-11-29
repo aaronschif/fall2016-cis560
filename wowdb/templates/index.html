@@ -5,13 +5,17 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th><th>Tradable</th>
+      <th>Name</th><th>Stats</th><th>Material</th><th>Tradable</th>
     </tr>
   </thead>
   <tbody>
-    {% for id, name, tradable in gears %}
+    {% for id, slot, name, pstat, stat1, stat2, material, tradable in gears %}
     <tr>
-      <td>{{ name }}</td><td>{{ tradable }}</td>
+      <td>{{ name }}</td>
+      <td>{{ slot }}</td>
+      <td>{{ stat1 }}<br>{{ stat2 }}</td>
+      <td>{{ material }}</td>
+      <td>{{ tradable }}</td>
     </tr>
     {% endfor %}
   </tbody>
