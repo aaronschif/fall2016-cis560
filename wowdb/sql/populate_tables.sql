@@ -187,14 +187,14 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (125, 'Cozy Dryad Hoof-Socks', 'Feet', '973 Intellect', '322 Critical Strike', '658 Haste', 'Cloth', 'No'), /* Emerald Nightmare, Cenarius */
        (126, 'Fitted Ironbark Gauntlets', 'Hands', '973 Strength', '637 Haste', '342 Mastery', 'Plate', 'No'), /* Emerald Nightmare, Cenarius */
        (127, 'Cinch of Light', 'Waist', '1068 Intellect', '290 Haste', '726 Mastery', 'Cloth', 'No'), /* Trial of Valor, Odyn */
-       (127, 'Gloves of Issued Challenge', 'Hands', '1068 Agility', '399 Critical Strike', '617 Mastery', 'Leather', 'No'), /* Trial of Valor, Odyn */
-       (127, 'Goldrune Legplates', 'Legs', '1424 Strength', '445 Critical Strike', '910 Mastery', 'Plate', 'No'), /* Trial of Valor, Odyn */
-       (127, 'Lead-Soled Seabed Striders', 'Feet', '1068 Intellect'), /* Trial of Valor, Guarm */
-       (127, ), /* Trial of Valor, Guarm */
-       (127, ), /* Trial of Valor, Guarm */
-       (127, ), /* Trial of Valor, Helya */
-       (127, ), /* Trial of Valor, Helya */
-       (127, ), /* Trial of Valor, Helya */
+       (128, 'Gloves of Issued Challenge', 'Hands', '1068 Agility', '399 Critical Strike', '617 Mastery', 'Leather', 'No'), /* Trial of Valor, Odyn */
+       (129, 'Goldrune Legplates', 'Legs', '1424 Strength', '445 Critical Strike', '910 Mastery', 'Plate', 'No'), /* Trial of Valor, Odyn */
+       (130, 'Lead-Soled Seabed Striders', 'Feet', '1068 Intellect'), /* Trial of Valor, Guarm */
+       (131, ), /* Trial of Valor, Guarm */
+       (132, ), /* Trial of Valor, Guarm */
+       (133, ), /* Trial of Valor, Helya */
+       (134, ), /* Trial of Valor, Helya */
+       (135, ), /* Trial of Valor, Helya */
 on conflict do nothing;
 
 insert into "set" (set_id, name, set_bonus)
