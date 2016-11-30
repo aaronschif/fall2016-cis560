@@ -193,8 +193,8 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (131, 'Helbeast Skin Tunic', 'Chest', '1424 Agility', '561 Haste', '794 Versatility', 'Leather', False), /* Trial of Valor, Guarm */
        (132, 'Bite-Resistant Wristclamps', 'Wrist', '801 Intellect', '316 Mastery', '446 Haste', 'Mail', False), /* Trial of Valor, Guarm */
        (133, 'Krakenbone Waistplate', 'Waist', '1119 Strength', '407 Haste', '628 Mastery', 'Plate', False), /* Trial of Valor, Helya */
-       (134, 'Oiled Rigger''s Handwraps', 'Hands', '1119 Intellect', '673 Critical Strike', '362 Versatility', 'Cloth', False), /* Trial of Valor, Helya */
-       (135, 'Strand of Whelk Shells', 'Waist', '1119 Agility', '606 Haste', '429 Mastery', 'Leather', False) /* Trial of Valor, Helya */
+       (134, 'Oiled Rigger''s Handwraps', 'Hands', '1119 Intellect', '673 Critical Strike', '362 Versatility', 'Cloth', True), /* Trial of Valor, Helya */
+       (135, 'Strand of Whelk Shells', 'Waist', '1119 Agility', '606 Haste', '429 Mastery', 'Leather', True) /* Trial of Valor, Helya */
 on conflict do nothing;
 
 insert into "set" (set_id, name, set_bonus)

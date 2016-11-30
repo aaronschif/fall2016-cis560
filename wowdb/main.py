@@ -10,9 +10,14 @@ env = Environment(loader=PackageLoader(__package__, 'templates'))
 
 class Root:
     @cherrypy.expose
-    def index(self, search=""):
+    def index(self, search="", tradable="Both"):
+        #tradable = tradable == 'True'
         with cursor() as cur:
-            cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
+            if tradable == 'Both':
+                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
+            else:
+                tradable = tradable == 'True'
+                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.tradable is %s", [search, tradable])
             gears = cur.fetchall()
         tmpl = env.get_template('index.html')
         return tmpl.render(gears=gears)
