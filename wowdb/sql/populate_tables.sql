@@ -223,11 +223,17 @@ values (1, 'Rook Footman''s Warboots', 'Feet', 556, 'Strength', 243, 'Critical S
        (140, 'Creeping of Shackled Elements', 'Waist', 973, 'Intellect', 637, 'Haste', 491, 'Critical Strike', 'Mail', False), /* Shackled Elements Set */
        (141, 'Leggings of Shackled Elements', 'Legs', 1637, 'Intellect', 532, 'Versatility', 901, 'Mastery', 'Mail', False), /* Shackled Elements Set */
        (142, 'Hood of Enveloped Dissonance' , 'Head', 1637, 'Agility', 624, 'Critical Strike', 809, 'Haste', 'Leather', False), /* Enveloped Dissonance Set */
-       (143, 'Pauldrons of Enveloped Dissonance', 'Shoulder', 921, 'Agility', 576, 'Critical Strike', 230, 'Haste', 'Leather', False),
-       (144, 'Tunic of Enveloped Dissonance', 'Chest', 1637, 'Agility', 778, 'Haste', 655, 'Versatility', 'Leather', False),
-       (145, 'Gloves of Enveloped Dissonance', 'Wrist', 1228, 'Agility', 675, 'Critical Strike', 399, 'Haste', 'Leather', False),
-       (146, 'Lifeless Buckled Girdle', 'Waist', 973, 'Agility', 406, 'Versatility', 574, 'Mastery', 'Leather', False),
-       (147, 'Leggings of Enveloped Dissonance', 'Legs', 1637, 'Agility', 993, 'Critical Strike', 440, 'Mastery', 'Leather', False)
+       (143, 'Pauldrons of Enveloped Dissonance', 'Shoulder', 921, 'Agility', 576, 'Critical Strike', 230, 'Haste', 'Leather', False), /* Enveloped Dissonance Set */
+       (144, 'Tunic of Enveloped Dissonance', 'Chest', 1637, 'Agility', 778, 'Haste', 655, 'Versatility', 'Leather', False), /* Enveloped Dissonance Set */
+       (145, 'Gloves of Enveloped Dissonance', 'Wrist', 1228, 'Agility', 675, 'Critical Strike', 399, 'Haste', 'Leather', False), /* Enveloped Dissonance Set */
+       (146, 'Lifeless Buckled Girdle', 'Waist', 973, 'Agility', 406, 'Versatility', 574, 'Mastery', 'Leather', False), /* Enveloped Dissonance Set */
+       (147, 'Leggings of Enveloped Dissonance', 'Legs', 1637, 'Agility', 993, 'Critical Strike', 440, 'Mastery', 'Leather', False), /* Enveloped Dissonance Set */
+       (148, 'Doomblade Cowl', 'Head', 1637, 'Agility', 471, 'Critical Strike', 962, 'Mastery', 'Leather', False), /*Doomblade Set*/
+       (149, 'Doomblade Spaulders', 'Shoulder', 1228, 'Agility', 330, 'Haste', 744, 'Mastery', 'Leather', False), /*Doomblade Set*/
+       (150, 'Doomblade Tunic', 'Chest', 1228, 'Agility', 330, 'Haste', 786, 'Critical Strike', 'Leather', False), /*Doomblade Set*/
+       (151, 'Doomblade Gauntlets', 'Hands', 1228, 'Agility', 330, 'Mastery', 625, 'Critical Strike', 'Leather', False), /*Doomblade Set*/
+       (151, 'Doomblade Shadowwrap', 'Waist', 1228, 'Agility', 412, 'Critical Strike', 786, 'Versatility', 'Leather', False), /*Doomblade Set*/
+       (153, 'Doomblade Pants', 'Legs', 1228, 'Agility', 339, 'Haste', 786, 'Mastery', 'Leather', False) /*Doomblade Set*/
 on conflict do nothing;
 
 /* Gear associated with prices */
@@ -238,7 +244,8 @@ on conflict do nothing;
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
 insert into "set" (set_id, name, set_item_1, set_item_2, set_item_3, set_item_4, set_item_5, set_item_6, set_bonus)
 values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Critical Strike chance of Lightning Bolt by 10 percent'), /* only wearable by shaman */
-       (2, 'Enveloped Dissonance', 142, 143, 144, 145, 146, 147, 'Ironskin Brew increases your stagger amount by an additional 5 percent') /* only wearable by monks */
+       (2, 'Enveloped Dissonance', 142, 143, 144, 145, 146, 147, 'Ironskin Brew increases your stagger amount by an additional 5 percent'), /* only wearable by monks */
+       (3, 'Doomblade', 148, 149, 150, 151, 152, 153, 'Mutilate can cause the target to bleed an additional 30 percent over 6 seconds') /* only wearable by rouges */
 on conflict do nothing;
 
 --insert into specialization_gear (specialization_id, gear_id)
