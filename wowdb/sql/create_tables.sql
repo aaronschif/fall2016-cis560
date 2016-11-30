@@ -32,6 +32,15 @@ create table race (
     unique (racial_trait_2)
 );
 
+create table faction_race (
+    faction_id int,
+    race_id int,
+    foreign key (faction_id)
+      references faction (id),
+    foreign key (race_id)
+      references race (id)
+);
+
 create table class (
     id int primary key,
     name varchar(100) not null,

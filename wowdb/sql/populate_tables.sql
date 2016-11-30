@@ -19,6 +19,11 @@ values (1, 'Human', 'Every Man for Himself', 'The Human Spirit'),
        (13, 'Pandaren', 'Bouncy', 'Inner Peace')
 on conflict do nothing;
 
+insert into faction_race (faction_id, race_id)
+value (1, 1),(1, 2),(1, 3),(1, 4),(1, 5),(1, 6),(1, 13),
+      (2, 7),(2, 8),(2, 9),(2, 10),(2, 11),(2, 12),(2, 13)
+on conflict do nothing;
+
 insert into class (id, name)
 values (1, 'Death Knight'),
        (2, 'Druid'),
