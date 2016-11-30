@@ -17,8 +17,8 @@ async def handle(request):
         sstat = request.GET.get('secondary_stat', 'ANY')
         pmin = request.GET.get('p_minimum', 1)
         pmax = request.GET.get('p_maximum', 10000)
-        smax = request.GET.get('s_minimum', 1)
-        smin = request.GET.get('s_maximum', 10000)
+        smin = request.GET.get('s_minimum', 1)
+        smax = request.GET.get('s_maximum', 10000)
         mat = request.GET.get('materials', 'ANY')
         pr_min = request.GET.get('price_min', 0)
         pr_max = request.GET.get('price_max', 999999999)
@@ -42,16 +42,18 @@ async def handle(request):
 
         s += " AND (gear.primary_stat_val >= %s"
         l.append(pmin)
-
         s += " AND gear.primary_stat_val <= %s)"
         l.append(pmax)
 
-        # THIS WORKS
-        # s += " AND gear.sec_stat_1_val >= 300"
+        s += " AND (gear.sec_stat_1_val >= %s"
+        l.append(smin)
+        s += " AND gear.sec_stat_1_val <= %s)"
+        l.append(smax)
 
-        # THIS DOES NOT
-        # s += " AND gear.sec_stat_1_val >= %s"
-        # l.append(smin)
+        s += " AND (gear.sec_stat_2_val >= %s"
+        l.append(smin)
+        s += " AND gear.sec_stat_2_val <= %s)"
+        l.append(smax)
 
         # Don't think this one works... HELP
         if sstat != 'ANY':
@@ -59,18 +61,6 @@ async def handle(request):
             l.append(sstat)
             s += " OR gear.secondary_stat_2 ilike '%%'||%s||'%%')"
             l.append(sstat)
-
-        # s += " AND gear.sec_stat_1_val >= %s"
-        # l.append(smin)
-
-        #    s += " AND gear.sec_stat_1_val <= %d)"
-        #    l.append(smax)
-
-        #    s += " AND gear.sec_stat_2_val >= %d"
-        #    l.append(smin)
-
-        #    s += " AND gear.sec_stat_2_val <= %d"
-        #    l.append(smax)
 
         if mat != 'ANY':
             s += " AND gear.material ilike '%%'||%s||'%%'"
