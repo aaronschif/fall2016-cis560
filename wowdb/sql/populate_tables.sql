@@ -220,9 +220,14 @@ values (1, 'Rook Footman''s Warboots', 'Feet', 556, 'Strength', 243, 'Critical S
        (137, 'Pauldrons of Shackled Elements', 'Shoulder', 1228, 'Intellect', 606, 'Critical Strike', 468, 'Versatility', 'Mail', FALSE), /* Shackled Elements Set */
        (138, 'Raiment of Shackled Elements', 'Chest', 1637, 'Intellect', 594, 'Critical Strike', 839, 'Mastery', 'Mail', False), /* Shackled Elements Set */
        (139, 'Gauntlets of Shackled Elements', 'Hands', 1228, 'Intellect', 491, 'Critical Strike', 583, 'Haste', 'Mail', False), /* Shackled Elements Set */
-       (140, 'Creeping of Shackled Elements', 'Waist', 973, 'Intellect', 637, 'Haste', 491, 'Critical Strike', 'Mail', True), /* Shackled Elements Set */
-       (141, 'Leggings of Shackled Elements', 'Legs', 1637, 'Intellect', 532, 'Versatility', 901, 'Mastery', 'Mail', True) /* Shackled Elements Set */
-       --(142, Amulet of Garglefish, Neck, null, 2147 Intellect, null, 600 Critical Strike, null, 874 Mastery, null, f, 1000000)
+       (140, 'Creeping of Shackled Elements', 'Waist', 973, 'Intellect', 637, 'Haste', 491, 'Critical Strike', 'Mail', False), /* Shackled Elements Set */
+       (141, 'Leggings of Shackled Elements', 'Legs', 1637, 'Intellect', 532, 'Versatility', 901, 'Mastery', 'Mail', False), /* Shackled Elements Set */
+       (142, 'Hood of Enveloped Dissonance' , 'Head', 1637, 'Agility', 624, 'Critical Strike', 809, 'Haste', 'Leather', False), /* Enveloped Dissonance Set */
+       (143, 'Pauldrons of Enveloped Dissonance', 'Shoulder', 921, 'Agility', 576, 'Critical Strike', 230, 'Haste', 'Leather', False),
+       (144, 'Tunic of Enveloped Dissonance', 'Chest', 1637, 'Agility', 778, 'Haste', 655, 'Versatility', 'Leather', False),
+       (145, 'Gloves of Enveloped Dissonance', 'Wrist', 1228, 'Agility', 675, 'Critical Strike', 399, 'Haste', 'Leather', False),
+       (146, 'Lifeless Buckled Girdle', 'Waist', 973, 'Agility', 406, 'Versatility', 574, 'Mastery', 'Leather', False),
+       (147, 'Leggings of Enveloped Dissonance', 'Legs', 1637, 'Agility', 993, 'Critical Strike', 440, 'Mastery', 'Leather', False)
 on conflict do nothing;
 
 /* Gear associated with prices */
@@ -232,7 +237,8 @@ on conflict do nothing;
 
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
 insert into "set" (set_id, name, set_item_1, set_item_2, set_item_3, set_item_4, set_item_5, set_item_6, set_bonus)
-values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Critical Strike chance of Lightning Bolt by 10 percent')
+values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Critical Strike chance of Lightning Bolt by 10 percent'), /* only wearable by shaman */
+       (2, 'Enveloped Dissonance', 142, 143, 144, 145, 146, 147, 'Ironskin Brew increases your stagger amount by an additional 5 percent') /* only wearable by monks */
 on conflict do nothing;
 
 --insert into specialization_gear (specialization_id, gear_id)
