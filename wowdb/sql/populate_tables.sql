@@ -199,8 +199,8 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (137, 'Pauldrons of Shackled Elements', 'Shoulder', '1228 Intellect', '606 Critical Strike', '468 Versatility', 'Mail', FALSE), /* Shackled Elements Set */
        (138, 'Raiment of Shackled Elements', 'Chest', '1637 Intellect', '594 Critical Strike', '839 Mastery', 'Mail', False), /* Shackled Elements Set */
        (139, 'Gauntlets of Shackled Elements', 'Hands', '1228 Intellect', '491 Critical Strike', '583 Haste', 'Mail', False), /* Shackled Elements Set */
-       (140, 'Creeping of Shackled Elements', 'Waist', '973 Intellect', '637 Haste', '491 Critical Strike', 'Mail', False), /* Shackled Elements Set */
-       (141, 'Leggings of Shackled Elements', 'Legs', '1637 Intellect', '532 Versatility', '901 Mastery', 'Mail', False) /* Shackled Elements Set */
+       (140, 'Creeping of Shackled Elements', 'Waist', '973 Intellect', '637 Haste', '491 Critical Strike', 'Mail', True), /* Shackled Elements Set */
+       (141, 'Leggings of Shackled Elements', 'Legs', '1637 Intellect', '532 Versatility', '901 Mastery', 'Mail', True) /* Shackled Elements Set */
 on conflict do nothing;
 
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
