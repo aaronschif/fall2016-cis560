@@ -26,7 +26,7 @@
       <td>{{ stat1 }}<br>{{ stat2 }}</td>
       <td>{{ material|default("", true) }}</td>
       <td>{{ tradable }}</td>
-      <td>{{ price }}</td>
+      <td>{{ price|default("", true) }}</td>
     </tr>
     {% endfor %}
   </tbody>
