@@ -12,7 +12,7 @@ class Root:
     @cherrypy.expose
     def index(self, search=""):
         with cursor() as cur:
-            cur.execute('select * from gear')
+            cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
             gears = cur.fetchall()
         tmpl = env.get_template('index.html')
         return tmpl.render(gears=gears)
