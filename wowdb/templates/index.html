@@ -14,11 +14,11 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th><th>Slot</th><th>Primary Stat</th><th>Secondary Stats</th><th>Material</th><th>Tradable</th>
+      <th>Name</th><th>Slot</th><th>Primary Stat</th><th>Secondary Stats</th><th>Material</th><th>Tradable</th><th>Price</th>
     </tr>
   </thead>
   <tbody>
-    {% for id, name, slot, pstat, stat1, stat2, material, tradable in gears %}
+    {% for id, name, slot, pstat, stat1, stat2, material, tradable, price in gears %}
     <tr>
       <td>{{ name }}</td>
       <td>{{ slot }}</td>
@@ -26,6 +26,7 @@
       <td>{{ stat1 }}<br>{{ stat2 }}</td>
       <td>{{ material|default("", true) }}</td>
       <td>{{ tradable }}</td>
+      <td>{{ price }}</td>
     </tr>
     {% endfor %}
   </tbody>
