@@ -63,7 +63,7 @@ on conflict do nothing;
 insert into gear (id, name, slot, primary_stat, secondary_stat_1, secondary_stat_2, material, tradable)
 values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Strike', '233 Haste', 'Plate', False), /* Black Rook Hold, Amalgam of Souls */
        (2, 'Shadowfeather Shawl', 'Back', '417 Agility', '389 Haste', '401 Mastery', NULL, False), /* Black Rook Hold, Amalgam of Souls */
-       (3, 'Etheldrin''s Breastplate', 'Chest', '742 Strenth', '705 Mastery', '834 Critical Strike', 'Plate', False), /* Black Rook Hold, Amalgam of Souls */
+       (3, 'Etheldrin''s Breastplate', 'Chest', '742 Strength', '705 Mastery', '834 Critical Strike', 'Plate', False), /* Black Rook Hold, Amalgam of Souls */
        (4, 'Ravencourt Formal Robes', 'Chest', '742 Intellect', '367 Critical Strike', '355 Versatility', 'Cloth', False), /* Black Rook Hold, Amalgam of Souls */
        (5, 'Soulstarve Hood', 'Head', '742 Agility', '599 Haste', '607 Mastery', 'Leather', False), /* Black Rook Hold, Illysanna Ravencrest */
        (6, 'Soul-Torn Fury Cinch', 'Waist', '556 Intellect', '259 Critical Strike', '204 Versatility', 'Mail', False), /* Black Rook Hold, Illysanna Ravencrest */
@@ -194,11 +194,18 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (132, 'Bite-Resistant Wristclamps', 'Wrist', '801 Intellect', '316 Mastery', '446 Haste', 'Mail', False), /* Trial of Valor, Guarm */
        (133, 'Krakenbone Waistplate', 'Waist', '1119 Strength', '407 Haste', '628 Mastery', 'Plate', False), /* Trial of Valor, Helya */
        (134, 'Oiled Rigger''s Handwraps', 'Hands', '1119 Intellect', '673 Critical Strike', '362 Versatility', 'Cloth', False), /* Trial of Valor, Helya */
-       (135, 'Strand of Whelk Shells', 'Waist', '1119 Agility', '606 Haste', '429 Mastery', 'Leather', False) /* Trial of Valor, Helya */
+       (135, 'Strand of Whelk Shells', 'Waist', '1119 Agility', '606 Haste', '429 Mastery', 'Leather', False), /* Trial of Valor, Helya */
+       (136, 'Helm of Shackled Elements', 'Head','1647 Intellect', '778 Mastery', '655 Haste', 'Mail', False), /* Shackled Elements Set */
+       (137, 'Pauldrons of Shackled Elements', 'Shoulder', '1228 Intellect', '606 Critical Strike', '468 Versatility', 'Mail', FALSE), /* Shackled Elements Set */
+       (138, 'Raiment of Shackled Elements', 'Chest', '1637 Intellect', '594 Critical Strike', '839 Mastery', 'Mail', False), /* Shackled Elements Set */
+       (139, 'Gauntlets of Shackled Elements', 'Hands', '1228 Intellect', '491 Critical Strike', '583 Haste', 'Mail', False), /* Shackled Elements Set */
+       (140, 'Creeping of Shackled Elements', 'Waist', '973 Intellect', '637 Haste', '491 Critical Strike', 'Mail', False), /* Shackled Elements Set */
+       (141, 'Leggings of Shackled Elements', 'Legs', '1637 Intellect', '532 Versatility', '901 Mastery', 'Mail', False) /* Shackled Elements Set */
 on conflict do nothing;
 
-insert into "set" (set_id, name, set_bonus)
-values (1, 'robert', 'awesome')
+/* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
+insert into "set" (set_id, name, set_item_1, set_item_2, set_item_3, set_item_4, set_item_5, set_item_6, set_bonus)
+values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Critical Strike chance of Lightning Bolt by 10 percent')
 on conflict do nothing;
 
 insert into location (id, map_region)
