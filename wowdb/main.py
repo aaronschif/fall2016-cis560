@@ -11,6 +11,12 @@ from .sql import cursor
 async def handle(request):
     with cursor() as cur:
         search = request.GET.get('search')
+        tradable = request.GET.get('tradable', 'Both')
+        if tradable == 'Both':
+            cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
+        else:
+            tradable = tradable == 'True'
+            cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.tradable is %s", [search, tradable])
         cur.execute(
             "select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
         gears = cur.fetchall()
