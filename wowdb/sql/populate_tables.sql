@@ -56,13 +56,13 @@ values (1, 'Death Knight', 'Blood'),
 on conflict do nothing;
 
 /* Certain pieces of gear do not have a material type, such as back pieces and necklaces
-   I used 'none' to represent these
+   I used NULL to represent these
 
    I put notes next to each insert value to note where they come from.
  */
 insert into gear (id, name, slot, primary_stat, secondary_stat_1, secondary_stat_2, material, tradable)
 values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Strike', '233 Haste', 'Plate', False), /* Black Rook Hold, Amalgam of Souls */
-       (2, 'Shadowfeather Shawl', 'Back', '417 Agility', '389 Haste', '401 Mastery', 'None', False), /* Black Rook Hold, Amalgam of Souls */
+       (2, 'Shadowfeather Shawl', 'Back', '417 Agility', '389 Haste', '401 Mastery', NULL, False), /* Black Rook Hold, Amalgam of Souls */
        (3, 'Etheldrin''s Breastplate', 'Chest', '742 Strenth', '705 Mastery', '834 Critical Strike', 'Plate', False), /* Black Rook Hold, Amalgam of Souls */
        (4, 'Ravencourt Formal Robes', 'Chest', '742 Intellect', '367 Critical Strike', '355 Versatility', 'Cloth', False), /* Black Rook Hold, Amalgam of Souls */
        (5, 'Soulstarve Hood', 'Head', '742 Agility', '599 Haste', '607 Mastery', 'Leather', False), /* Black Rook Hold, Illysanna Ravencrest */
@@ -72,13 +72,13 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (9, 'Shorn Batbrood Cuffs', 'Wrist', '417 Agility', '397 Critical Strike', '405 Haste', 'Leather', False), /* Black Rook Hold, Smashspite the Hateful */
        (10, 'Felbat Leather Vest', 'Chest', '742 Agility', '670 Critical Strike', '699 Mastery', 'Leather', False), /* Black Rook Hold, Smashspite the Hateful */
        (11, 'Mardum Chain Vest', 'Chest', '742 Intellect', '388 Versatility', '378 Haste', 'Mail', False), /* Black Rook Hold, Smashspite the Hateful */
-       (12, 'Drape of the Raven Lord', 'Back', 'Strength', '198 Haste', '357 Mastery', 'None', False), /* Black Rook Hold, Lord Ravencrest */
+       (12, 'Drape of the Raven Lord', 'Back', 'Strength', '198 Haste', '357 Mastery', NULL, False), /* Black Rook Hold, Lord Ravencrest */
        (13, 'Legguards of Endless Horrors', 'Legs', '742 Agility', '664 Haste', '324 Versatility', 'Leather', False), /* Black Rook Hold, Lord Ravencrest */
        (14, 'Ravencrest''s Unerring Striders', 'Feet', '556 Intellect', '497 Haste', '243 Mastery', 'Mail', False), /* Black Rook Hold, Lord Ravencrest */
        (15, 'Arcanist''s Resonant Robes', 'Chest', '1182 Intellect', '763 Haste', '494 Mastery', 'Cloth', False), /* Court of stars, Patrol Captain Gerdo */
        (16, 'Manawracker Sandals', 'Feet', '886 Intellect', '289 Haste', '653 Mastery', 'Cloth', False), /* Court of stars, Patrol Captain Gerdo */
        (17, 'Guileful Intruder Handguards', 'Hands', '886 Agility', '653 Critical Strike', '289 Haste', 'Leather', False), /* Court of stars, Patrol Captain Gerdo */
-       (18, 'Chain of Scorched Bones', 'Neck', '997 Stamina', '1163 Haste', '606 Versatility', 'None', False), /* Court of stars, Talixae Flamewreath */
+       (18, 'Chain of Scorched Bones', 'Neck', '997 Stamina', '1163 Haste', '606 Versatility', NULL, False), /* Court of stars, Talixae Flamewreath */
        (19, 'Felbat Leather Pauldrons', 'Shoulder', '886 Agility', '552 Critical Strike', '391 Versatility', 'Leather', False), /* Court of stars, Talixae Flamewreath */
        (20, 'Inferno Breastplate', 'Chest', '1182 Intellect', '494 Critical Strike', '763 Haste', 'Plate', False), /* Court of stars, Talixae Flamewreath */
        (21, 'Veil of Unseen Strikes', 'Head', '1182 Agility', '440 Versatility', '817 Mastery', 'Leather', False), /* Court of stars, Advisor Melandrus */
@@ -95,7 +95,7 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (32, 'Rising Ocean Legwraps', 'Legs', '742 Intellect', '409 Critical Strike', '578 Mastery', 'Cloth', False), /* Eye of Azshara, King Deepbeard */
        (33, 'Keelhauler Legplates', 'Legs', '742 Strength', '367 Critical Strike', '620 Haste', 'Plate', False), /* Eye of Azshara, King Deepbeard */
        (34, 'Thundercrush Pauldrons', 'Shoulder', '556 Agility', '291 Haste', '450 Mastery', 'Mail', False), /* Eye of Azshara, Wrath of Azshara */
-       (35, 'Stormcharged Choker', 'Neck', '626 Stamina', '952 Critical Strike', '436 Mastery', 'None', False), /* Eye of Azshara, Wrath of Azshara */
+       (35, 'Stormcharged Choker', 'Neck', '626 Stamina', '952 Critical Strike', '436 Mastery', NULL, False), /* Eye of Azshara, Wrath of Azshara */
        (36, 'Slippers of Martydom', 'Feet', '556 Intellect', '513 Haste', '227 Mastery', 'Cloth', False), /* Eye of Azshara, Wrath of Azshara */
        (37, 'Brinewashed Leather Boots', 'Feet', '556 Agility', '243 Versatility', '497 Mastery', 'Leather', False), /* Eye of Azshara, Wrath of Azshara */
        (38, 'Biornskin Leggings', 'Legs', '742 Intellect', '599 Critical Strike', '388 Mastery', 'Leather', False), /* Halls of Valor, Hymdall */
@@ -111,7 +111,7 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (48, 'Infernal Mantle of Conquest', 'Shoulder', '556 Intellect', '227 Haste', '513 Mastery', 'Cloth', False), /* Halls of Valor, God-King Skavald */
        (49, 'Skoldiir Helm', 'Head', '742 Strength', '684 Critical Strike', '303 Mastery', 'Plate', False), /* Halls of Valor, God-King Skavald */
        (50, 'Felstep Footguards', 'Feet', '556 Intellect', '212 Critical Strike', '529 Mastery', 'Mail', False), /* Halls of Valor, God-King Skavald */
-       (51, 'Cape of Valarjar Courage', 'Back', '417 Strength', '278 Versatility', '278 Mastery', 'None', False), /* Halls of Valor, Odyn */
+       (51, 'Cape of Valarjar Courage', 'Back', '417 Strength', '278 Versatility', '278 Mastery', NULL, False), /* Halls of Valor, Odyn */
        (52, 'Pauldrons of the All-Father', 'Shoulder', '556 Strength', '434 Haste', '307 Mastery', 'Plate', False), /* Halls of Valor, Odyn */
        (53, 'Wristbands of Magnificent Splendor', 'Wrist', '417 Intellect', '206 Critical Strike', '349 Versatility', 'Plate', False), /* Halls of Valor, Odyn */
        (54, 'Treads of Light', 'Feet', '556 Intellect', '275 Critical Strike', '466 Versatility', 'Cloth', False), /* Halls of Valor, Odyn */
@@ -161,7 +161,7 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (99, 'Bloodclaw Leggings', 'Legs', '1182 Agility', '817 Haste', '440 Mastery', 'Leather', False), /* The Arcway, General Xakal */
        (100, 'Tunnel Fiend Bracers', 'Wrist', '665 Intellect', '459 Critical Strike', '247 Versatility', 'Cloth', False), /* The Arcway, Nal'tira */
        (101, 'Greathelm of Barbed Chelicerae', 'Head', '1182 Strength', '440 Critical Strike', '817 Mastery', 'Plate', False), /* The Arcway, Nal'tira */
-       (102, 'Cloak of the Mana-Spun Silk', 'Back', '665 Strength', '455 Critical Strike', '252 Versatility', 'None', False), /* The Arcway, Nal'tira */
+       (102, 'Cloak of the Mana-Spun Silk', 'Back', '665 Strength', '455 Critical Strike', '252 Versatility', NULL, False), /* The Arcway, Nal'tira */
        (103, 'Treads of the Fates Entwined', 'Feet', '666 Intellect', '674 Critical Strike', '269 Mastery', 'Plate', False), /* The Arcway, Advisor Vandros */
        (104, 'Mana-Laced Gloves', 'Hands', '886 Agility', '572 Versatility', '370 Mastery', 'Leather', False), /* The Arcway, Advisor Vandros */
        (105, 'Manawracker Crown', 'Head', '1182 Intellect', '494 Haste', '763 Mastery', 'Cloth', False), /* The Arcway, Advisor Vandros */

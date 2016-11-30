@@ -61,7 +61,7 @@ create table gear (
     primary_stat varchar(100) not null,
     secondary_stat_1 varchar(100) not null,
     secondary_stat_2 varchar(100) not null,
-    material varchar(100) not null,
+    material varchar(100),
     tradable boolean not null
 );
 
