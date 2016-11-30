@@ -1,6 +1,7 @@
 drop table if exists gear_location;
 drop table if exists specialization_gear;
 drop table if exists race_class;
+drop table if exists faction_race;
 
 drop table if exists "set";
 drop table if exists race CASCADE ;
