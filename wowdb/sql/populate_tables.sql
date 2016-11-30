@@ -20,7 +20,7 @@ values (1, 'Human', 'Every Man for Himself', 'The Human Spirit'),
 on conflict do nothing;
 
 insert into faction_race (faction_id, race_id)
-value (1, 1),(1, 2),(1, 3),(1, 4),(1, 5),(1, 6),(1, 13),
+values (1, 1),(1, 2),(1, 3),(1, 4),(1, 5),(1, 6),(1, 13),
       (2, 7),(2, 8),(2, 9),(2, 10),(2, 11),(2, 12),(2, 13)
 on conflict do nothing;
 
@@ -224,6 +224,11 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (141, 'Leggings of Shackled Elements', 'Legs', '1637 Intellect', '532 Versatility', '901 Mastery', 'Mail', True) /* Shackled Elements Set */
 on conflict do nothing;
 
+/* Gear associated with prices */
+insert into gear (id, name, slot, primary_stat, secondary_stat_1, secondary_stat_2, material, tradable, price)
+values (142, 'Amulet of Garglefish', 'Neck', '2147 Intellect', '600 Critical Strike', '874 Mastery', NULL, false, 1000000)
+on conflict do nothing;
+
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
 insert into "set" (set_id, name, set_item_1, set_item_2, set_item_3, set_item_4, set_item_5, set_item_6, set_bonus)
 values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Critical Strike chance of Lightning Bolt by 10 percent')
@@ -314,8 +319,8 @@ values (5, 'Emerald Nightmare', 'Ursoc'),
        (3, 'The Nighthold', 'Gul''dan')
 on conflict do nothing;
 
-insert into vendor (id, first_name, surname, price)
-values (4, 'casey', 'poole', '2')
+insert into vendor (id, first_name, surname)
+values (4, 'casey', 'poole')
 on conflict do nothing;
 
 insert into gear_location (gear_id, location_id)

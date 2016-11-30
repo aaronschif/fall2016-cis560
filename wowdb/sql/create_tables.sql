@@ -72,7 +72,8 @@ create table gear (
     secondary_stat_1 varchar(100) not null,
     secondary_stat_2 varchar(100) not null,
     material varchar(100),
-    tradable boolean not null
+    tradable boolean not null,
+    price int DEFAULT NULL /* Currency is gold which acts like an int */
 );
 
 create table specialization_gear (
@@ -148,7 +149,6 @@ create table vendor (
     id int,
     first_name varchar(100) not null,
     surname varchar(100),
-    price money,
     foreign key (id)
       references location (id)
 );
