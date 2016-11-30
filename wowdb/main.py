@@ -10,15 +10,14 @@ from .sql import cursor
 @aiohttp_jinja2.template('index.html')
 async def handle(request):
     with cursor() as cur:
-        search = request.GET.get('search', "")
+        search = request.GET.get('search', '')
         tradable = request.GET.get('tradable', 'Both')
         if tradable == 'Both':
             cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
         else:
             tradable = tradable == 'True'
             cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.tradable is %s", [search, tradable])
-        cur.execute(
-            "select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
+        #cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
         gears = cur.fetchall()
     return dict(gears=gears)
 

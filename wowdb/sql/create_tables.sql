@@ -3,8 +3,8 @@ drop table if exists specialization_gear;
 drop table if exists race_class;
 
 drop table if exists "set";
-drop table if exists gear;
 
+drop table if exists gear;
 drop table if exists vendor;
 drop table if exists raid;
 drop table if exists dungeon;
