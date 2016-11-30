@@ -62,7 +62,7 @@ create table gear (
     secondary_stat_1 varchar(100) not null,
     secondary_stat_2 varchar(100) not null,
     material varchar(100) not null,
-    tradable varchar(100) not null
+    tradable boolean not null
 );
 
 create table specialization_gear (
