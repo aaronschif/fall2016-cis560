@@ -34,12 +34,12 @@
     </tr>
   </thead>
   <tbody>
-    {% for id, name, slot, pstat, stat1, stat2, material, tradable, price in gears %}
+    {% for id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price in gears %}
     <tr>
       <td>{{ name }}</td>
       <td>{{ slot }}</td>
-      <td>{{ pstat }}</td>
-      <td>{{ stat1 }}<br>{{ stat2 }}</td>
+      <td>{{ pval }}{{ " " }}{{ pstat }}</td>
+      <td>{{ s1val }}{{ " " }}{{ stat1 }}<br>{{ s2val }}{{ " " }}{{ stat2 }}</td>
       <td>{{ material|default("", true) }}</td>
       <td>{{ tradable }}</td>
       <td>{{ price|default("", true) }}</td>
