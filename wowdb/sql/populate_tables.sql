@@ -4,13 +4,13 @@ values (1, 'Alliance'),
 on conflict do nothing;
 
 insert into race (id, name, racial_trait_1, racial_trait_2)
-values (1, 'Human', '1', '1'),
-       (2, 'Dwarf', '1', '1'),
-       (3, 'Night Elf', '1', '1'),
-       (4, 'Gnome', '1', '1'),
-       (5, 'Draenei', '1', '1'),
-       (6, 'Worgen', '1', '1'),
-       (7, 'Orc', '1', '1'),
+values (1, 'Human', 'Every Man for Himself', 'The Human Spirit'),
+       (2, 'Dwarf', 'Explorer', 'Diplomacy'),
+       (3, 'Night Elf', 'Nature Resistance', 'Quickness'),
+       (4, 'Gnome', 'Arcane Resistance', 'Nimble Fingers'),
+       (5, 'Draenei', 'Gemcutting', 'Gift of the Naaru'),
+       (6, 'Worgen', 'Darkflight', 'Flayer'),
+       (7, 'Orc', 'Blood Fury', 'Aberration'),
        (8, 'Undead', 'Will of the Foresaken', 'Cannibalize'),
        (9, 'Tauren', 'Brawn', 'War Stomp'),
        (10, 'Troll', 'berserking', 'Da Voodoo Shuffle'),
@@ -61,17 +61,17 @@ on conflict do nothing;
    I put notes next to each insert value to note where they come from.
  */
 insert into gear (id, name, slot, primary_stat, secondary_stat_1, secondary_stat_2, material, tradable)
-values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Strike', '1', 'Plate', 'No'), /* Black Rook Hold, Amalgam of Souls */
-       (2, 'Shadowfeather Shawl', 'Back', '417 Agility', '389 Haste', '1', 'None', 'No'), /* Black Rook Hold, Amalgam of Souls */
-       (3, 'Etheldrin''s Breastplate', 'Chest', '742 Strenth', '705 Mastery', '1', 'Plate', 'No'), /* Black Rook Hold, Amalgam of Souls */
-       (4, 'Ravencourt Formal Robes', 'Chest', '742 Intellect', '367 Critical Strike', '1', 'Cloth', 'No'), /* Black Rook Hold, Amalgam of Souls */
-       (5, 'Soulstarve Hood', 'Head', '742 Agility', '599 Haste', '1', 'Leather', 'No'), /* Black Rook Hold, Illysanna Ravencrest */
-       (6, 'Soul-Torn Fury Cinch', 'Waist', '556 Intellect', '259 Critical Strike', '1', 'Mail', 'No'), /* Black Rook Hold, Illysanna Ravencrest */
-       (7, 'Slippers of Heedless Sacrifice', 'Feet', '556 Intellect', '275 Haste', '1', 'Cloth', 'No'), /* Black Rook Hold, Illysanna Ravencrest */
-       (8, 'Leadfoot Earthshakers', 'Feet', '556 Strength', '227 Versatility', '1', 'Plate', 'No'), /* Black Rook Hold, Smashspite the Hateful */
-       (9, 'Shorn Batbrood Cuffs', 'Wrist', '417 Agility', '397 Critical Strike', '1', 'Leather', 'No'), /* Black Rook Hold, Smashspite the Hateful */
-       (10, 'Felbat Leather Vest', 'Chest', '742 Agility', '670 Critical Strike', '1', 'Leather', 'No'), /* Black Rook Hold, Smashspite the Hateful */
-       (11, 'Mardum Chain Vest', 'Chest', '742 Intellect', '388 Versatility', '1', 'Mail', 'No'), /* Black Rook Hold, Smashspite the Hateful */
+values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Strike', '233 Haste', 'Plate', 'No'), /* Black Rook Hold, Amalgam of Souls */
+       (2, 'Shadowfeather Shawl', 'Back', '417 Agility', '389 Haste', '401 Mastery', 'None', 'No'), /* Black Rook Hold, Amalgam of Souls */
+       (3, 'Etheldrin''s Breastplate', 'Chest', '742 Strenth', '705 Mastery', '834 Critical Strike', 'Plate', 'No'), /* Black Rook Hold, Amalgam of Souls */
+       (4, 'Ravencourt Formal Robes', 'Chest', '742 Intellect', '367 Critical Strike', '355 Versatility', 'Cloth', 'No'), /* Black Rook Hold, Amalgam of Souls */
+       (5, 'Soulstarve Hood', 'Head', '742 Agility', '599 Haste', '607 Mastery', 'Leather', 'No'), /* Black Rook Hold, Illysanna Ravencrest */
+       (6, 'Soul-Torn Fury Cinch', 'Waist', '556 Intellect', '259 Critical Strike', '204 Versatility', 'Mail', 'No'), /* Black Rook Hold, Illysanna Ravencrest */
+       (7, 'Slippers of Heedless Sacrifice', 'Feet', '556 Intellect', '275 Haste', '301 Critical Strike', 'Cloth', 'No'), /* Black Rook Hold, Illysanna Ravencrest */
+       (8, 'Leadfoot Earthshakers', 'Feet', '556 Strength', '227 Versatility', '237 Mastery', 'Plate', 'No'), /* Black Rook Hold, Smashspite the Hateful */
+       (9, 'Shorn Batbrood Cuffs', 'Wrist', '417 Agility', '397 Critical Strike', '405 Haste', 'Leather', 'No'), /* Black Rook Hold, Smashspite the Hateful */
+       (10, 'Felbat Leather Vest', 'Chest', '742 Agility', '670 Critical Strike', '699 Mastery', 'Leather', 'No'), /* Black Rook Hold, Smashspite the Hateful */
+       (11, 'Mardum Chain Vest', 'Chest', '742 Intellect', '388 Versatility', '378 Haste', 'Mail', 'No'), /* Black Rook Hold, Smashspite the Hateful */
        (12, 'Drape of the Raven Lord', 'Back', 'Strength', '198 Haste', '357 Mastery', 'None', 'No'), /* Black Rook Hold, Lord Ravencrest */
        (13, 'Legguards of Endless Horrors', 'Legs', '742 Agility', '664 Haste', '324 Versatility', 'Leather', 'No'), /* Black Rook Hold, Lord Ravencrest */
        (14, 'Ravencrest''s Unerring Striders', 'Feet', '556 Intellect', '497 Haste', '243 Mastery', 'Mail', 'No'), /* Black Rook Hold, Lord Ravencrest */
@@ -80,7 +80,121 @@ values (1, 'Rook Footman''s Warboots', 'Feet', '556 Strength', '243 Critical Str
        (17, 'Guileful Intruder Handguards', 'Hands', '886 Agility', '653 Critical Strike', '289 Haste', 'Leather', 'No'), /* Court of stars, Patrol Captain Gerdo */
        (18, 'Chain of Scorched Bones', 'Neck', '997 Stamina', '1163 Haste', '606 Versatility', 'None', 'No'), /* Court of stars, Talixae Flamewreath */
        (19, 'Felbat Leather Pauldrons', 'Shoulder', '886 Agility', '552 Critical Strike', '391 Versatility', 'Leather', 'No'), /* Court of stars, Talixae Flamewreath */
-       (20, 'Inferno Breastplate', 'Chest', '1182 Intellect', '494 Critical Strike', '763 Haste', 'Plate', 'No') /* Court of stars, Talixae Flamewreath */
+       (20, 'Inferno Breastplate', 'Chest', '1182 Intellect', '494 Critical Strike', '763 Haste', 'Plate', 'No'), /* Court of stars, Talixae Flamewreath */
+       (21, 'Veil of Unseen Strikes', 'Head', '1182 Agility', '440 Versatility', '817 Mastery', 'Leather', 'No'), /* Court of stars, Advisor Melandrus */
+       (22, 'Suramar Magistrate Leggings', 'Legs', '1182 Intellect', '844 Haste', '413 Versatility', 'Cloth', 'No'), /* Court of stars, Advisor Melandrus */
+       (23, 'Seawitch Gloves', 'Hands', '556 Intellect', '291 Versatility', '450 Mastery', 'Cloth', 'No'), /* Eye of Azshara, Warlord Parjesh */
+       (24, 'Coralplate Chestguard', 'Chest', '742 Strength', '324 Versatility', '663 Mastery', 'Plate', 'No'), /* Eye of Azshara, Warlord Parjesh */
+       (25, 'Brinewashed Leather Pant', 'Legs', '742 Intellect', '367 Versatility', '620 Mastery', 'Leather', 'No'), /* Eye of Azshara, Lady Hatecoil */
+       (26, 'Horizon Line Warboots', 'Feet', '556 Strength', '497 Critical Strike', '242 Haste', 'Plate', 'No'), /* Eye of Azshara, Lady Hatecoil */
+       (27, 'Cord of the Sea-Caller', 'Waist', '556 Intellect', '242 Haste', '497 Versatility', 'Cloth', 'No'), /* Eye of Azshara, Lady Hatecoil */
+       (28, 'Tunic of the Pitiless Monstrosity', 'Chest', '742 Agility', '282 Critical Strike', '705 Mastery', 'Leather', 'No'), /* Eye of Azshara, Serpentrix */
+       (29, 'Coralplate Pauldrons', 'Shoulder', '556 Strength', '275 Versatility', '466 Mastery', 'Plate', 'No'), /* Eye of Azshara, Serpentrix */
+       (30, 'Brinewashed Leather Grips', 'Hands', '556 Intellect', '307 Versatility', '434 Mastery', 'Leather', 'No'), /* Eye of Azshara, Serpentrix */
+       (31, 'Taut Halyard Waistband', 'Waist', '556 Agility', '513 Haste', '227 Versatility', 'Leather', 'No'), /* Eye of Azshara, King Deepbeard */
+       (32, 'Rising Ocean Legwraps', 'Legs', '742 Intellect', '409 Critical Strike', '578 Mastery', 'Cloth', 'No'), /* Eye of Azshara, King Deepbeard */
+       (33, 'Keelhauler Legplates', 'Legs', '742 Strength', '367 Critical Strike', '620 Haste', 'Plate', 'No'), /* Eye of Azshara, King Deepbeard */
+       (34, 'Thundercrush Pauldrons', 'Shoulder', '556 Agility', '291 Haste', '450 Mastery', 'Mail', 'No'), /* Eye of Azshara, Wrath of Azshara */
+       (35, 'Stormcharged Choker', 'Neck', '626 Stamina', '952 Critical Strike', '436 Mastery', 'None', 'No'), /* Eye of Azshara, Wrath of Azshara */
+       (36, 'Slippers of Martydom', 'Feet', '556 Intellect', '513 Haste', '227 Mastery', 'Cloth', 'No'), /* Eye of Azshara, Wrath of Azshara */
+       (37, 'Brinewashed Leather Boots', 'Feet', '556 Agility', '243 Versatility', '497 Mastery', 'Leather', 'No'), /* Eye of Azshara, Wrath of Azshara */
+       (38, 'Biornskin Leggings', 'Legs', '742 Intellect', '599 Critical Strike', '388 Mastery', 'Leather', 'No'), /* Halls of Valor, Hymdall */
+       (39, 'Bonespeaker Cowl', 'Head', '742 Intellect', '684 Critical Strike', '303 Mastery', 'Cloth', 'No'), /* Halls of Valor, Hymdall */
+       (40, 'Skoldiir Breastplate', 'Chest', '742 Intellect', '620 Critical Strike', '367 Mastery', 'Plate', 'No'), /* Halls of Valor, Hymdall */
+       (41, 'Cushioned Treads of Glory', 'Feet', '556 Intellect', '291 Haste', '450 Mastery', 'Cloth', 'No'), /* Halls of Valor, Hymdall */
+       (42, 'Tideskin Gauntlets', 'Hands', '556 Agility', '513 Critical Strike', '227 Mastery', 'Mail', 'No'), /* Halls of Valor, Hyrja */
+       (43, 'Thunderfused Val''kyr Hauberk', 'Chest', '742 Agility', '303 Haste', '684 Mastery', 'Mail', 'No'), /* Halls of Valor, Hyrja */
+       (44, 'Valkyra Protector Greatboots', 'Feet', '556 Strength', '481 Haste', '259 Mastery', 'Plate', 'No'), /* Halls of Valor, Hyrja */
+       (45, 'Silken Bloodscent Gloves', 'Hands', '556 Intellect', '481 Critical Strike', '259 Haste', 'Cloth', 'No'), /* Halls of Valor, Fenryr */
+       (46, 'Runebands of the worthy', 'Wrist', '417 Intellect', '182 Critical Strike', '373 Haste', 'Mail', 'No'), /* Halls of Valor, Fenryr */
+       (47, 'Hide of Fenryr', 'Chest', '742 Agility', '578 Haste', '409 Mastery', 'Leather', 'No'), /* Halls of Valor, Fenryr */
+       (48, 'Infernal Mantle of Conquest', 'Shoulder', '556 Intellect', '227 Haste', '513 Mastery', 'Cloth', 'No'), /* Halls of Valor, God-King Skavald */
+       (49, 'Skoldiir Helm', 'Head', '742 Strength', '684 Critical Strike', '303 Mastery', 'Plate', 'No'), /* Halls of Valor, God-King Skavald */
+       (50, 'Felstep Footguards', 'Feet', '556 Intellect', '212 Critical Strike', '529 Mastery', 'Mail', 'No'), /* Halls of Valor, God-King Skavald */
+       (51, 'Cape of Valarjar Courage', 'Back', '417 Strength', '278 Versatility', '278 Mastery', 'None', 'No'), /* Halls of Valor, Odyn */
+       (52, 'Pauldrons of the All-Father', 'Shoulder', '556 Strength', '434 Haste', '307 Mastery', 'Plate', 'No'), /* Halls of Valor, Odyn */
+       (53, 'Wristbands of Magnificent Splendor', 'Wrist', '417 Intellect', '206 Critical Strike', '349 Versatility', 'Plate', 'No'), /* Halls of Valor, Odyn */
+       (54, 'Treads of Light', 'Feet', '556 Intellect', '275 Critical Strike', '466 Versatility', 'Cloth', 'No'), /* Halls of Valor, Odyn */
+       (55, 'Solid Gold Bracelets', 'Wrist', '417 Agility', '337 Critical Strike', '218 Versatility', 'Mail', 'No'), /* Halls of Valor, Odyn */
+       (56, 'Crown of Fallen Kings', 'Head', '742 Strength', '705 Critical Strike', '282 Mastery', 'Plate', 'No'), /* Maw of Souls, Ymiron */
+       (57, 'Biornskin Belt', 'Waist', '556 Intellect', '434 Critical Strike', '307 Mastery', 'Leather', 'No'), /* Maw of Souls, Ymiron */
+       (58, 'Tideskorn Sabatons', 'Feet', '556 Agility', '434 Critical Strike', '307 Mastery', 'Mail', 'No'), /* Maw of Souls, Ymiron */
+       (59, 'Skoldiir Legguards', 'Legs', '742 Strength', '684 Critical Strike', '303 Mastery', 'Plate', 'No'), /* Maw of Souls, Harbaron */
+       (60, 'Void-Touched Wristplates', 'Wrist', '417 Intellect', '397 Haste', '159 Mastery', 'Plate', 'No'), /* Maw of Souls, Harbaron */
+       (61, 'Soul-Stitched Robes', 'Chest', '742 Intellect', '578 Versatility', '409 Mastery', 'Cloth', 'No'), /* Maw of Souls, Harbaron */
+       (62, 'Belt of Eternal Torment', 'Waist', '556 Intellect', '212 Haste', '529 Mastery', 'Cloth', 'No'), /* Maw of Souls, Helya */
+       (63, 'Kraken Hide Helm', 'Head', '742 Agility', '367 Haste', '620 Versatility', 'Leather', 'No'), /* Maw of Souls, Helya */
+       (64, 'Salt-Laden Stompers', 'Feet', '556 Intellect', '291 Critical Strike', '450 Versatility', 'Plate', 'No'), /* Maw of Souls, Helya */
+       (65, 'Thornscar Wristguards', 'Wrist', '417 Strength', '194 Critical Strike', '361 Mastery', 'Plate', 'No'), /* Darkheart Thicket, Archdruid Glaidalis */
+       (66, 'Tranquil Bough Vest', 'Chest', '742 Agility', '663 Haste', '324 Mastery', 'Leather', 'No'), /* Darkheart Thicket, Archdruid Glaidalis */
+       (67, 'Night Dreamer Crest', 'Head', '742 Intellect', '684 Haste', '303 Mastery', 'Cloth', 'No'), /* Darkheart Thicket, Archdruid Glaidalis */
+       (68, 'Breastplate of Preservation', 'Chest', '742 Strength', '684 Critical Strike', '303 Mastery', 'Plate', 'No'), /* Darkheart Thicket, Oakheart */
+       (69, 'Dreadhide Girdle', 'Waist', '556 Intellect', '434 Critical Strike', '307 Haste', 'Leather', 'No'), /* Darkheart Thicket, Oakheart */
+       (70, 'Blighted Grasp Bracers', 'Wrist', '417 Agility', '206 Haste', '349 Versatility', 'Mail', 'No'), /* Darkheart Thicket, Oakheart */
+       (71, 'Tranquil Bough Hood', 'Head', '742 Agility', '684 Haste', '303 Mastery', 'Leather', 'No'), /* Darkheart Thicket, Dresaron */
+       (72, 'Slipstream Shoulderpads', 'Shoulder', '556 Intellect', '481 Haste', '259 Mastery', 'Cloth', 'No'), /* Darkheart Thicket, Dresaron */
+       (73, 'Thermal Bindings', 'Wrist', '417 Intellect', '182 Critical Strike', '373 Mastery', 'Leather', 'No'), /* Darkheart Thicket, Dresaron */
+       (75, 'Ashen Satyr Leggings', 'Legs', '742 Agility', '642 Critical Strike', '345 Haste', 'Leather', 'No'), /* Darkheart Thicket, Shade of Xavius */
+       (76, 'Dream Bolstered Chestguard', 'Chest', '742 Intellect', '409 Critical Strike', '578 Mastery', 'Mail', 'No'), /* Darkheart Thicket, Shade of Xavius */
+       (77, 'Burning Sky Pauldrons', 'Shoulder', '556 Agility', '513 Haste', '227 Mastery', 'Mail', 'No'), /* Darkheart Thicket, Shade of Xavius */
+       (78, 'Shoulderbuckle Strap', 'Waist', '556 Agility', '481 Haste', '259 Mastery', 'Mail', 'No' ), /* Neltharion's Lair, Rokmora */
+       (79, 'Rivermade Sandals', 'Feet', '556 Intellect', '238 Critical Strike', '503 Haste', 'Leather', 'No'), /* Neltharion's Lair, Rokmora */
+       (80, 'Skyhorn Mantle', 'Shoulder', '556 Agility', '275 Critical Strike', '466 Haste', 'Mail', 'No'), /* Neltharion's Lair, Rokmora */
+       (81, 'Cragshaper''s Fitted Hood', 'Head', '742 Intellect', '409 Critical Strike', '578 Haste', 'Cloth', 'No'), /* Neltharion's Lair, Ularogg Cragshaper */
+       (82, 'Bitestone Wristwrap', 'Wrist', '417 Intellect', '385 Haste', '170 Versatility', 'Mail', 'No'), /* Neltharion's Lair, Ularogg Cragshaper */
+       (83, 'Steelgazer Hide Hood', 'Head', '742 Agility', '705 Haste', '282 Versatility', 'Leather', 'No'), /* Neltharion's Lair, Ularogg Cragshaper */
+       (84, 'Subterranean Horror Faceguard', 'Head', '742 Intellect', '388 Haste', '599 Mastery', 'Plate', 'No'), /* Neltharion's Lair, Naraxas */
+       (85, 'Gauntlets of Innumerable Barbs', 'Hands', '556 Agility', '243 Critical Strike', '497 Mastery', 'Mail', 'No'), /* Neltharion's Lair, Naraxas */
+       (86, 'Wristbands of Rousing Violence', 'Wrist', '417 Intellect', '159 Haste', '397 Mastery', 'Leather', 'No'), /* Neltharion's Lair, Naraxas */
+       (87, 'Steelgazer Hide Mantle', 'Shoulder', '556 Intellect', '434 Haste', '307 Versatility', 'Leather', 'No'), /* Neltharion's Lair, Dargrul */
+       (88, 'Faultline Leggings', 'Legs', '742 Agility', '599 Critical Strike', '338 Nastery', 'Mail', 'No'), /* Neltharion's Lair, Dargrul */
+       (89, 'Gloves of the Mountain Conquest', 'Hands', '556 Intellect', '466 Haste', '275 Mastery', 'Cloth', 'No'), /* Neltharion's Lair, Dargrul */
+       (90, 'Sinister Ashfall Cord', 'Waist', '556 Agility', '529 Critical Strike', '212 Mastery', 'Leather', 'No'), /* Neltharion's Lair, Dargrul */
+       (91, 'Tunnel Trudger Footguards', 'Feet', '886 Intellect', '674 Critical Strike', '269 Haste', 'Leather', 'No'), /* The Arcway, Ivanyr */
+       (92, 'Crackling Overcharge Chestguard', 'Chest', '1182 Strength', '763 Critical Strike', '494 Versatility', 'Plate', 'No'), /* The Arcway, Ivanyr */
+       (93, 'Arcane Defender''s Belt', 'Waist', '886 Strength', '391 Haste', '552 Mastery', 'Plate', 'No'), /* The Arcway, Ivanyr */
+       (94, 'Decontaminated Chain Tunic', 'Chest', '1182 Agility', '817 Critical Strike', '440 Versatility', 'Mail', 'No'), /* The Arcway, Corstilax */
+       (95, 'Spaulders of Aberrant Inhibition', 'Shoulder', '886 Intellect', '269 Critical Strike', '674 Mastery', 'Leather', 'No'), /* The Arcway, Corstilax */
+       (96, 'Collar of Enclosure', 'Head', '1182 Intellect', '844 Critical Strike', '413 Haste', 'Cloth', 'No'), /* The Arcway, Corstilax */
+       (97, 'Legwraps of the Reverberating Shadows', 'Legs', '1182 Intellect', '494 Critical Strike', '763 Haste', 'Cloth', 'No'), /* The Arcway, General Xakal */
+       (98, 'Fist of the Legion', 'Hands', '886 Strength', '440 Haste', '613 Mastery', 'Plate', 'No'), /* The Arcway, General Xakal */
+       (99, 'Bloodclaw Leggings', 'Legs', '1182 Agility', '817 Haste', '440 Mastery', 'Leather', 'No'), /* The Arcway, General Xakal */
+       (100, 'Tunnel Fiend Bracers', 'Wrist', '665 Intellect', '459 Critical Strike', '247 Versatility', 'Cloth', 'No'), /* The Arcway, Nal'tira */
+       (101, 'Greathelm of Barbed Chelicerae', 'Head', '1182 Strength', '440 Critical Strike', '817 Mastery', 'Plate', 'No'), /* The Arcway, Nal'tira */
+       (102, 'Cloak of the Mana-Spun Silk', 'Back', '665 Strength', '455 Critical Strike', '252 Versatility', 'None', 'No'), /* The Arcway, Nal'tira */
+       (103, 'Treads of the Fates Entwined', 'Feet', '666 Intellect', '674 Critical Strike', '269 Mastery', 'Plate', 'No'), /* The Arcway, Advisor Vandros */
+       (104, 'Mana-Laced Gloves', 'Hands', '886 Agility', '572 Versatility', '370 Mastery', 'Leather', 'No'), /* The Arcway, Advisor Vandros */
+       (105, 'Manawracker Crown', 'Head', '1182 Intellect', '494 Haste', '763 Mastery', 'Cloth', 'No'), /* The Arcway, Advisor Vandros */
+       (106, 'Scored Ironclaw Sabatons', 'Feet', '973 Intellect', '615 Critical Strike', '363 Haste', 'Mail', 'No'), /* Emerald Nightmare, Ursoc */
+       (107, 'Splotched Bloodfur Leggings', 'Legs', '1297 Agility', '932 Critical Strike', '372 Mastery', 'Leather', 'No'), /* Emerald Nightmare, Ursoc */
+       (108, 'Primal Gauntlets of Rage', 'Hands', '973 Strength', '699 Critical Strike', '279 Haste', 'Plate', 'No'), /* Emerald Nightmare, Ursoc */
+       (109, 'Lifeless Buckled Girdle', 'Waist', '973 Agility', '406 Versatility', '574 Mastery', 'Leather', 'No'), /* Emerald Nightmare, Nythendra */
+       (110, 'Greyed Dragonscale Coif', 'Head', '1297 Intellect', '568 Critical Strike', '736 Mastery', 'Mail', 'No'), /* Emerald Nightmare, Nythendra */
+       (111, 'Wristclamps of Mad Dreams', 'Wrist', '729 Strength', '445 Critical Strike', '288 Haste', 'Plate', 'No'), /* Emerald Nightmare, Nythendra */
+       (112, 'Horror Inscribed Chestguard', 'Chest', '1297 Intellect', '932 Critical Strike', '372 Haste', 'Plate', 'No'), /* Emerald Nightmare, Dragons of Nightmare */
+       (113, 'Cowl of Fright', 'Head', '1297 Agility', '456 Critical Strike', '848 Mastery', 'Leather', 'No'), /* Emerald Nightmare, Dragons of Nightmare */
+       (114, 'Malignant Sabatons', 'Feet', '1459 Intellect', '699 Critical Strike', '279 Haste', 'Mail', 'No'), /* Emerald Nightmare, Dragons of Nightmare */
+       (115, 'Disjointed Linkage Leggings', 'Legs', '1297 Agility', '512 Critical Strike', '792 Haste', 'Mail', 'No'), /* Emerald Nightmare, Xavius */
+       (116, 'Midnight Herald''s Pauldrons', 'Shoulder', '974 Strength', '322 Critical Strike', '658 Haste', 'Plate', 'No'), /* Emerald Nightmare, Xavius */
+       (117, 'Maddening Robe of Secrets', 'Chest', '1297 Intellect', '428 Critical Strike', '876 Mastery', 'Cloth', 'No'), /* Emerald Nightmare, Xavius */
+       (118, 'Cinch of Cosmic Insignficance', 'Wrist', '729 Intellect', '509 Haste', '225 Mastery', 'Cloth', 'No'), /* Emerald Nightmare, I'lgynoth */
+       (119, 'Pauldrons of Shifting Runes', 'Shoulder', '973 Strength', '553 Critical Strike', '426 Versatility', 'Plate', 'No'), /* Emerald Nightmare, I'lgynoth */
+       (120, 'Singular Chain Leggings', 'Legs', '1297 Agility', '400 Haste', '904 Mastery', 'Mail', 'No'), /* Emerald Nightmare, I'lgynoth */
+       (121, 'Patient Ambusher''s Hauberk', 'Chest', '1297 Intellect', '848 Critical Strike', '456 Mastery', 'Mail', 'No'), /* Emerald Nightmare, Elerethe Renferal */
+       (122, 'Pliable Spider Silk Cinch', 'Waist', '973 Intellect', '363 Critical Strike', '615 Mastery', 'Cloth', 'No'), /* Emerald Nightmare, Elerethe Renferal */
+       (123, 'Mask of Multitudinous Eyes', 'Head', '1297 Agility', '932 Critical Strike', '372 Versatility', 'Leather', 'No'), /* Emerald Nightmare, Elerethe Renferal */
+       (124, 'Forest-Lord''s Waistwrap', 'Waist', '973 Agility', '637 Haste', '342 Mastery', 'Leather', 'No'), /* Emerald Nightmare, Cenarius */
+       (125, 'Cozy Dryad Hoof-Socks', 'Feet', '973 Intellect', '322 Critical Strike', '658 Haste', 'Cloth', 'No'), /* Emerald Nightmare, Cenarius */
+       (126, 'Fitted Ironbark Gauntlets', 'Hands', '973 Strength', '637 Haste', '342 Mastery', 'Plate', 'No'), /* Emerald Nightmare, Cenarius */
+       (127, 'Cinch of Light', 'Waist', '1068 Intellect', '290 Haste', '726 Mastery', 'Cloth', 'No'), /* Trial of Valor, Odyn */
+       (128, 'Gloves of Issued Challenge', 'Hands', '1068 Agility', '399 Critical Strike', '617 Mastery', 'Leather', 'No'), /* Trial of Valor, Odyn */
+       (129, 'Goldrune Legplates', 'Legs', '1424 Strength', '445 Critical Strike', '910 Mastery', 'Plate', 'No'), /* Trial of Valor, Odyn */
+       (130, 'Lead-Soled Seabed Striders', 'Feet', '1068 Intellect'), /* Trial of Valor, Guarm */
+       (131, ), /* Trial of Valor, Guarm */
+       (132, ), /* Trial of Valor, Guarm */
+       (133, ), /* Trial of Valor, Helya */
+       (134, ), /* Trial of Valor, Helya */
+       (135, ), /* Trial of Valor, Helya */
 on conflict do nothing;
 
 insert into "set" (set_id, name, set_bonus)
@@ -115,10 +229,10 @@ values (5, 'Black Rook Hold', 'Amalgam of Souls'),
        (4, 'Halls of Valor', 'Fenryr'),
        (4, 'Halls of Valor', 'God-King Skovald'),
        (4, 'Halls of Valor', 'Odyn'),
-       (5, 'Dearkheart Thicket', 'Archdruid Glaidalis'),
-       (5, 'Dearkheart Thicket', 'Oakheart'),
-       (5, 'Dearkheart Thicket', 'Dresaron'),
-       (5, 'Dearkheart Thicket', 'Shade of Xavius'),
+       (5, 'Darkheart Thicket', 'Archdruid Glaidalis'),
+       (5, 'Darkheart Thicket', 'Oakheart'),
+       (5, 'Darkheart Thicket', 'Dresaron'),
+       (5, 'Darkheart Thicket', 'Shade of Xavius'),
        (4, 'Maw of Souls', 'Ymiron'),
        (4, 'Maw of Souls', 'Harbaron'),
        (4, 'Maw of Souls', 'Helya'),
