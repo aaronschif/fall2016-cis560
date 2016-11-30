@@ -12,11 +12,19 @@ async def handle(request):
     with cursor() as cur:
         search = request.GET.get('search', '')
         tradable = request.GET.get('tradable', 'Both')
-        if tradable == 'Both':
-            cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
+        slot = request.GET.get('slot', 'ANY')
+        if slot == 'ANY':
+            if tradable == 'Both':
+                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
+            else:
+                tradable = tradable == 'True'
+                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.tradable is %s", [search, tradable])
         else:
-            tradable = tradable == 'True'
-            cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.tradable is %s", [search, tradable])
+            if tradable == 'Both':
+                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.slot ilike '%%'||%s||'%%'", [search, slot])
+            else:
+                tradable = tradable == 'True'
+                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.tradable is %s AND gear.slot ilike '%%'||%s||'%%'", [search, tradable, slot])
         #cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
         gears = cur.fetchall()
     return dict(gears=gears)

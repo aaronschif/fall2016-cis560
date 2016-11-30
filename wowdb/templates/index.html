@@ -10,7 +10,23 @@
   <input type="radio" name="tradable" value="False"> Non-Tradable
   <input type="radio" name="tradable" value="Both"> Both
 
+  <select name="slot">
+      <option value="ANY">[Select Slot]</option>
+      <option value="head">Head</option>
+      <option value="neck">Neck</option>
+      <option value="chest">Chest</option>
+      <option value="shoulder">Shoulder</option>
+      <option value="back">Back</option>
+      <option value="waist">Waist</option>
+      <option value="legs">Legs</option>
+      <option value="hands">Hands</option>
+      <option value="wrist">Wrist</option>
+      <option value="feet">Feet</option>
+  </select>
+
+  <input type="checkbox" name="stat" value=""
  </form>
+
 <table>
   <thead>
     <tr>
@@ -27,6 +43,10 @@
       <td>{{ material|default("", true) }}</td>
       <td>{{ tradable }}</td>
       <td>{{ price|default("", true) }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="6" align="center">No Results</td>
     </tr>
     {% endfor %}
   </tbody>

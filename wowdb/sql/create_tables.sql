@@ -3,6 +3,8 @@ drop table if exists specialization_gear;
 drop table if exists race_class;
 
 drop table if exists "set";
+drop table if exists race CASCADE ;
+drop table if exists faction_race CASCADE ;
 
 drop table if exists gear;
 drop table if exists vendor;
@@ -12,7 +14,6 @@ drop table if exists location;
 
 drop table if exists specialization;
 drop table if exists class;
-drop table if exists race;
 drop table if exists faction;
 
 
@@ -68,8 +69,11 @@ create table gear (
     id int primary key,
     name varchar(300) not null,
     slot varchar(100) not null,
+    primary_stat_val int not null,
     primary_stat varchar(100) not null,
+    sec_stat_1_val int not null,
     secondary_stat_1 varchar(100) not null,
+    sec_stat_2_val int not null,
     secondary_stat_2 varchar(100) not null,
     material varchar(100),
     tradable boolean not null,
