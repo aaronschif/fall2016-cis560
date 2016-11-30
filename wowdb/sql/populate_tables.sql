@@ -168,7 +168,7 @@ values (1, 'Rook Footman''s Warboots', 'Feet', 556, 'Strength', 243, 'Critical S
        (85, 'Gauntlets of Innumerable Barbs', 'Hands', 556, 'Agility', 243, 'Critical Strike', 497, 'Mastery', 'Mail', False), /* Neltharion's Lair, Naraxas */
        (86, 'Wristbands of Rousing Violence', 'Wrist', 417, 'Intellect', 159, 'Haste', 397, 'Mastery', 'Leather', False), /* Neltharion's Lair, Naraxas */
        (87, 'Steelgazer Hide Mantle', 'Shoulder', 556, 'Intellect', 434, 'Haste', 307, 'Versatility', 'Leather', False), /* Neltharion's Lair, Dargrul */
-       (88, 'Faultline Leggings', 'Legs', 742, 'Agility', 599, 'Critical Strike', 338, 'Nastery', 'Mail', False), /* Neltharion's Lair, Dargrul */
+       (88, 'Faultline Leggings', 'Legs', 742, 'Agility', 599, 'Critical Strike', 338, 'Mastery', 'Mail', False), /* Neltharion's Lair, Dargrul */
        (89, 'Gloves of the Mountain Conquest', 'Hands', 556, 'Intellect', 466, 'Haste', 275, 'Mastery', 'Cloth', False), /* Neltharion's Lair, Dargrul */
        (90, 'Sinister Ashfall Cord', 'Waist', 556, 'Agility', 529, 'Critical Strike', 212, 'Mastery', 'Leather', False), /* Neltharion's Lair, Dargrul */
        (91, 'Tunnel Trudger Footguards', 'Feet', 886, 'Intellect', 674, 'Critical Strike', 269, 'Haste', 'Leather', False), /* The Arcway, Ivanyr */

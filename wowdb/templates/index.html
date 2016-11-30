@@ -23,9 +23,38 @@
       <option value="wrist">Wrist</option>
       <option value="feet">Feet</option>
   </select>
-
-  <input type="checkbox" name="stat" value=""
+  <br>
+  <table>
+      <tr>
+          <td>Primary Stats</td>
+          <td>Minimum:
+            <input type="number" name="p_minimum" value=1 min=1 max=10000>
+          </td>
+          <td>Maximum:
+            <input type="number" name="p_maximum" value=10000 min=1 max=10000>
+          </td>
+          <td><input type="checkbox" name="primary_stat" value="agility"> Agility</td>
+          <td><input type="checkbox" name="primary_stat" value="intellect"> Intellect</td>
+          <td><input type="checkbox" name="primary_stat" value="stamina"> Stamina</td>
+          <td><input type="checkbox" name="primary_stat" value="strength"> Strength</td>
+          <!--<td></td>-->
+      </tr>
+      <tr>
+          <td>Secondary Stats</td>
+          <td>Minimum:
+            <input type="number" name="s_minimum" value=1 min=1 max=10000>
+          </td>
+          <td>Maximum:
+            <input type="number" name="s_maximum" value=10000 min=1 max=10000>
+          </td>
+          <td><input type="checkbox" name="secondary_stat" value="critical strike"> Critical Strike</td>
+          <td><input type="checkbox" name="secondary_stat" value="agility"> Haste</td>
+          <td><input type="checkbox" name="secondary_stat" value="intellect"> Mastery</td>
+          <td><input type="checkbox" name="secondary_stat" value="strength"> Versatility</td>
+      </tr>
+  </table>
  </form>
+    <br><br>
 
 <table>
   <thead>
@@ -46,7 +75,7 @@
     </tr>
     {% else %}
     <tr>
-        <td colspan="6" align="center">No Results</td>
+        <td colspan="7" align="center">No Results</td>
     </tr>
     {% endfor %}
   </tbody>
