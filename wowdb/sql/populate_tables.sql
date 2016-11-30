@@ -232,7 +232,7 @@ values (1, 'Rook Footman''s Warboots', 'Feet', 556, 'Strength', 243, 'Critical S
        (149, 'Doomblade Spaulders', 'Shoulder', 1228, 'Agility', 330, 'Haste', 744, 'Mastery', 'Leather', False), /*Doomblade Set*/
        (150, 'Doomblade Tunic', 'Chest', 1228, 'Agility', 330, 'Haste', 786, 'Critical Strike', 'Leather', False), /*Doomblade Set*/
        (151, 'Doomblade Gauntlets', 'Hands', 1228, 'Agility', 330, 'Mastery', 625, 'Critical Strike', 'Leather', False), /*Doomblade Set*/
-       (151, 'Doomblade Shadowwrap', 'Waist', 1228, 'Agility', 412, 'Critical Strike', 786, 'Versatility', 'Leather', False), /*Doomblade Set*/
+       (152, 'Doomblade Shadowwrap', 'Waist', 1228, 'Agility', 412, 'Critical Strike', 786, 'Versatility', 'Leather', False), /*Doomblade Set*/
        (153, 'Doomblade Pants', 'Legs', 1228, 'Agility', 339, 'Haste', 786, 'Mastery', 'Leather', False) /*Doomblade Set*/
 on conflict do nothing;
 
