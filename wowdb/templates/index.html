@@ -23,7 +23,7 @@
       <td>{{ slot }}</td>
       <td>{{ pstat }}</td>
       <td>{{ stat1 }}<br>{{ stat2 }}</td>
-      <td>{{ material }}</td>
+      <td>{{ material|default("", true) }}</td>
       <td>{{ tradable }}</td>
     </tr>
     {% endfor %}
