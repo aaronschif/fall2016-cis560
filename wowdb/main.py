@@ -10,7 +10,7 @@ env = Environment(loader=PackageLoader(__package__, 'templates'))
 
 class Root:
     @cherrypy.expose
-    def index(self):
+    def index(self, search=""):
         with cursor() as cur:
             cur.execute('select * from gear')
             gears = cur.fetchall()

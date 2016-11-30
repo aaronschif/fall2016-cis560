@@ -2,6 +2,10 @@
 
 {% block content %}
 <h1>Gear</h1>
+<form>
+  <input type="search" name="search" placeholder="Search WOW Database">
+  <button>Search</button>
+</form>
 <table>
   <thead>
     <tr>
@@ -9,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for id, slot, name, pstat, stat1, stat2, material, tradable in gears %}
+    {% for id, name, slot, pstat, stat1, stat2, material, tradable in gears %}
     <tr>
       <td>{{ name }}</td>
       <td>{{ slot }}</td>
