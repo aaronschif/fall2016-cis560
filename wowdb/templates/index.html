@@ -8,7 +8,8 @@
 
   <input type="radio" name="tradable" value="True"> Tradable
   <input type="radio" name="tradable" value="False"> Non-Tradable
-  <input type="radio" name="tradable" value="Both"> Both
+  <input type="radio" name="tradable" value="Both" checked> Both
+
 
   <select name="slot">
       <option value="ANY">[Select Slot]</option>
@@ -23,6 +24,7 @@
       <option value="wrist">Wrist</option>
       <option value="feet">Feet</option>
   </select>
+    Price: <input type="number" name="price_min" value=0 min=0 max=999999999> to <input type="number" name="price_max" value=999999999 min=0 max=999999999>
   <br>
   <table>
       <tr>
@@ -37,7 +39,6 @@
           <td><input type="checkbox" name="primary_stat" value="intellect"> Intellect</td>
           <td><input type="checkbox" name="primary_stat" value="stamina"> Stamina</td>
           <td><input type="checkbox" name="primary_stat" value="strength"> Strength</td>
-          <!--<td></td>-->
       </tr>
       <tr>
           <td>Secondary Stats</td>
@@ -48,9 +49,19 @@
             <input type="number" name="s_maximum" value=10000 min=1 max=10000>
           </td>
           <td><input type="checkbox" name="secondary_stat" value="critical strike"> Critical Strike</td>
-          <td><input type="checkbox" name="secondary_stat" value="agility"> Haste</td>
-          <td><input type="checkbox" name="secondary_stat" value="intellect"> Mastery</td>
-          <td><input type="checkbox" name="secondary_stat" value="strength"> Versatility</td>
+          <td><input type="checkbox" name="secondary_stat" value="haste"> Haste</td>
+          <td><input type="checkbox" name="secondary_stat" value="mastery"> Mastery</td>
+          <td><input type="checkbox" name="secondary_stat" value="versatility"> Versatility</td>
+      </tr>
+  </table>
+    <br>
+<table>
+      <tr>
+          <td>Materials</td>
+          <td><input type="checkbox" name="materials" value="cloth"> Cloth</td>
+          <td><input type="checkbox" name="materials" value="leather"> Leather</td>
+          <td><input type="checkbox" name="materials" value="mail"> Mail</td>
+          <td><input type="checkbox" name="materials" value="plate"> Plate</td>
       </tr>
   </table>
  </form>
