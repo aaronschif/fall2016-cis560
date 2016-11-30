@@ -61,7 +61,7 @@ create table gear (
     primary_stat varchar(100) not null,
     secondary_stat_1 varchar(100) not null,
     secondary_stat_2 varchar(100) not null,
-    material varchar(100) not null,
+    material varchar(100),
     tradable boolean not null
 );
 
@@ -77,8 +77,26 @@ create table specialization_gear (
 create table "set" (
     set_id int primary key,
     name varchar(300) not null,
+    set_item_1 int not null,
+    set_item_2 int not null,
+    set_item_3 int,
+    set_item_4 int,
+    set_item_5 int,
+    set_item_6 int,
     set_bonus varchar(100) not null,
-    unique (name)
+    unique (name),
+    foreign key (set_item_1)
+      references gear (id),
+    foreign key (set_item_2)
+      references gear (id),
+    foreign key (set_item_3)
+      references gear (id),
+    foreign key (set_item_4)
+      references gear (id),
+    foreign key (set_item_5)
+      references gear (id),
+    foreign key (set_item_6)
+      references gear (id)
 );
 
 create table location (
