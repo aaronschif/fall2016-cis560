@@ -349,7 +349,7 @@ values (5, 'Emerald Nightmare', 'Ursoc'),
 on conflict do nothing;
 
 insert into vendor (id, first_name, surname)
-values (4, 'casey', 'poole')
+values (1, 'Frank', 'Null')
 on conflict do nothing;
 
 --insert into gear_location (gear_id, location_id)
