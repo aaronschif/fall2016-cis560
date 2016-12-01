@@ -73,7 +73,22 @@ values (1, 'Death Knight', 'Blood'),
        (16, 'Monk', 'Windwalker'),
        (17, 'Paladin', 'Holy'),
        (18, 'Paladin', 'Retribution'),
-       (19, 'Paladin', 'Protection')
+       (19, 'Paladin', 'Protection'),
+       (20, 'Priest', 'Discipline'),
+       (21, 'Priest', 'Holy'),
+       (22, 'Priest', 'Shadow'),
+       (23, 'Rogue', 'Assassination'),
+       (24, 'Rogue', 'Combat'),
+       (25, 'Rogue', 'Subtlety'),
+       (26, 'Shaman', 'Elemental'),
+       (27, 'Shaman', 'Restoration'),
+       (28, 'Shaman', 'Enhancement'),
+       (29, 'Warlock', 'Affliction'),
+       (30, 'Warlock', 'Demonology'),
+       (31, 'Warlock', 'Destruction'),
+       (32, 'Warrior', 'Arms'),
+       (33, 'Warrior', 'Fury'),
+       (34, 'Warrior', 'Protection')
 on conflict do nothing;
 
 /* Certain pieces of gear do not have a material type, such as back pieces and necklaces
@@ -217,7 +232,7 @@ values (1, 'Rook Footman''s Warboots', 'Feet', 556, 'Strength', 243, 'Critical S
        (134, 'Oiled Rigger''s Handwraps', 'Hands', 1119, 'Intellect', 673, 'Critical Strike', 362, 'Versatility', 'Cloth', False), /* Trial of Valor, Helya */
        (135, 'Strand of Whelk Shells', 'Waist', 1119, 'Agility', 606, 'Haste', 429, 'Mastery', 'Leather', False), /* Trial of Valor, Helya */
        (136, 'Helm of Shackled Elements', 'Head', 1647, 'Intellect', 778, 'Mastery', 655, 'Haste', 'Mail', False), /* Shackled Elements Set */
-       (137, 'Pauldrons of Shackled Elements', 'Shoulder', 1228, 'Intellect', 606, 'Critical Strike', 468, 'Versatility', 'Mail', FALSE), /* Shackled Elements Set */
+       (137, 'Pauldrons of Shackled Elements', 'Shoulder', 1228, 'Intellect', 606, 'Critical Strike', 468, 'Versatility', 'Mail', False), /* Shackled Elements Set */
        (138, 'Raiment of Shackled Elements', 'Chest', 1637, 'Intellect', 594, 'Critical Strike', 839, 'Mastery', 'Mail', False), /* Shackled Elements Set */
        (139, 'Gauntlets of Shackled Elements', 'Hands', 1228, 'Intellect', 491, 'Critical Strike', 583, 'Haste', 'Mail', False), /* Shackled Elements Set */
        (140, 'Creeping of Shackled Elements', 'Waist', 973, 'Intellect', 637, 'Haste', 491, 'Critical Strike', 'Mail', False), /* Shackled Elements Set */
@@ -238,7 +253,7 @@ on conflict do nothing;
 
 /* Gear associated with prices */
 insert into gear (id, name, slot, primary_stat_val, primary_stat, sec_stat_1_val, secondary_stat_1, sec_stat_2_val, secondary_stat_2, material, tradable, price)
-values (142, 'Amulet of Garglefish', 'Neck', 2147, 'Intellect', 600, 'Critical Strike', 874, 'Mastery', NULL, false, 1000000)
+values (142, 'Amulet of Garglefish', 'Neck', 2147, 'Intellect', 600, 'Critical Strike', 874, 'Mastery', NULL, False, 1000000)
 on conflict do nothing;
 
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
@@ -249,7 +264,7 @@ values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Crit
 on conflict do nothing;
 
 --insert into specialization_gear (specialization_id, gear_id)
---values ()
+--values (1, )
 --on conflict do nothing;
 
 insert into location (id, map_region)
