@@ -6,6 +6,7 @@ def run_sql():
     with cursor() as cur:
         cur.execute(get_sql('create_tables.sql'))
         cur.execute(get_sql('populate_tables.sql'))
+        cur.execute(get_sql('functions.sql'))
         cur.copy_from(location_file.open(), 'location', ',')
         cur.copy_from(vendor_file.open(), 'vendor', ',')
 
