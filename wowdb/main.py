@@ -13,19 +13,24 @@ async def handle(request):
         search = request.GET.get('search', '')
         tradable = request.GET.get('tradable', 'Both')
         slot = request.GET.get('slot', 'ANY')
-        if slot == 'ANY':
-            if tradable == 'Both':
-                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
-            else:
-                tradable = tradable == 'True'
-                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.tradable is %s", [search, tradable])
-        else:
-            if tradable == 'Both':
-                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.slot ilike '%%'||%s||'%%'", [search, slot])
-            else:
-                tradable = tradable == 'True'
-                cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%' AND gear.tradable is %s AND gear.slot ilike '%%'||%s||'%%'", [search, tradable, slot])
-        #cur.execute("select * from gear where gear.name ilike '%%'||%s||'%%'", [search])
+
+        where_statements = []
+        where_statements.append("gear.name ilike '%%'||%(search)s||'%%'")
+
+        if tradable != 'Both':
+            tradable = tradable == 'True'
+            where_statements.append("gear.tradable is %(tradable)s")
+
+        if slot != 'ANY':
+            where_statements.append("lower(gear.slot) = %(slot)s")
+
+        cur.execute(
+            "select * from gear where " + " and ".join(where_statements),
+            {
+                'search': search,
+                'tradable': tradable,
+                'slot': slot,
+            })
         gears = cur.fetchall()
     return dict(gears=gears)
 

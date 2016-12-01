@@ -14,7 +14,7 @@
       <option value="ANY">[Select Slot]</option>
       <option value="head">Head</option>
       <option value="neck">Neck</option>
-      <option value="chest">Chest</option>
+      <option value="chest">Chest</option>       
       <option value="shoulder">Shoulder</option>
       <option value="back">Back</option>
       <option value="waist">Waist</option>
@@ -24,7 +24,7 @@
       <option value="feet">Feet</option>
   </select>
 
-  <input type="checkbox" name="stat" value=""
+  <input type="checkbox" name="stat" value="">
  </form>
 
 <table>
@@ -34,7 +34,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for id, name, slot, pstat, stat1, stat2, material, tradable, price in gears %}
+    {% for id, name, slot, pstat_val, pstat, stat1_val, stat1, stat2_val, stat2, material, tradable, price in gears %}
     <tr>
       <td>{{ name }}</td>
       <td>{{ slot }}</td>
