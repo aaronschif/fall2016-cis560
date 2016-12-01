@@ -359,3 +359,5 @@ on conflict do nothing;
 insert into users (id, username, password)
     values (1, 'dummy', 'password')
 on conflict do nothing;
+
+select pop_spec_gear();
