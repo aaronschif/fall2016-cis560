@@ -17,7 +17,7 @@ drop table if exists specialization;
 drop table if exists class;
 drop table if exists faction;
 
-
+drop table if exists users;
 
 create table faction (
     id int primary key,
@@ -157,4 +157,11 @@ create table vendor (
     surname varchar(100),
     foreign key (id)
       references location (id)
+);
+
+create table users(
+    id int PRIMARY KEY,
+    username varchar(50) not null,
+    password varchar(50),
+    unique (username)
 );

@@ -355,3 +355,7 @@ on conflict do nothing;
 --insert into gear_location (gear_id, location_id)
 --values ()
 --on conflict do nothing;
+
+insert into users (id, username, password)
+    values (1, 'dummy', 'password')
+on conflict do nothing;
