@@ -168,7 +168,7 @@ values (1, 'Rook Footman''s Warboots', 'Feet', 556, 'Strength', 243, 'Critical S
        (85, 'Gauntlets of Innumerable Barbs', 'Hands', 556, 'Agility', 243, 'Critical Strike', 497, 'Mastery', 'Mail', False), /* Neltharion's Lair, Naraxas */
        (86, 'Wristbands of Rousing Violence', 'Wrist', 417, 'Intellect', 159, 'Haste', 397, 'Mastery', 'Leather', False), /* Neltharion's Lair, Naraxas */
        (87, 'Steelgazer Hide Mantle', 'Shoulder', 556, 'Intellect', 434, 'Haste', 307, 'Versatility', 'Leather', False), /* Neltharion's Lair, Dargrul */
-       (88, 'Faultline Leggings', 'Legs', 742, 'Agility', 599, 'Critical Strike', 338, 'Nastery', 'Mail', False), /* Neltharion's Lair, Dargrul */
+       (88, 'Faultline Leggings', 'Legs', 742, 'Agility', 599, 'Critical Strike', 338, 'Mastery', 'Mail', False), /* Neltharion's Lair, Dargrul */
        (89, 'Gloves of the Mountain Conquest', 'Hands', 556, 'Intellect', 466, 'Haste', 275, 'Mastery', 'Cloth', False), /* Neltharion's Lair, Dargrul */
        (90, 'Sinister Ashfall Cord', 'Waist', 556, 'Agility', 529, 'Critical Strike', 212, 'Mastery', 'Leather', False), /* Neltharion's Lair, Dargrul */
        (91, 'Tunnel Trudger Footguards', 'Feet', 886, 'Intellect', 674, 'Critical Strike', 269, 'Haste', 'Leather', False), /* The Arcway, Ivanyr */
@@ -220,9 +220,20 @@ values (1, 'Rook Footman''s Warboots', 'Feet', 556, 'Strength', 243, 'Critical S
        (137, 'Pauldrons of Shackled Elements', 'Shoulder', 1228, 'Intellect', 606, 'Critical Strike', 468, 'Versatility', 'Mail', FALSE), /* Shackled Elements Set */
        (138, 'Raiment of Shackled Elements', 'Chest', 1637, 'Intellect', 594, 'Critical Strike', 839, 'Mastery', 'Mail', False), /* Shackled Elements Set */
        (139, 'Gauntlets of Shackled Elements', 'Hands', 1228, 'Intellect', 491, 'Critical Strike', 583, 'Haste', 'Mail', False), /* Shackled Elements Set */
-       (140, 'Creeping of Shackled Elements', 'Waist', 973, 'Intellect', 637, 'Haste', 491, 'Critical Strike', 'Mail', True), /* Shackled Elements Set */
-       (141, 'Leggings of Shackled Elements', 'Legs', 1637, 'Intellect', 532, 'Versatility', 901, 'Mastery', 'Mail', True) /* Shackled Elements Set */
-       --(142, Amulet of Garglefish, Neck, null, 2147 Intellect, null, 600 Critical Strike, null, 874 Mastery, null, f, 1000000)
+       (140, 'Creeping of Shackled Elements', 'Waist', 973, 'Intellect', 637, 'Haste', 491, 'Critical Strike', 'Mail', False), /* Shackled Elements Set */
+       (141, 'Leggings of Shackled Elements', 'Legs', 1637, 'Intellect', 532, 'Versatility', 901, 'Mastery', 'Mail', False), /* Shackled Elements Set */
+       (142, 'Hood of Enveloped Dissonance' , 'Head', 1637, 'Agility', 624, 'Critical Strike', 809, 'Haste', 'Leather', False), /* Enveloped Dissonance Set */
+       (143, 'Pauldrons of Enveloped Dissonance', 'Shoulder', 921, 'Agility', 576, 'Critical Strike', 230, 'Haste', 'Leather', False), /* Enveloped Dissonance Set */
+       (144, 'Tunic of Enveloped Dissonance', 'Chest', 1637, 'Agility', 778, 'Haste', 655, 'Versatility', 'Leather', False), /* Enveloped Dissonance Set */
+       (145, 'Gloves of Enveloped Dissonance', 'Wrist', 1228, 'Agility', 675, 'Critical Strike', 399, 'Haste', 'Leather', False), /* Enveloped Dissonance Set */
+       (146, 'Lifeless Buckled Girdle', 'Waist', 973, 'Agility', 406, 'Versatility', 574, 'Mastery', 'Leather', False), /* Enveloped Dissonance Set */
+       (147, 'Leggings of Enveloped Dissonance', 'Legs', 1637, 'Agility', 993, 'Critical Strike', 440, 'Mastery', 'Leather', False), /* Enveloped Dissonance Set */
+       (148, 'Doomblade Cowl', 'Head', 1637, 'Agility', 471, 'Critical Strike', 962, 'Mastery', 'Leather', False), /*Doomblade Set*/
+       (149, 'Doomblade Spaulders', 'Shoulder', 1228, 'Agility', 330, 'Haste', 744, 'Mastery', 'Leather', False), /*Doomblade Set*/
+       (150, 'Doomblade Tunic', 'Chest', 1228, 'Agility', 330, 'Haste', 786, 'Critical Strike', 'Leather', False), /*Doomblade Set*/
+       (151, 'Doomblade Gauntlets', 'Hands', 1228, 'Agility', 330, 'Mastery', 625, 'Critical Strike', 'Leather', False), /*Doomblade Set*/
+       (152, 'Doomblade Shadowwrap', 'Waist', 1228, 'Agility', 412, 'Critical Strike', 786, 'Versatility', 'Leather', False), /*Doomblade Set*/
+       (153, 'Doomblade Pants', 'Legs', 1228, 'Agility', 339, 'Haste', 786, 'Mastery', 'Leather', False) /*Doomblade Set*/
 on conflict do nothing;
 
 /* Gear associated with prices */
@@ -232,7 +243,9 @@ on conflict do nothing;
 
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
 insert into "set" (set_id, name, set_item_1, set_item_2, set_item_3, set_item_4, set_item_5, set_item_6, set_bonus)
-values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Critical Strike chance of Lightning Bolt by 10 percent')
+values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Critical Strike chance of Lightning Bolt by 10 percent'), /* only wearable by shaman */
+       (2, 'Enveloped Dissonance', 142, 143, 144, 145, 146, 147, 'Ironskin Brew increases your stagger amount by an additional 5 percent'), /* only wearable by monks */
+       (3, 'Doomblade', 148, 149, 150, 151, 152, 153, 'Mutilate can cause the target to bleed an additional 30 percent over 6 seconds') /* only wearable by rouges */
 on conflict do nothing;
 
 --insert into specialization_gear (specialization_id, gear_id)

@@ -2,19 +2,20 @@
 
 {% block content %}
 <h1>Gear</h1>
-<form>
+<form name="my_form">
   <input type="search" name="search" placeholder="Search WOW Database">
   <button>Search</button>
 
   <input type="radio" name="tradable" value="True"> Tradable
   <input type="radio" name="tradable" value="False"> Non-Tradable
-  <input type="radio" name="tradable" value="Both"> Both
+  <input type="radio" name="tradable" value="Both" checked> Both
+
 
   <select name="slot">
       <option value="ANY">[Select Slot]</option>
       <option value="head">Head</option>
       <option value="neck">Neck</option>
-      <option value="chest">Chest</option>       
+      <option value="chest">Chest</option>
       <option value="shoulder">Shoulder</option>
       <option value="back">Back</option>
       <option value="waist">Waist</option>
@@ -23,9 +24,48 @@
       <option value="wrist">Wrist</option>
       <option value="feet">Feet</option>
   </select>
-
-  <input type="checkbox" name="stat" value="">
+    Price: <input type="number" name="price_min" value=0 min=0 max=999999999> to <input type="number" name="price_max" value=999999999 min=0 max=999999999>
+  <br>
+  <table>
+      <tr>
+          <td>Primary Stats</td>
+          <td>Minimum:
+            <input type="number" name="p_minimum" value=1 min=1 max=10000>
+          </td>
+          <td>Maximum:
+            <input type="number" name="p_maximum" value=10000 min=1 max=10000>
+          </td>
+          <td><input type="checkbox" name="primary_stat" value="agility"> Agility</td>
+          <td><input type="checkbox" name="primary_stat" value="intellect"> Intellect</td>
+          <td><input type="checkbox" name="primary_stat" value="stamina"> Stamina</td>
+          <td><input type="checkbox" name="primary_stat" value="strength"> Strength</td>
+      </tr>
+      <tr>
+          <td>Secondary Stats</td>
+          <td>Minimum:
+            <input type="number" name="s_minimum" value=1 min=1 max=10000>
+          </td>
+          <td>Maximum:
+            <input type="number" name="s_maximum" value=10000 min=1 max=10000>
+          </td>
+          <td><input type="checkbox" name="secondary_stat" value="critical strike"> Critical Strike</td>
+          <td><input type="checkbox" name="secondary_stat" value="haste"> Haste</td>
+          <td><input type="checkbox" name="secondary_stat" value="mastery"> Mastery</td>
+          <td><input type="checkbox" name="secondary_stat" value="versatility"> Versatility</td>
+      </tr>
+  </table>
+    <br>
+<table>
+      <tr>
+          <td>Materials</td>
+          <td><input type="checkbox" name="materials" value="cloth"> Cloth</td>
+          <td><input type="checkbox" name="materials" value="leather"> Leather</td>
+          <td><input type="checkbox" name="materials" value="mail"> Mail</td>
+          <td><input type="checkbox" name="materials" value="plate"> Plate</td>
+      </tr>
+  </table>
  </form>
+    <br><br>
 
 <table>
   <thead>
@@ -34,19 +74,19 @@
     </tr>
   </thead>
   <tbody>
-    {% for id, name, slot, pstat_val, pstat, stat1_val, stat1, stat2_val, stat2, material, tradable, price in gears %}
+    {% for id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price in gears %}
     <tr>
       <td>{{ name }}</td>
       <td>{{ slot }}</td>
-      <td>{{ pstat }}</td>
-      <td>{{ stat1 }}<br>{{ stat2 }}</td>
+      <td>{{ pval }}{{ " " }}{{ pstat }}</td>
+      <td>{{ s1val }}{{ " " }}{{ stat1 }}<br>{{ s2val }}{{ " " }}{{ stat2 }}</td>
       <td>{{ material|default("", true) }}</td>
       <td>{{ tradable }}</td>
       <td>{{ price|default("", true) }}</td>
     </tr>
     {% else %}
     <tr>
-        <td colspan="6" align="center">No Results</td>
+        <td colspan="7" align="center">No Results</td>
     </tr>
     {% endfor %}
   </tbody>
