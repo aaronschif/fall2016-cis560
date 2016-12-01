@@ -6,8 +6,9 @@ def run_sql():
     with cursor() as cur:
         cur.execute(get_sql('create_tables.sql'))
         cur.execute(get_sql('populate_tables.sql'))
-        cur.execute("copy vendor from '{}' csv".format(location_file))
-        cur.execute("copy vendor from '{}' csv".format(vendor_file))
+        cur.copy_from(location_file.open(), 'location', ',')
+        cur.copy_from(vendor_file.open(), 'vendor', ',')
+
 
 if __name__ == '__main__':
     run_sql()
