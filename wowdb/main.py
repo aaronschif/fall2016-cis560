@@ -13,8 +13,8 @@ async def handle(request):
         search = request.GET.get('search', '')
         tradable = request.GET.get('tradable', 'Both')
         slot = request.GET.get('slot', 'ANY')
-        pstat = request.GET.get('primary_stat', 'ANY')
-        sstat = request.GET.get('secondary_stat', 'ANY')
+        pstats = request.GET.getall('primary_stat', [])
+        sstats = request.GET.getall('secondary_stat', [])
         pmin = request.GET.get('p_minimum', 1)
         pmax = request.GET.get('p_maximum', 10000)
         smin = request.GET.get('s_minimum', 1)
@@ -35,8 +35,7 @@ async def handle(request):
             s += " AND gear.slot ilike '%%'||%s||'%%'"
             l.append(slot)
 
-        # pstat does not work if there is more than one stat chosen... How do I fix this?
-        if pstat != 'ANY':
+        for pstat in pstats:
             s += " AND gear.primary_stat ilike '%%'||%s||'%%'"
             l.append(pstat)
 
@@ -55,8 +54,7 @@ async def handle(request):
         s += " AND gear.sec_stat_2_val <= %s)"
         l.append(smax)
 
-        # Don't think this one works... HELP
-        if sstat != 'ANY':
+        for sstat in sstats:
             s += " AND (gear.secondary_stat_1 ilike '%%'||%s||'%%'"
             l.append(sstat)
             s += " OR gear.secondary_stat_2 ilike '%%'||%s||'%%')"
