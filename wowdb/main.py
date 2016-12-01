@@ -54,12 +54,14 @@ async def handle(request):
         s += " AND gear.sec_stat_2_val <= %s)"
         l.append(smax)
 
-        for sstat in sstats:
-            s += " AND (gear.secondary_stat_1 ilike '%%'||%s||'%%'"
-            l.append(sstat)
-            s += " OR gear.secondary_stat_2 ilike '%%'||%s||'%%')"
-            l.append(sstat)
-
+        if not len(sstats) is 0:
+            s += " AND ( false "
+            for sstat in sstats:
+                s += " OR gear.secondary_stat_1 ilike '%%'||%s||'%%'"
+                l.append(sstat)
+                s += " OR gear.secondary_stat_2 ilike '%%'||%s||'%%'"
+                l.append(sstat)
+            s += " )"
         if mat != 'ANY':
             s += " AND gear.material ilike '%%'||%s||'%%'"
             l.append(mat)
@@ -72,6 +74,7 @@ async def handle(request):
             l.append(pr_max)
 
         cur.execute(s, l)
+        # print(cur.query)
         gears = cur.fetchall()
     return dict(gears=gears)
 
