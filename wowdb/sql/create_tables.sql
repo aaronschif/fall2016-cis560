@@ -18,6 +18,7 @@ drop table if exists class;
 drop table if exists faction;
 
 
+
 create table faction (
     id int primary key,
     name varchar(100) not null,

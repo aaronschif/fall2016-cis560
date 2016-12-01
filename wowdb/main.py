@@ -79,8 +79,17 @@ async def handle(request):
     return dict(gears=gears)
 
 
+@aiohttp_jinja2.template('gear_detail.html')
+async def handle_gear_detail(request):
+    id = request.match_info.get('id', 0)
+    with cursor() as cur:
+        cur.execute("select * from gear where gear.id = %s", [id])
+        gear = cur.fetchone()
+    return dict(detail=gear)
+
 app = web.Application(debug=True)
 app.router.add_get('/', handle)
+app.router.add_get(r'/gear/{id:\d+}', handle_gear_detail)
 app.router.add_static('/static/', path=str(Path(__file__).parent/'static'), name='static')
 aiohttp_jinja2.setup(
     app, loader=jinja2.PackageLoader('wowdb', 'templates'))

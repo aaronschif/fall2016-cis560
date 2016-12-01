@@ -1,0 +1,15 @@
+{% extends "_layout/main.html" %}
+
+{% block content %}
+
+{% set id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price = detail %}
+    <p><b>Name:</b> {{ name }}<br>
+    <b>Gear ID:</b> {{ id }}<br>
+    <b>Current cost:</b> {{ price }} gold<br>
+    <b>Primary Stat:</b> {{ pval }} {{ pstat }}<br>
+    <b>1st Secondary Stat:</b> {{ s1val }} {{ stat1 }}<br>
+    <b>2nd Secondary Stat:</b> {{ s2val }} {{ stat2 }}<br>
+    <b>Made out of</b> {{ material }}<br>
+    <b>Tradable?</b> {{ tradable }}</p>
+
+{% endblock %}
