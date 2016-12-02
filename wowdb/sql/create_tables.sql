@@ -1,7 +1,8 @@
-drop table if exists gear_location;
 drop table if exists specialization_gear;
 drop table if exists race_class;
 drop table if exists faction_race;
+drop table if exists boss_dungeon;
+drop table if exists boss_raid;
 drop table if exists boss_gear;
 drop table if exists vendor_gear;
 
@@ -153,6 +154,24 @@ create table bosses (
     boss_id int primary key,
     name varchar(300) not null,
     unique (name)
+);
+
+create table boss_dungeon (
+    dungeon_id int,
+    boss_id int,
+    foreign key (dungeon_id)
+      references location (id),
+    foreign key (boss_id)
+      references bosses (boss_id)
+);
+
+create table boss_raid (
+    raid_id int,
+    boss_id int,
+    foreign key (raid_id)
+      references location (id),
+    foreign key (boss_id)
+      references bosses (boss_id)
 );
 
 create table vendor_gear (

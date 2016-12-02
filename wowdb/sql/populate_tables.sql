@@ -377,6 +377,14 @@ values (1, 'Amalgam of Souls'),
        (43, 'Helya (raid-boss)')
 on conflict do nothing;
 
+insert into boss_dungeon (dungeon_id, boss_id)
+    values ()
+on conflict do nothing;
+
+insert into boss_raid (raid_id, boss_id)
+    values ()
+on conflict do nothing;
+
 insert into users (id, username, password)
     values (1, 'dummy', 'password')
 on conflict do nothing;
