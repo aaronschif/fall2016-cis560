@@ -254,10 +254,22 @@ end;
 $$ language plpgsql;
 
 /* Functions for populating gear_location */
-create or replace function pop_gear_loc ()
+create or replace function pop_vendor_gear ()
 returns void
 as $$
+declare
+  i int;
+  j int;
 begin
+  for i in select id from vendor
+  loop
+    for j in select id from gear
+    where price is not null
+    loop
+      insert into vendor_gear (vendor_id, gear_id)
+      values (i, j);
+    end loop;
+  end loop;
 end;
 $$ language plpgsql;
 
