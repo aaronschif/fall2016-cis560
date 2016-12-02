@@ -2,12 +2,14 @@ drop table if exists gear_location;
 drop table if exists specialization_gear;
 drop table if exists race_class;
 drop table if exists faction_race;
+drop table if exists boss_gear;
+drop table if exists vendor_gear;
 
 drop table if exists "set";
 drop table if exists race CASCADE ;
 drop table if exists faction_race CASCADE ;
 
-drop table if exists location_type;
+drop table if exists boss;
 drop table if exists gear;
 drop table if exists vendor;
 drop table if exists raid;
@@ -68,11 +70,6 @@ create table specialization (
       references class(name)
 );
 
-create table location_type (
-    id int primary key,
-    loc_type varchar(300)
-);
-
 create table gear (
     id int primary key,
     name varchar(300) not null,
@@ -85,10 +82,7 @@ create table gear (
     secondary_stat_2 varchar(100) not null,
     material varchar(100),
     tradable boolean not null,
-    price int DEFAULT NULL, /* Currency is gold which acts like an int */
-    loc_type int not null,
-    foreign key (loc_type)
-      references location_type (id)
+    price int DEFAULT NULL /* Currency is gold which acts like an int */
 );
 
 create table specialization_gear (
@@ -131,21 +125,10 @@ create table location (
     unique (map_region)
 );
 
-create table gear_location (
-    gear_id int,
-    location_id int,
-    foreign key (gear_id)
-      references gear (id),
-    foreign key (location_id)
-      references location (id)
-);
-
 create table dungeon (
     id int,
     dungeon_name varchar(100) not null,
-    boss varchar(100) not null,
     unique (dungeon_name),
-    unique (boss),
     foreign key (id)
       references location (id)
 );
@@ -153,9 +136,7 @@ create table dungeon (
 create table raid (
     id int,
     raid_name varchar(100) not null,
-    boss varchar(100) not null,
     unique (raid_name),
-    unique (boss),
     foreign key (id)
       references location (id)
 );
@@ -166,6 +147,30 @@ create table vendor (
     surname varchar(100),
     foreign key (id)
       references location (id)
+);
+
+create table boss (
+    boss_id int primary key,
+    name varchar(300) not null,
+    unique (name)
+);
+
+create table vendor_gear (
+    vendor_id int,
+    gear_id int,
+    foreign key (vendor_id)
+      references location (id),
+    foreign key (gear_id)
+      references gear (id)
+);
+
+create table boss_gear (
+    boss_id int,
+    gear_id int,
+    foreign key (boss_id)
+      references boss (boss_id),
+    foreign key (gear_id)
+      references gear (id)
 );
 
 create table users(
