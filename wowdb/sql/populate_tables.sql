@@ -363,13 +363,58 @@ on conflict do nothing;
 insert into vendor (id, first_name, surname)
 values (1, 'Frank', 'Null'),
        (3, 'Casey', 'Poole'),
-       (5, 'Aaron', 'Schif'),
-       ()
+       (5, 'Aaron', 'Schif')
 on conflict do nothing;
 
 --insert into gear_location (gear_id, location_id)
 --values ()
 --on conflict do nothing;
+
+insert into bosses (boss_id, name)
+values (1, 'Amalgam of Souls'),
+       (2, 'Illysanna Ravencrest'),
+       (3, 'Smashspite the Hateful'),
+       (4, 'Lord Ravencrest'),
+       (5, 'Petrol Captain Gerdo'),
+       (6, 'Talixae Flamewreath'),
+       (7, 'Advisor Melandrus'),
+       (8, 'Warlord Parjesh'),
+       (9, 'Lady Hatecoil'),
+       (10, 'Serpentrix'),
+       (11, 'King deepbeard'),
+       (12, 'Wrath of Azshara'),
+       (13, 'Hymdal'),
+       (14, 'Hyrja'),
+       (15, 'Fenryr'),
+       (16, 'God-King Skavald'),
+       (17, 'Odyn'),
+       (18, 'Ymiron'),
+       (19, 'Harbaron'),
+       (20, 'Helya'),
+       (21, 'Archdruid Glaidalis'),
+       (22, 'Oakheart'),
+       (23, 'Dresaron'),
+       (24, 'Shade of Xavius'),
+       (25, 'Rokmora'),
+       (26, 'Ularogg Cragshaper'),
+       (27, 'Naraxas'),
+       (28, 'Dargrul'),
+       (29, 'Ivanyr'),
+       (30, 'Corstilax'),
+       (31, 'General Xakal'),
+       (32, 'Nel''tira'),
+       (33, 'Advisor Vandros'),
+       (34, 'Ursoc'),
+       (35, 'Nythendra'),
+       (36, 'Dragons of Nightmare'),
+       (37, 'Xavius'),
+       (38, 'I''lgynoth'),
+       (39, 'Elerethe Renferal'),
+       (40, 'Cenarius'),
+       (41, 'Odyn (raid-boss)'),
+       (42, 'Guarm'),
+       (43, 'Helya (raid-boss)')
+on conflict do nothing;
 
 insert into users (id, username, password)
     values (1, 'dummy', 'password')
