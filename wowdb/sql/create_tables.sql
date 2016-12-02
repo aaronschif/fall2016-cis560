@@ -9,7 +9,7 @@ drop table if exists "set";
 drop table if exists race CASCADE ;
 drop table if exists faction_race CASCADE ;
 
-drop table if exists boss;
+drop table if exists bosses;
 drop table if exists gear;
 drop table if exists vendor;
 drop table if exists raid;
@@ -149,7 +149,7 @@ create table vendor (
       references location (id)
 );
 
-create table boss (
+create table bosses (
     boss_id int primary key,
     name varchar(300) not null,
     unique (name)

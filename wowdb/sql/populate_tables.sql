@@ -285,7 +285,7 @@ values (1, 'Dungeon', 'Highmountain'),
        (3, 'Dungeon', 'Suramar'),
        (4, 'Dungeon', 'Stormheim'),
        (5, 'Dungeon', 'Val''Sharah'),
-       (6, 'The Broken Shore'),
+       (6, 'Vendor', 'The Broken Shore'),
        (7, 'Dungeon', 'Dalaran'),
        (8, 'Dungeon', 'Val''Sharah'),
        (9, 'Dungeon', 'Stormheim'),
@@ -293,7 +293,11 @@ values (1, 'Dungeon', 'Highmountain'),
        (11, 'Dungeon', 'Azsuna'),
        (12, 'Raid', 'Val''Sharah'),
        (13, 'Raid', 'Stormheim'),
-       (14, 'Raid', 'Suramar')
+       (14, 'Raid', 'Suramar'),
+       (15, 'Vendor', 'Dalaran'),
+       (16, 'Vendor', 'Suramar'),
+       (17, 'Vendor', 'Azsuna'),
+       (18, 'Vendor', 'Stormheim')
 on conflict do nothing;
 
 insert into dungeon (id, dungeon_name)
@@ -316,9 +320,11 @@ values (12, 'Emerald Nightmare'),
 on conflict do nothing;
 
 insert into vendor (id, first_name, surname)
-values (1, 'Frank', 'Null'),
-       (3, 'Casey', 'Poole'),
-       (5, 'Aaron', 'Schif')
+values (15, 'Frank', 'Null'),
+       (6, 'Casey', 'Poole'),
+       (16, 'Julie', 'Thorton'),
+       (17, 'Aaron', 'Schif'),
+       (18, 'Robert', 'Stewart')
 on conflict do nothing;
 
 --insert into gear_location (gear_id, location_id)
@@ -376,3 +382,4 @@ insert into users (id, username, password)
 on conflict do nothing;
 
 select pop_spec_gear();
+select pop_vendor_gear();

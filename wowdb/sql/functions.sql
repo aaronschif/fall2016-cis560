@@ -253,7 +253,7 @@ begin
 end;
 $$ language plpgsql;
 
-/* Functions for populating gear_location */
+/* Functions for populating vendor_gear */
 create or replace function pop_vendor_gear ()
 returns void
 as $$
