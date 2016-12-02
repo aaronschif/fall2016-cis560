@@ -121,8 +121,8 @@ create table "set" (
 
 create table location (
     id int primary key,
-    map_region varchar(100) not null,
-    unique (map_region)
+    type varchar(100) not null,
+    map_region varchar(100) not null
 );
 
 create table dungeon (

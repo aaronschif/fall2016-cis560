@@ -279,7 +279,7 @@ on conflict do nothing;
 --values (1, )
 --on conflict do nothing;
 
-insert into location (id, map_region)
+insert into location (id, type, map_region)
 values (1, 'Highmountain'),
        (2, 'Azsuna'),
        (3, 'Suramar'),
@@ -361,7 +361,10 @@ values (5, 'Emerald Nightmare'),
 on conflict do nothing;
 
 insert into vendor (id, first_name, surname)
-values (1, 'Frank', 'Null')
+values (1, 'Frank', 'Null'),
+       (3, 'Casey', 'Poole'),
+       (5, 'Aaron', 'Schif'),
+       ()
 on conflict do nothing;
 
 --insert into gear_location (gear_id, location_id)
