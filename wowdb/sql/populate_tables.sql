@@ -279,85 +279,40 @@ on conflict do nothing;
 --values (1, )
 --on conflict do nothing;
 
-insert into location (id, type, map_region)
-values (1, 'Highmountain'),
-       (2, 'Azsuna'),
-       (3, 'Suramar'),
-       (4, 'Stormheim'),
-       (5, 'Val''Sharah'),
+insert into location (id, loc_type, map_region)
+values (1, 'Dungeon', 'Highmountain'),
+       (2, 'Dungeon', 'Azsuna'),
+       (3, 'Dungeon', 'Suramar'),
+       (4, 'Dungeon', 'Stormheim'),
+       (5, 'Dungeon', 'Val''Sharah'),
        (6, 'The Broken Shore'),
-       (7, 'Dalaran')
+       (7, 'Dungeon', 'Dalaran'),
+       (8, 'Dungeon', 'Val''Sharah'),
+       (9, 'Dungeon', 'Stormheim'),
+       (10, 'Dungeon', 'Suramar'),
+       (11, 'Dungeon', 'Azsuna'),
+       (12, 'Raid', 'Val''Sharah'),
+       (13, 'Raid', 'Stormheim'),
+       (14, 'Raid', 'Suramar')
 on conflict do nothing;
 
 insert into dungeon (id, dungeon_name)
 values (5, 'Black Rook Hold'),
-       (5, 'Black Rook Hold'),
-       (5, 'Black Rook Hold'),
-       (5, 'Black Rook Hold'),
-       (3, 'Court of Stars'),
-       (3, 'Court of Stars'),
        (3, 'Court of Stars'),
        (2, 'Eye of Azshara'),
-       (2, 'Eye of Azshara'),
-       (2, 'Eye of Azshara'),
-       (2, 'Eye of Azshara'),
-       (2, 'Eye of Azshara'),
        (4, 'Halls of Valor'),
-       (4, 'Halls of Valor'),
-       (4, 'Halls of Valor'),
-       (4, 'Halls of Valor'),
-       (4, 'Halls of Valor'),
-       (5, 'Darkheart Thicket'),
-       (5, 'Darkheart Thicket'),
-       (5, 'Darkheart Thicket'),
-       (5, 'Darkheart Thicket'),
-       (4, 'Maw of Souls'),
-       (4, 'Maw of Souls'),
-       (4, 'Maw of Souls'),
-       (1, 'Neltharion''s Lair'),
-       (1, 'Neltharion''s Lair'),
-       (1, 'Neltharion''s Lair'),
+       (8, 'Darkheart Thicket'),
+       (9, 'Maw of Souls'),
        (1, 'Neltharion''s Lair'),
        (3, 'The Arcway'),
-       (3, 'The Arcway'),
-       (3, 'The Arcway'),
-       (3, 'The Arcway'),
-       (3, 'The Arcway'),
-       (2, 'Vault of the Wardens'),
-       (2, 'Vault of the Wardens'),
-       (2, 'Vault of the Wardens'),
-       (2, 'Vault of the Wardens'),
-       (2, 'Vault of the Wardens'),
-       (7, 'Violet Hold'),
-       (7, 'Violet Hold'),
-       (7, 'Violet Hold'),
-       (7, 'Violet Hold'),
-       (7, 'Violet Hold'),
-       (7, 'Violet Hold'),
+       (11, 'Vault of the Wardens'),
        (7, 'Violet Hold')
 on conflict do nothing;
 
-insert into raid (id, raid_name, boss)
-values (5, 'Emerald Nightmare'),
-       (5, 'Emerald Nightmare'),
-       (5, 'Emerald Nightmare'),
-       (5, 'Emerald Nightmare'),
-       (5, 'Emerald Nightmare'),
-       (5, 'Emerald Nightmare'),
-       (5, 'Emerald Nightmare'),
-       (4, 'Trial of Valor'),
-       (4, 'Trial of Valor'),
-       (4, 'Trial of Valor'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold'),
-       (3, 'The Nighthold')
+insert into raid (id, raid_name)
+values (12, 'Emerald Nightmare'),
+       (13, 'Trial of Valor'),
+       (14, 'The Nighthold')
 on conflict do nothing;
 
 insert into vendor (id, first_name, surname)

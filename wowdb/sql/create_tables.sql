@@ -121,7 +121,7 @@ create table "set" (
 
 create table location (
     id int primary key,
-    type varchar(100) not null,
+    loc_type varchar(100) not null,
     map_region varchar(100) not null
 );
 
