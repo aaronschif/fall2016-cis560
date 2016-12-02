@@ -7,6 +7,7 @@ drop table if exists "set";
 drop table if exists race CASCADE ;
 drop table if exists faction_race CASCADE ;
 
+drop table if exists location_type;
 drop table if exists gear;
 drop table if exists vendor;
 drop table if exists raid;
@@ -67,6 +68,11 @@ create table specialization (
       references class(name)
 );
 
+create table location_type (
+    id int primary key,
+    loc_type varchar(300)
+);
+
 create table gear (
     id int primary key,
     name varchar(300) not null,
@@ -79,7 +85,10 @@ create table gear (
     secondary_stat_2 varchar(100) not null,
     material varchar(100),
     tradable boolean not null,
-    price int DEFAULT NULL /* Currency is gold which acts like an int */
+    price int DEFAULT NULL, /* Currency is gold which acts like an int */
+    loc_type int not null,
+    foreign key (loc_type)
+      references location_type (id)
 );
 
 create table specialization_gear (

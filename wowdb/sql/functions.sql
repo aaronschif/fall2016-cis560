@@ -1,3 +1,4 @@
+/* Functions for populating specialization_gear */
 create or replace function pop_spec_plate_strength(spec int)
 returns boolean
 as $$
@@ -251,3 +252,12 @@ begin
   end loop;
 end;
 $$ language plpgsql;
+
+/* Functions for populating gear_location */
+create or replace function pop_gear_loc ()
+returns void
+as $$
+begin
+end;
+$$ language plpgsql;
+

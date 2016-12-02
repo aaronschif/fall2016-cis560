@@ -91,6 +91,12 @@ values (1, 'Death Knight', 'Blood'),
        (34, 'Warrior', 'Protection')
 on conflict do nothing;
 
+insert into location_type (id, loc_type)
+    values (1, 'Dungeon'),
+           (2, 'Raid'),
+           (3, 'Vendor')
+on conflict do nothing;
+
 /* Certain pieces of gear do not have a material type, such as back pieces and necklaces
    I used NULL to represent these
 
@@ -252,8 +258,8 @@ values (1, 'Rook Footman''s Warboots', 'Feet', 556, 'Strength', 243, 'Critical S
 on conflict do nothing;
 
 /* Gear associated with prices */
-insert into gear (id, name, slot, primary_stat_val, primary_stat, sec_stat_1_val, secondary_stat_1, sec_stat_2_val, secondary_stat_2, material, tradable, price)
-values (154, 'Amulet of Garglefish', 'Neck', 2147, 'Intellect', 600, 'Critical Strike', 874, 'Mastery', NULL, True, 1000000)
+insert into gear (id, name, slot, primary_stat_val, primary_stat, sec_stat_1_val, secondary_stat_1, sec_stat_2_val, secondary_stat_2, material, tradable, price, loc_type)
+values (154, 'Amulet of Garglefish', 'Neck', 2147, 'Intellect', 600, 'Critical Strike', 874, 'Mastery', NULL, True, 1000000, 3)
 on conflict do nothing;
 
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
@@ -358,12 +364,6 @@ on conflict do nothing;
 
 insert into users (id, username, password)
     values (1, 'dummy', 'password')
-on conflict do nothing;
-
-insert into location_type (id, loc_type)
-    values (1, 'Dungeon'),
-           (2, 'Raid'),
-           (3, 'Vendor')
 on conflict do nothing;
 
 select pop_spec_gear();
