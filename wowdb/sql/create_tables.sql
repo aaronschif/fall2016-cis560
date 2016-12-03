@@ -187,7 +187,7 @@ create table boss_gear (
     boss_id int,
     gear_id int,
     foreign key (boss_id)
-      references boss (boss_id),
+      references bosses (boss_id),
     foreign key (gear_id)
       references gear (id)
 );

@@ -472,7 +472,7 @@ insert into boss_raid (raid_id, boss_id)
            (14, 66)
 on conflict do nothing;
 
-insert ino boss_gear (boss_id, gear_id)
+insert into boss_gear (boss_id, gear_id)
     values (1, 1),
            (1, 2),
            (1, 3)
