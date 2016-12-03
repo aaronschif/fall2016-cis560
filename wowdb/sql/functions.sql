@@ -273,3 +273,20 @@ begin
 end;
 $$ language plpgsql;
 
+/* Queries to show bosses in relation to dungeons
+select distinct d.dungeon_name as Dungeons, string_agg(distinct b.name, ', ') as Bosses
+from bosses b, dungeon d, boss_dungeon bd
+where d.id = bd.dungeon_id
+  and bd.boss_id = b.boss_id
+group by Dungeons;
+
+*/
+
+/* Queries to show bosses in relation to raids
+select distinct r.raid_name as Raids, string_agg(distinct b.name, ', ') as Bosses
+from bosses b, raid r, boss_raid br
+where r.id = br.raid_id
+  and br.boss_id = b.boss_id
+group by Raids;
+*/
+
