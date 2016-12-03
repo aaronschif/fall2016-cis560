@@ -298,3 +298,79 @@ where b.boss_id = bg.boss_id
 group by boss;
 */
 
+/* Query to show gear in relation to specialization
+select s.class_name as class, s.specialization_name as spec, g.name as gear
+from specialization s, specialization_gear sg, gear g
+where s.id = sg.specialization_id
+  and sg.gear_id = g.id;
+*/
+
+/* Query to search based on class
+select c.name as class, g.name as items, g.material as material
+from class c, specialization s, specialization_gear sg, gear g
+where s.class_id = c.id
+  and sg.specialization_id = s.id
+  and sg.gear_id = g.id;
+*/
+
+/* Query to select gear based on
+select g.name as strength_gear
+from gear g
+where primary like '%Strength';
+*/
+
+/* Query to show sets in relation to class and specialization (INCOMPLETE)
+select c.name as class, spec.specialization_name as specialization, s.name as "set"
+from class c, specialization spec, specialization_gear sg, gear g, "set" s
+where spec.class_id = c.id
+  and sg.specialization_id = spec.id
+  and sg.gear_id = g.id
+  and s.set_item_1 = g.id
+  and s.set_item_2 = g.id
+  and s.set_item_3 = g.id
+  and s.set_item_4 = g.id
+  and s.set_item_5 = g.id
+  and s.set_item_6 = g.id;
+*/
+
+/* Query to show gear items in relation to a set
+select s.name,
+from "set" s, gear g
+where s.set_item_1 = g.id
+  and s.set_item_2 = g.id
+  and s.set_item_3 = g.id
+  and s.set_item_4 = g.id
+  and s.set_item_5 = g.id
+  and s.set_item_6 = g.id;
+*/
+
+/* Query to show gear in relation to a boss it drops from
+select b.name as boss, g.name as drop_items
+from bosses b, boss_gear bg, gear g
+where bg.boss_id = b.boss_id
+  and bg.gear_id = g.id;
+*/
+
+/*(44, ), (44, ), (44, ),
+           (45, ), (45, ), (45, ),
+           (46, ), (46, ), (46, ),
+           (47, ), (47, ), (47, ),
+           (48, ), (48, ), (48, ),
+           (49, ), (49, ), (49, ),
+           (50, ), (50, ), (50, ),
+           (51, ), (51, ), (51, ),
+           (52, ), (52, ), (52, ),
+           (53, ), (53, ), (53, ),
+           (54, ), (54, ), (54, ),
+           (55, ), (55, ), (55, ),
+           (56, ), (56, ), (56, ),
+           (57, ), (57, ), (57, ),
+           (58, ), (58, ), (58, ),
+           (59, ), (59, ), (59, ),
+           (60, ), (60, ), (60, ),
+           (61, ), (61, ), (61, ),
+           (62, ), (62, ), (62, ),
+           (63, ), (63, ), (63, ),
+           (64, ), (64, ), (64, ),
+           (65, ), (65, ), (65, ),
+           (66, ), (66, ), (66, )*/

@@ -65,10 +65,10 @@ create table race_class (
 
 create table specialization (
     id int primary key,
-    class_name varchar(100),
+    class_id int,
     specialization_name varchar(100) not null,
-    foreign key (class_name)
-      references class(name)
+    foreign key (class_id)
+      references class(id)
 );
 
 create table gear (
