@@ -290,3 +290,11 @@ where r.id = br.raid_id
 group by Raids;
 */
 
+/* Query to show gear in relation to bosses
+select b.name as boss, string_agg(g.name, ', ') as gear_drops
+from bosses b, gear g, boss_gear bg
+where b.boss_id = bg.boss_id
+  and bg.gear_id = g.id
+group by boss;
+*/
+

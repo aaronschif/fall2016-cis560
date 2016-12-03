@@ -91,12 +91,6 @@ values (1, 'Death Knight', 'Blood'),
        (34, 'Warrior', 'Protection')
 on conflict do nothing;
 
-insert into location_type (id, loc_type)
-    values (1, 'Dungeon'),
-           (2, 'Raid'),
-           (3, 'Vendor')
-on conflict do nothing;
-
 /* Certain pieces of gear do not have a material type, such as back pieces and necklaces
    I used NULL to represent these
 
