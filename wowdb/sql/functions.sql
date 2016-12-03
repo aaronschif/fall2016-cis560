@@ -351,7 +351,16 @@ where bg.boss_id = b.boss_id
   and bg.gear_id = g.id;
 */
 
-/*(44, ), (44, ), (44, ),
+/* Query to show sets in relation to specialization
+select c.name as class, spec.specialization_name as specialization, s.name as sets
+from class c, specialization spec, spec_set ss, "set" s
+where spec.class_id = c.id
+  and ss.spec_id = spec.id
+  and ss.set_id = s.set_id;
+*/
+
+/* Extra boss gear to be populated in boss_gear table
+           (44, ), (44, ), (44, ),
            (45, ), (45, ), (45, ),
            (46, ), (46, ), (46, ),
            (47, ), (47, ), (47, ),
@@ -373,4 +382,5 @@ where bg.boss_id = b.boss_id
            (63, ), (63, ), (63, ),
            (64, ), (64, ), (64, ),
            (65, ), (65, ), (65, ),
-           (66, ), (66, ), (66, )*/
+           (66, ), (66, ), (66, )
+*/

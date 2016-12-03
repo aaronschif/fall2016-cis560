@@ -273,6 +273,12 @@ on conflict do nothing;
 --values (1, )
 --on conflict do nothing;
 
+insert into spec_set (spec_id, set_id)
+values (26, 1),
+       (14, 2),
+       (23, 3)
+on conflict do nothing;
+
 insert into location (id, loc_type, map_region)
 values (1, 'Dungeon', 'Highmountain'),
        (2, 'Dungeon', 'Azsuna'),

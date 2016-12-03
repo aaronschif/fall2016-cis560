@@ -5,6 +5,7 @@ drop table if exists boss_dungeon;
 drop table if exists boss_raid;
 drop table if exists boss_gear;
 drop table if exists vendor_gear;
+drop table if exists spec_set;
 
 drop table if exists "set";
 drop table if exists race CASCADE ;
@@ -118,6 +119,15 @@ create table "set" (
       references gear (id),
     foreign key (set_item_6)
       references gear (id)
+);
+
+create table spec_set (
+    spec_id int,
+    set_id int,
+    foreign key (spec_id)
+      references specialization (id),
+    foreign key (set_id)
+      references "set" (set_id)
 );
 
 create table location (
