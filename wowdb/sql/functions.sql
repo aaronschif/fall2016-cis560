@@ -359,6 +359,13 @@ where spec.class_id = c.id
   and ss.set_id = s.set_id;
 */
 
+/* Query to show gear in relation to vendors
+select v.first_name as first_name, v.surname as last_name, g.name as items, g.price as price
+from vendor v, vendor_gear vg, gear g
+where vg.vendor_id = v.id
+  and vg.gear_id = g.id;
+*/
+
 /* Extra boss gear to be populated in boss_gear table
            (44, ), (44, ), (44, ),
            (45, ), (45, ), (45, ),

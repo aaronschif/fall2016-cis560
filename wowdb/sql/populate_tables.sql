@@ -256,7 +256,7 @@ insert into gear (id, name, slot, primary_stat_val, primary_stat, sec_stat_1_val
 values (154, 'Amulet of Garglefish', 'Neck', 12315, 'Intellect', 6100, 'Critical Strike', 8774, 'Mastery', NULL, True, 1000000),
        (155, 'Robert''s Head', 'Head', 5317, 'Intellect', 4892, 'Versatility', 5048, 'Mastery', 'Plate', True, 999),
        (156, 'Robert''s Shoulders', 'Shoulder', 2216, 'Agility', 1812, 'Haste', 1987, 'Mastery', 'Plate', True, 3456),
-       (157, 'Robert''s Chest', 'Chest', 2215, 'Versatility', 1812, 'Intellect', 1987, 'Agility', 'Plate', True, 1000000),
+       (157, 'Robert''s Chest', 'Chest', 2215, 'Versatility', 1812, 'Intellect', 1987, 'Agility', 'Plate', True, 17678),
        (158, 'Robert''s Hands', 'Hands', 2215, 'Mastery', 1812, 'Versatility', 1987, 'Critical Strike', 'Plate', True, 42),
        (159, 'Robert''s Waist', 'Waist', 2215, 'Critical Strike', 1812, 'Intellect', 1987, 'Versatility', 'Plate', True, 15843),
        (160, 'Robert''s Legs', 'Legs', 2215, 'Haste', 1812, 'Agility', 1987, 'Critical Strike', 'Plate', True, 10000)
