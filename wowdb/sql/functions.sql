@@ -376,7 +376,7 @@ where d.id = l.id
   and bg.gear_id = g.id;
 */
 
-/* General query to show gear located in a region, dungeon, and from a boss
+/* General query to show gear located in a region, raid, and from a boss
 select l.map_region as region, r.raid_name as raid, b.name as boss, g.name as gear
 from location l, raid r, boss_raid br, bosses b, boss_gear bg, gear g
 where r.id = l.id
@@ -397,6 +397,13 @@ where fr.faction_id = f.id
   and spec.class_id = c.id
   and sg.specialization_id = spec.id
   and sg.gear_id = g.id;
+*/
+
+/*
+select *
+from gear g
+where g.primary_stat like '%Strength'
+  and g.material like '%Plate';
 */
 
 /* Extra boss gear to be populated in boss_gear table
