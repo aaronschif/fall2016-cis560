@@ -1,3 +1,5 @@
+drop table if exists comment;
+drop table if exists "user";
 drop table if exists specialization_gear;
 drop table if exists race_class;
 drop table if exists faction_race;
@@ -23,8 +25,6 @@ drop table if exists specialization;
 drop table if exists class;
 drop table if exists faction;
 
-drop table if exists comment;
-drop table if exists "user";
 
 create table faction (
     id int primary key,
@@ -196,14 +196,15 @@ create table boss_gear (
 );
 
 create table "user"(
-    id serial PRIMARY KEY,
-    username varchar(50) not null,
-    password varchar(50),
-    unique (username)
+    id serial primary key,
+    username varchar(50) not null unique,
+    password varchar(50)
 );
 
 create table comment (
     id serial primary key,
-    "user" int references "user"(id),
-    comment text
+    "user" int references "user"(id) not null,
+    "gear" int references "gear"(id) not null,
+    commented timestamp not null default now(),
+    comment text not null
 );

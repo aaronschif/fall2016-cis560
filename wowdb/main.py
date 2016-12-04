@@ -1,9 +1,11 @@
 from pathlib import Path
+from collections import namedtuple
 
 from aiohttp import web
 import aiohttp_jinja2
 import jinja2
 import base64
+import aiohttp_session
 from aiohttp_session import setup
 from aiohttp_session.cookie_storage import EncryptedCookieStorage
 
@@ -85,11 +87,34 @@ async def handle(request):
 
 @aiohttp_jinja2.template('gear_detail.html')
 async def handle_gear_detail(request):
+    session = await aiohttp_session.get_session(request)
     id = request.match_info.get('id', 0)
     with cursor() as cur:
         cur.execute("select * from gear where gear.id = %s", [id])
         gear = cur.fetchone()
-    return dict(detail=gear)
+
+        if request.method == 'POST':
+            data = await request.post()
+            cur.execute("select * from \"user\" where \"user\".username = %s", [session.get('username')])
+            user = cur.fetchone()
+            if user is None:
+                raise Exception('User does not exist.')
+            cur.execute(
+                '''insert into comment("user", gear, comment) values (%s, %s, %s)''',
+                [user[0], id, data['comment']])
+
+    Comment = namedtuple('Comment', ['username', 'comment', 'timestamp'])
+
+    with cursor() as cur:
+        cur.execute('''
+            select
+                "user".username, comment.comment, comment.commented
+            from comment join "user" on "user".id = comment."user" where comment.gear = %s
+        ''', id)
+        comments = map(lambda e: Comment(*e), cur.fetchall())
+
+    return dict(comments=comments, detail=gear, username=session.get('username'))
+
 
 app = web.Application(debug=True)
 setup(app, EncryptedCookieStorage(
@@ -100,6 +125,7 @@ app.router.add_post('/login', login_handler)
 app.router.add_get('/registar', registar_handler)
 app.router.add_post('/registar', registar_handler)
 app.router.add_get(r'/gear/{id:\d+}', handle_gear_detail)
+app.router.add_post(r'/gear/{id:\d+}', handle_gear_detail)
 app.router.add_static('/static/', path=str(Path(__file__).parent/'static'), name='static')
 aiohttp_jinja2.setup(
     app, loader=jinja2.PackageLoader('wowdb', 'templates'))

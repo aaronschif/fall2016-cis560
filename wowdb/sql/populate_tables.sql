@@ -476,9 +476,8 @@ insert into boss_gear (boss_id, gear_id)
            (43, 133),(43, 134),(43, 135)
 on conflict do nothing;
 
-insert into users (id, username, password)
-    values (1, 'dummy', 'password')
-on conflict do nothing;
+insert into "user" (id, username, password)
+    values (1, 'dummy', 'password');
 
 select pop_spec_gear();
 select pop_vendor_gear();

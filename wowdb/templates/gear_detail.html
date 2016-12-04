@@ -12,6 +12,21 @@
     <b>Made out of</b> {{ material }}<br>
     <b>Tradable?</b> {{ tradable }}</p>
     <br><br>
+    {% if username %}
+      <p>Logged in as {{ username }}</p>
+      <form method="POST">
+        <textarea name="comment"></textarea>
+        <br><button>Submit comment</button>
+      </form>
+    {% else %}
+      <p><a href="/login">Sign in</a> to leave a comment</p>
+    {% endif %}
     <p><b>Comments:</b></p>
+    {% for comment in comments %}
+      <p>
+        {{ comment.username }} at {{ comment.timestamp.strftime('%d %B %Y') }} said
+        {{ comment.comment }}
+      </p>
+    {% endfor %}
 
 {% endblock %}
