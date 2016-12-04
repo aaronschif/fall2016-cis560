@@ -367,7 +367,7 @@ where vg.vendor_id = v.id
 */
 
 /* General query to show gear located in a region, dungeon, and from a boss
-select l.map_region as region, d.dungeon_name as dungeon, b.name as boss, g.name as item
+select l.map_region as region, d.dungeon_name as dungeon, b.name as boss, g.name as gear
 from location l, dungeon d, boss_dungeon bd, bosses b, boss_gear bg, gear g
 where d.id = l.id
   and bd.dungeon_id = d.id
@@ -376,8 +376,18 @@ where d.id = l.id
   and bg.gear_id = g.id;
 */
 
+/* General query to show gear located in a region, dungeon, and from a boss
+select l.map_region as region, r.raid_name as raid, b.name as boss, g.name as gear
+from location l, raid r, boss_raid br, bosses b, boss_gear bg, gear g
+where r.id = l.id
+  and br.raid_id = r.id
+  and br.boss_id = b.boss_id
+  and bg.boss_id = b.boss_id
+  and bg.gear_id = g.id;
+*/
+
 /* General query to show gear related to a faction, race, and specialization
-select f.name as faction, r.name as race, c.name as class, spec.specialization_name as specialization, g.name as item
+select f.name as faction, r.name as race, c.name as class, spec.specialization_name as specialization, g.name as gear
 from faction f, faction_race fr, race r, race_class rc, class c,
      specialization spec, specialization_gear sg, gear g
 where fr.faction_id = f.id
