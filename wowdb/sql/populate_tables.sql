@@ -19,6 +19,7 @@ values (1, 'Human', 'Every Man for Himself', 'The Human Spirit'),
        (13, 'Pandaren', 'Bouncy', 'Inner Peace')
 on conflict do nothing;
 
+/* Relationship table linking factions to races */
 insert into faction_race (faction_id, race_id)
 values (1, 1),(1, 2),(1, 3),(1, 4),(1, 5),(1, 6),(1, 13),
       (2, 7),(2, 8),(2, 9),(2, 10),(2, 11),(2, 12),(2, 13)
@@ -38,6 +39,7 @@ values (1, 'Death Knight'),
        (11, 'Warrior')
 on conflict do nothing;
 
+/* relationship table linking races to their respective classes - EX. Trolls (race) can be Shaman (class) */
 insert into race_class (race_id, class_id)
 values (1, 1),(1, 3),(1, 4),(1, 5),(1, 6),(1, 7),(1, 8),(1, 10),(1, 11),
        (2, 1),(2, 3),(2, 4),(2, 5),(2, 6),(2, 7),(2, 8),(2, 9),(2, 10),(2, 11),
@@ -54,6 +56,7 @@ values (1, 1),(1, 3),(1, 4),(1, 5),(1, 6),(1, 7),(1, 8),(1, 10),(1, 11),
        (13, 3),(13, 4),(13, 5),(13, 7),(13, 8),(13, 9),(13, 11)
 on conflict do nothing;
 
+/* Relationship table linking classes to their respective specialization - EX. Elemental is a specialization of Shaman */
 insert into specialization (id, class_id, specialization_name)
 values (1, 1, 'Blood'),
        (2, 1, 'Frost'),
@@ -259,10 +262,15 @@ values (154, 'Amulet of Garglefish', 'Neck', 12315, 'Intellect', 6100, 'Critical
        (157, 'Robert''s Chest', 'Chest', 2215, 'Strength', 1812, 'Versatility', 1987, 'Haste', 'Plate', True, 17678),
        (158, 'Robert''s Hands', 'Hands', 2215, 'Strength', 1812, 'Versatility', 1987, 'Critical Strike', 'Plate', True, 42),
        (159, 'Robert''s Waist', 'Waist', 2215, 'Strength', 1812, 'Critical Strike', 1987, 'Versatility', 'Plate', True, 15843),
-       (160, 'Robert''s Legs', 'Legs', 2215, 'Strength', 1812, 'Haste', 1987, 'Critical Strike', 'Plate', True, 10000)
+       (160, 'Robert''s Legs', 'Legs', 2215, 'Strength', 1812, 'Haste', 1987, 'Critical Strike', 'Plate', True, 10000),
+       (161, 'Casey''s Head', 'Head', 5317, 'Intellect', 4892, 'Versatility', 5048, 'Mastery', 'Plate', True, 4547),
+       (162, 'Casey''s Shoulders', 'Shoulder', 2216, 'Intellect', 1812, 'Haste', 1987, 'Mastery', 'Plate', True, 2098),
+       (163, 'Casey''s Chest', 'Chest', 2215, 'Intellect', 1812, 'Versatility', 1987, 'Haste', 'Plate', True, 12907),
+       (164, 'Casey''s Hands', 'Hands', 2215, 'Intellect', 1812, 'Versatility', 1987, 'Critical Strike', 'Plate', True, 100405),
+       (165, 'Casey''s Waist', 'Waist', 2215, 'Intellect', 1812, 'Critical Strike', 1987, 'Versatility', 'Plate', True, 143),
+       (166, 'Casey''s Legs', 'Legs', 2215, 'Intellect', 1812, 'Haste', 1987, 'Critical Strike', 'Plate', True, 376)
 on conflict do nothing;
 
-/* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
 insert into "set" (set_id, name, set_bonus)
 values (1, 'Shackled Elements', 'Increase the Critical Strike chance of Lightning Bolt by 10 percent'), /* only wearable by shaman */
        (2, 'Enveloped Dissonance', 'Ironskin Brew increases your stagger amount by an additional 5 percent'), /* only wearable by monks */

@@ -76,7 +76,7 @@
   <tbody>
     {% for id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price in gears %}
     <tr>
-      <td>{{ name }}</td>
+      <td><a href="/gear/{{ id }}" style="color:black">{{ name }}</a></td>
       <td>{{ slot }}</td>
       <td>{{ pval }}{{ " " }}{{ pstat }}</td>
       <td>{{ s1val }}{{ " " }}{{ stat1 }}<br>{{ s2val }}{{ " " }}{{ stat2 }}</td>
