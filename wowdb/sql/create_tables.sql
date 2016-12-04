@@ -23,6 +23,7 @@ drop table if exists specialization;
 drop table if exists class;
 drop table if exists faction;
 
+drop table if exists comment;
 drop table if exists "user";
 
 create table faction (
@@ -195,7 +196,7 @@ create table boss_gear (
 );
 
 create table "user"(
-    id int PRIMARY KEY,
+    id serial PRIMARY KEY,
     username varchar(50) not null,
     password varchar(50),
     unique (username)
