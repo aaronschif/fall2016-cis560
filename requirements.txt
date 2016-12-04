@@ -13,3 +13,4 @@ python-mimeparse==1.6.0
 six==1.10.0
 yarl==0.7.1
 faker
+aiohttp-session[secure]==0.7.1

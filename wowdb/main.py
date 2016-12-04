@@ -3,8 +3,12 @@ from pathlib import Path
 from aiohttp import web
 import aiohttp_jinja2
 import jinja2
+import base64
+from aiohttp_session import setup
+from aiohttp_session.cookie_storage import EncryptedCookieStorage
 
 from .sql import cursor
+from .views.admin import login_handler, registar_handler
 
 
 @aiohttp_jinja2.template('index.html')
@@ -88,7 +92,13 @@ async def handle_gear_detail(request):
     return dict(detail=gear)
 
 app = web.Application(debug=True)
+setup(app, EncryptedCookieStorage(
+    base64.urlsafe_b64decode(b'zhB4hwnEjajcNSxk8LmHs4O7tu0__tb-1pZqiXmyExc=')))
 app.router.add_get('/', handle)
+app.router.add_get('/login', login_handler)
+app.router.add_post('/login', login_handler)
+app.router.add_get('/registar', registar_handler)
+app.router.add_post('/registar', registar_handler)
 app.router.add_get(r'/gear/{id:\d+}', handle_gear_detail)
 app.router.add_static('/static/', path=str(Path(__file__).parent/'static'), name='static')
 aiohttp_jinja2.setup(
