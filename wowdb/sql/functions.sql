@@ -334,14 +334,15 @@ where spec.class_id = c.id
 */
 
 /* Query to show gear items in relation to a set
-select s.name,
-from "set" s, gear g
-where s.set_item_1 = g.id
-  and s.set_item_2 = g.id
-  and s.set_item_3 = g.id
-  and s.set_item_4 = g.id
-  and s.set_item_5 = g.id
-  and s.set_item_6 = g.id;
+select s.name, g1.name as item_1, g2.name as item_2, g3.name as item_3, g4.name as item_4, g5.name as item_5, g6.name
+       as item_6
+from "set" s, gear g1, gear g2, gear g3, gear g4, gear g5, gear g6
+where s.set_item_1 = g1.id
+  and s.set_item_2 = g2.id
+  and s.set_item_3 = g3.id
+  and s.set_item_4 = g4.id
+  and s.set_item_5 = g5.id
+  and s.set_item_6 = g6.id;
 */
 
 /* Query to show gear in relation to a boss it drops from
@@ -396,6 +397,13 @@ where fr.faction_id = f.id
   and rc.class_id = c.id
   and spec.class_id = c.id
   and sg.specialization_id = spec.id
+  and sg.gear_id = g.id;
+*/
+
+/* Query to retrieve all gear apart of a set. */
+select s.name as set, g.name as gear
+from "set" s, set_gear sg, gear g
+where sg.set_id = s.set_id
   and sg.gear_id = g.id;
 */
 

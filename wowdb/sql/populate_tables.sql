@@ -263,15 +263,17 @@ values (154, 'Amulet of Garglefish', 'Neck', 12315, 'Intellect', 6100, 'Critical
 on conflict do nothing;
 
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
-insert into "set" (set_id, name, set_item_1, set_item_2, set_item_3, set_item_4, set_item_5, set_item_6, set_bonus)
-values (1, 'Shackled Elements', 136, 137, 138, 139, 140, 141, 'Increase the Critical Strike chance of Lightning Bolt by 10 percent'), /* only wearable by shaman */
-       (2, 'Enveloped Dissonance', 142, 143, 144, 145, 146, 147, 'Ironskin Brew increases your stagger amount by an additional 5 percent'), /* only wearable by monks */
-       (3, 'Doomblade', 148, 149, 150, 151, 152, 153, 'Mutilate can cause the target to bleed an additional 30 percent over 6 seconds') /* only wearable by rouges */
+insert into "set" (set_id, name, set_bonus)
+values (1, 'Shackled Elements', 'Increase the Critical Strike chance of Lightning Bolt by 10 percent'), /* only wearable by shaman */
+       (2, 'Enveloped Dissonance', 'Ironskin Brew increases your stagger amount by an additional 5 percent'), /* only wearable by monks */
+       (3, 'Doomblade', 'Mutilate can cause the target to bleed an additional 30 percent over 6 seconds') /* only wearable by rouges */
 on conflict do nothing;
 
---insert into specialization_gear (specialization_id, gear_id)
---values (1, )
---on conflict do nothing;
+insert into set_gear (set_id, gear_id)
+values (1, 136),(1, 137),(1, 138),(1, 139),(1, 140),(1, 141),
+       (2, 142),(2, 143),(2, 144),(2, 145),(2, 146),(2, 147),
+       (3, 148),(3, 149),(3, 150),(3, 151),(3, 152),(3, 153)
+on conflict do nothing;
 
 insert into spec_set (spec_id, set_id)
 values (26, 1),

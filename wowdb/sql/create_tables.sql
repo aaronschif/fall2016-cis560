@@ -6,6 +6,7 @@ drop table if exists boss_raid;
 drop table if exists boss_gear;
 drop table if exists vendor_gear;
 drop table if exists spec_set;
+drop table if exists set_gear;
 
 drop table if exists "set";
 drop table if exists race CASCADE ;
@@ -99,25 +100,16 @@ create table specialization_gear (
 create table "set" (
     set_id int primary key,
     name varchar(300) not null,
-    set_item_1 int not null,
-    set_item_2 int not null,
-    set_item_3 int,
-    set_item_4 int,
-    set_item_5 int,
-    set_item_6 int,
     set_bonus varchar(100) not null,
-    unique (name),
-    foreign key (set_item_1)
-      references gear (id),
-    foreign key (set_item_2)
-      references gear (id),
-    foreign key (set_item_3)
-      references gear (id),
-    foreign key (set_item_4)
-      references gear (id),
-    foreign key (set_item_5)
-      references gear (id),
-    foreign key (set_item_6)
+    unique (name)
+);
+
+create table set_gear (
+    set_id int,
+    gear_id int,
+    foreign key (set_id)
+      references "set" (set_id),
+    foreign key (gear_id)
       references gear (id)
 );
 
