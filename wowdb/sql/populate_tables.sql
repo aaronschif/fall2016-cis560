@@ -254,25 +254,27 @@ on conflict do nothing;
 /* Gear associated with prices */
 insert into gear (id, name, slot, primary_stat_val, primary_stat, sec_stat_1_val, secondary_stat_1, sec_stat_2_val, secondary_stat_2, material, tradable, price)
 values (154, 'Amulet of Garglefish', 'Neck', 12315, 'Intellect', 6100, 'Critical Strike', 8774, 'Mastery', NULL, True, 1000000),
-       (155, 'Robert''s Head', 'Head', 5317, 'Intellect', 4892, 'Versatility', 5048, 'Mastery', 'Plate', True, 999),
-       (156, 'Robert''s Shoulders', 'Shoulder', 2216, 'Agility', 1812, 'Haste', 1987, 'Mastery', 'Plate', True, 3456),
+       (155, 'Robert''s Head', 'Head', 5317, 'Strength', 4892, 'Versatility', 5048, 'Mastery', 'Plate', True, 999),
+       (156, 'Robert''s Shoulders', 'Shoulder', 2216, 'Strength', 1812, 'Haste', 1987, 'Mastery', 'Plate', True, 3456),
        (157, 'Robert''s Chest', 'Chest', 2215, 'Strength', 1812, 'Versatility', 1987, 'Haste', 'Plate', True, 17678),
        (158, 'Robert''s Hands', 'Hands', 2215, 'Strength', 1812, 'Versatility', 1987, 'Critical Strike', 'Plate', True, 42),
-       (159, 'Robert''s Waist', 'Waist', 2215, 'Stamina', 1812, 'Critical Strike', 1987, 'Versatility', 'Plate', True, 15843),
-       (160, 'Robert''s Legs', 'Legs', 2215, 'Agility', 1812, 'Haste', 1987, 'Critical Strike', 'Plate', True, 10000)
+       (159, 'Robert''s Waist', 'Waist', 2215, 'Strength', 1812, 'Critical Strike', 1987, 'Versatility', 'Plate', True, 15843),
+       (160, 'Robert''s Legs', 'Legs', 2215, 'Strength', 1812, 'Haste', 1987, 'Critical Strike', 'Plate', True, 10000)
 on conflict do nothing;
 
 /* order of gear is: Head, Shoulder, Chest, Hands, Waist, Legs */
 insert into "set" (set_id, name, set_bonus)
 values (1, 'Shackled Elements', 'Increase the Critical Strike chance of Lightning Bolt by 10 percent'), /* only wearable by shaman */
        (2, 'Enveloped Dissonance', 'Ironskin Brew increases your stagger amount by an additional 5 percent'), /* only wearable by monks */
-       (3, 'Doomblade', 'Mutilate can cause the target to bleed an additional 30 percent over 6 seconds') /* only wearable by rouges */
+       (3, 'Doomblade', 'Mutilate can cause the target to bleed an additional 30 percent over 6 seconds'), /* only wearable by rouges */
+       (4, 'Robert''s Body', 'You shall become the awesomeness that is Robert!')
 on conflict do nothing;
 
 insert into set_gear (set_id, gear_id)
 values (1, 136),(1, 137),(1, 138),(1, 139),(1, 140),(1, 141),
        (2, 142),(2, 143),(2, 144),(2, 145),(2, 146),(2, 147),
-       (3, 148),(3, 149),(3, 150),(3, 151),(3, 152),(3, 153)
+       (3, 148),(3, 149),(3, 150),(3, 151),(3, 152),(3, 153),
+       (4, 155),(4, 156),(4, 157),(4, 158),(4, 159),(4, 160)
 on conflict do nothing;
 
 insert into spec_set (spec_id, set_id)

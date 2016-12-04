@@ -400,11 +400,14 @@ where fr.faction_id = f.id
   and sg.gear_id = g.id;
 */
 
-/* Query to retrieve all gear apart of a set. */
-select s.name as set, g.name as gear
+/* Query to retrieve all gear apart of a set.
+select g.name, g.slot, g.primary_stat_val, g.primary_stat, g.sec_stat_1_val,
+       g.secondary_stat_1, g.sec_stat_2_val, g.secondary_stat_2, g.material,
+       g.tradable, g.price
 from "set" s, set_gear sg, gear g
 where sg.set_id = s.set_id
-  and sg.gear_id = g.id;
+  and sg.gear_id = g.id
+  and s.name like '%Doomblade';
 */
 
 /*
