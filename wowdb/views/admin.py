@@ -15,9 +15,24 @@ async def login_handler(request):
     with cursor() as cur:
         cur.execute('select * from "user" where "user".username = %s ', [data['username']])
         user = cur.fetchone()
+
+    if 'register' in data:
+        with cursor() as cur:
+            cur.execute('select * from "user" where "user".username = %s ', [data['username']])
+            user = cur.fetchone()
+            if user is not None:
+                return {'error': 'User exists'}
+            else:
+                with cursor() as cur:
+                    cur.execute(
+                        'insert into "user" (id, username, password) values (default, %s, %s)',
+                        [data['username'], data['password']])
+                    session['username'] = data['username']
+
+                    return {'error': 'User created.'}
+
     if user is not None:
         id, username, password = user
-        print(username, password)
         if password == data['password']:
             session['username'] = username
         else:
@@ -26,26 +41,3 @@ async def login_handler(request):
         return {'error': 'No user with that name.'}
 
     return {}
-
-
-@aiohttp_jinja2.template('registar.html')
-async def registar_handler(request):
-    session = await aiohttp_session.get_session(request)
-
-    if request.method == 'GET':
-        return {}
-    data = await request.post()
-
-    with cursor() as cur:
-        cur.execute('select * from "user" where "user".username = %s ', [data['username']])
-        user = cur.fetchone()
-    if user is not None:
-        return {'error': 'User exists'}
-    else:
-        with cursor() as cur:
-            cur.execute(
-                'insert into "user" (id, username, password) values (default, %s, %s)',
-                [data['username'], data['password']])
-            session['username'] = data['username']
-
-    return {'error': 'User created.'}
