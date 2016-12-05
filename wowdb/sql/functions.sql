@@ -254,24 +254,88 @@ end;
 $$ language plpgsql;
 
 /* Functions for populating vendor_gear */
+create or replace function get_max_gear_num ()
+returns int
+as $$
+declare
+  i int;
+  max_num int;
+begin
+  max_num := 0;
+  for i in select id from gear
+  loop
+    max_num := max_num + 1;
+  end loop;
+  return max_num;
+end;
+$$ language plpgsql;
+
+create or replace function get_random_num (int, int)
+returns int
+as $$
+declare
+  start_int alias for $1;
+  end_int alias for $2;
+begin
+  return trunc(random() * (end_int-start_int) + start_int);
+end;
+$$ language plpgsql;
+
+create or replace function get_gear_num (gear_num int)
+returns int
+as $$
+declare
+  i int;
+begin
+  for i in select id
+  from gear
+  where gear.price is not null
+  loop
+    if (i = gear_num)
+    then
+      return i;
+    end if;
+  end loop;
+  return NULL;
+end;
+$$ language plpgsql;
+
 create or replace function pop_vendor_gear ()
 returns void
 as $$
 declare
   i int;
   j int;
+  max_gear_num int;
+  random_gear_num int;
+  gear_num int;
 begin
+  j := 0;
+  max_gear_num := get_max_gear_num();
   for i in select id from vendor
   loop
-    for j in select id from gear
-    where price is not null
+    while j < 5
     loop
+      while gear_num is NULL loop
+        random_gear_num := get_random_num(1, max_gear_num);
+        gear_num := get_gear_num(random_gear_num);
+      end loop;
       insert into vendor_gear (vendor_id, gear_id)
-      values (i, j);
+      values (i, gear_num);
+      gear_num := NULL;
+      j := j + 1;
     end loop;
+    j := 0;
   end loop;
 end;
 $$ language plpgsql;
+
+/* Query to show vendor in relation to gear
+select v.first_name, v.surname, g.name as inventory
+from vendor v, vendor_gear vg, gear g
+where vg.vendor_id = v.id
+  and vg.gear_id = g.id;
+*/
 
 /* Queries to show bosses in relation to dungeons
 select distinct d.dungeon_name as Dungeons, string_agg(distinct b.name, ', ') as Bosses
@@ -400,6 +464,52 @@ where fr.faction_id = f.id
   and sg.gear_id = g.id;
 */
 
+/* Overall query to show gear in relation to dungeon, boss, region, faction, race, class, and specialization
+select f.name as faction, r.name as race, c.name as class, spec.specialization_name as specialization,
+       d.dungeon_name as dungeon, b.name as boss, l.map_region as region, g.name as gear
+from faction f, faction_race fr, race r, race_class rc, class c,
+     specialization spec, specialization_gear sg, gear g, boss_gear bg,
+     bosses b, boss_dungeon bd, dungeon d, location l
+where fr.faction_id = f.id
+  and fr.race_id = r.id
+  and rc.race_id = r.id
+  and rc.class_id = c.id
+  and spec.class_id = c.id
+  and sg.specialization_id = spec.id
+  and sg.gear_id = g.id
+  and bg.gear_id = g.id
+  and bg.boss_id = b.boss_id
+  and bd.boss_id = b.boss_id
+  and bd.dungeon_id = d.id
+  and d.id = l.id
+  and f.name like '%Alliance'
+  and r.name like '%Human'
+  and c.name like '%Warrior';
+*/
+
+/* Overall query to show gear in relation to raid, boss, region, faction, race, class, and specialization
+select f.name as faction, r.name as race, c.name as class, spec.specialization_name as specialization,
+       rd.raid_name as raid, b.name as boss, l.map_region as region, g.name as gear
+from faction f, faction_race fr, race r, race_class rc, class c,
+     specialization spec, specialization_gear sg, gear g, boss_gear bg,
+     bosses b, boss_raid br, raid rd, location l
+where fr.faction_id = f.id
+  and fr.race_id = r.id
+  and rc.race_id = r.id
+  and rc.class_id = c.id
+  and spec.class_id = c.id
+  and sg.specialization_id = spec.id
+  and sg.gear_id = g.id
+  and bg.gear_id = g.id
+  and bg.boss_id = b.boss_id
+  and br.boss_id = b.boss_id
+  and br.raid_id = rd.id
+  and rd.id = l.id
+  and f.name like '%Alliance'
+  and r.name like '%Human'
+  and c.name like '%Warrior';
+*/
+
 /* Query to retrieve all gear apart of a set.
 select g.name, g.slot, g.primary_stat_val, g.primary_stat, g.sec_stat_1_val,
        g.secondary_stat_1, g.sec_stat_2_val, g.secondary_stat_2, g.material,
@@ -408,6 +518,18 @@ from "set" s, set_gear sg, gear g
 where sg.set_id = s.set_id
   and sg.gear_id = g.id
   and s.name like '%Doomblade';
+*/
+
+/*
+select l.map_region as region, d.dungeon_name as dungeon, count(b.boss_id) as num_bosses
+from location l, dungeon d, boss_dungeon bd, bosses b
+where d.id = l.id
+  and bd.dungeon_id = d.id
+  and bd.boss_id = b.boss_id
+group by region, dungeon
+having count(b.boss_id) = (select count(*)
+                           from boss_dungeon bd, dungeon d
+                           where bd.dungeon_id = d.id);
 */
 
 /*
