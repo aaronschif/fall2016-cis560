@@ -2,9 +2,11 @@
 
 {% block content %}
 <form method="post">
+  <h1>Account Login</h1>
   <input placeholder="Username" name="username" value="{{ username }}">
   <input placeholder="Password" name="password">
   <button>Login</button>
+    <p>No account? <a href="/registar">Create one here!</a></p>
   <p>{{ error }}</p>
 </form>
 {% endblock %}
