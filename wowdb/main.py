@@ -29,58 +29,78 @@ async def handle(request):
         pr_min = request.GET.get('price_min', 0)
         pr_max = request.GET.get('price_max', 999999999)
 
-        s = "select * from gear where gear.name ilike '%%'||%s||'%%'"
+        dungeon = request.GET.get('dungeon', 'black rook hold')
+
+        s = "select * from gear g" #, location l, dungeon d, boss_dungeon bd, bosses b, boss_gear bg where g.name ilike '%%'||%s||'%%'"
+
+        s += " where name ilike '%%'||%s||'%%'"
         l = [search]
 
         if tradable != 'Both':
             tradable = tradable == 'True'
-            s += " AND gear.tradable is %s"
+            s += " AND g.tradable is %s"
             l.append(tradable)
 
         if slot != 'ANY':
-            s += " AND gear.slot ilike '%%'||%s||'%%'"
+            s += " AND g.slot ilike '%%'||%s||'%%'"
             l.append(slot)
 
         for pstat in pstats:
-            s += " AND gear.primary_stat ilike '%%'||%s||'%%'"
+            s += " AND g.primary_stat ilike '%%'||%s||'%%'"
             l.append(pstat)
 
-        s += " AND (gear.primary_stat_val >= %s"
+        s += " AND (g.primary_stat_val >= %s"
         l.append(pmin)
-        s += " AND gear.primary_stat_val <= %s)"
+        s += " AND g.primary_stat_val <= %s)"
         l.append(pmax)
 
-        s += " AND (gear.sec_stat_1_val >= %s"
+        s += " AND (g.sec_stat_1_val >= %s"
         l.append(smin)
-        s += " AND gear.sec_stat_1_val <= %s)"
+        s += " AND g.sec_stat_1_val <= %s)"
         l.append(smax)
 
-        s += " AND (gear.sec_stat_2_val >= %s"
+        s += " AND (g.sec_stat_2_val >= %s"
         l.append(smin)
-        s += " AND gear.sec_stat_2_val <= %s)"
+        s += " AND g.sec_stat_2_val <= %s)"
         l.append(smax)
 
         if not len(sstats) is 0:
             s += " AND ( false "
             for sstat in sstats:
-                s += " OR gear.secondary_stat_1 ilike '%%'||%s||'%%'"
+                s += " OR g.secondary_stat_1 ilike '%%'||%s||'%%'"
                 l.append(sstat)
-                s += " OR gear.secondary_stat_2 ilike '%%'||%s||'%%'"
+                s += " OR g.secondary_stat_2 ilike '%%'||%s||'%%'"
                 l.append(sstat)
             s += " )"
         if mat != 'ANY':
-            s += " AND gear.material ilike '%%'||%s||'%%'"
+            s += " AND g.material ilike '%%'||%s||'%%'"
             l.append(mat)
 
         if int(pr_min) > 0:
-            s += " AND gear.price >= %s"
+            s += " AND g.price >= %s"
             l.append(pr_min)
 
-            s += " AND gear.price <= %s"
+            s += " AND g.price <= %s"
             l.append(pr_max)
 
+        # if dungeon != 'ANY':
+            #    s += " AND (d.id = l.id " \
+            #         "  and bd.dungeon_id = d.id" \
+            #         "  and bd.boss_id = b.boss_id" \
+            #         "  and bg.boss_id = b.boss_id" \
+            #         "  and bg.gear_id = g.id);"
+            # s += "AND (select l.map_region as region, d.dungeon_name as dungeon, b.name as boss, g.name as gear "\
+            #     "from location l, dungeon d, boss_dungeon bd, bosses b, boss_gear bg, gear g "\
+            #     "     where d.id = l.id" \
+            #     "     and bd.dungeon_id = d.id" \
+            #     "     and bd.boss_id = b.boss_id" \
+            #     "     and bg.boss_id = b.boss_id" \
+            #     "     and bg.gear_id = g.id)"
+
+        # s += ";"
+
         cur.execute(s, l)
-        # print(cur.query)
+        print(cur.query)
         gears = cur.fetchall()
     return dict(gears=gears)
 

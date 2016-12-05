@@ -65,6 +65,33 @@
           <td><input type="checkbox" name="materials" value="plate"> Plate</td>
       </tr>
   </table>
+    <br>
+    <select name="dungeon">
+      <option value="ANY">[Select Dungeon]</option>
+      <option value="black rook hold">Black Rook Hold</option>
+      <option value="court of stars">Court of Stars</option>
+      <option value="eye of azshara">Eye of Azshara</option>
+      <option value="halls of valor">Halls of Valor</option>
+      <option value="darkheart thicket">Darkheart Thicket</option>
+      <option value="maw of souls">Maw of Souls</option>
+      <option value="neltharion's lair">Neltharion's Lair</option>
+      <option value="the arcway">The Arcway</option>
+      <option value="vault of the wardens">Vault of the Wardens</option>
+      <option value="violet hold">Violet Hold</option>
+  </select>
+
+    <select name="raid">
+      <option value="ANY">[Select Raid]</option>
+      <option value="emerald nightmare">Emerald Nightmare</option>
+      <option value="trial of valor">Trial of Valor</option>
+      <option value="the nighthold">The Nighthold</option>
+  </select>
+
+    <input type="search" name="vendor" placeholder="Search Vendors">
+    <button>Search</button>
+
+    <input type="search" name="boss" placeholder="Search Bosses">
+    <button>Search</button>
  </form>
     <br><br>
 
@@ -75,7 +102,8 @@
     </tr>
   </thead>
   <tbody>
-    {% for id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price in gears %}
+    {% for id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price, location in gears %}
+
     <tr>
       <td><a href="/gear/{{ id }}" style="color:black">{{ name }}</a></td>
       <td>{{ slot }}</td>
@@ -84,6 +112,8 @@
       <td>{{ material|default("", true) }}</td>
       <td>{{ tradable }}</td>
       <td>{{ price|default("", true) }}</td>
+
+
     </tr>
     {% else %}
     <tr>

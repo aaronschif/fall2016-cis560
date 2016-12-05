@@ -3,37 +3,13 @@
 {% block content %}
 
 {% set id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price = detail %}
-
-
-    <!-- The below code displays an image based on the image id of a gear item in the database,
-    images are stored in /static/ArmorImage/ and are .png format with the name being the corresponding gear id -->
-    <img src="/static/ArmorImage/{{ id|string + '.png' }}" onerror="this.src='/static/ArmorImage/default.png'" width="150" height="150"/>
-
     <p><b>Name:</b> {{ name }}<br>
+    <b>Gear ID:</b> {{ id }}<br>
     <b>Current cost:</b> {{ price }} gold<br>
     <b>Primary Stat:</b> {{ pval }} {{ pstat }}<br>
     <b>1st Secondary Stat:</b> {{ s1val }} {{ stat1 }}<br>
     <b>2nd Secondary Stat:</b> {{ s2val }} {{ stat2 }}<br>
     <b>Made out of</b> {{ material }}<br>
     <b>Tradable?</b> {{ tradable }}</p>
-
-    <br><br>
-    {% if username %}
-      <p>Logged in as {{ username }}</p>
-      <form method="POST">
-        <textarea name="comment"></textarea>
-        <br><button>Submit comment</button>
-      </form>
-    {% else %}
-      <p><a href="/login">Sign in</a> to leave a comment</p>
-    {% endif %}
-
-    <p><b>Comments:</b></p>
-    {% for comment in comments %}
-      <p>
-        {{ comment.comment }}
-        <br><p style="font-size:70%;">Comment made by {{ comment.username }} on {{ comment.timestamp.strftime('%d %B %Y') }}</p>
-      </p>
-    {% endfor %}
 
 {% endblock %}
