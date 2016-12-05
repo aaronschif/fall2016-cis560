@@ -31,8 +31,8 @@
     <p><b>Comments:</b></p>
     {% for comment in comments %}
       <p>
-        {{ comment.username }} at {{ comment.timestamp.strftime('%d %B %Y') }} said
         {{ comment.comment }}
+        <br><p style="font-size:70%;">Comment made by {{ comment.username }} on {{ comment.timestamp.strftime('%d %B %Y') }}</p>
       </p>
     {% endfor %}
 
