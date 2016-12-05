@@ -300,6 +300,29 @@ begin
 end;
 $$ language plpgsql;
 
+drop function if exists check_gear_num(int,int);
+create or replace function check_gear_num (vend int, gear_num int)
+returns boolean
+as $$
+declare
+  i int;
+  has_gear boolean;
+begin
+  has_gear := false;
+  for i in select gear_id
+           from vendor_gear vg
+           where vg.vendor_id = vend
+  loop
+    if i = gear_num
+    then
+      has_gear := true;
+      exit;
+    end if;
+  end loop;
+  return has_gear;
+end;
+$$ language plpgsql;
+
 create or replace function pop_vendor_gear ()
 returns void
 as $$
@@ -309,8 +332,10 @@ declare
   max_gear_num int;
   random_gear_num int;
   gear_num int;
+  check_num boolean;
 begin
   j := 0;
+  check_num := false;
   max_gear_num := get_max_gear_num();
   for i in select id from vendor
   loop
@@ -319,6 +344,11 @@ begin
       while gear_num is NULL loop
         random_gear_num := get_random_num(1, max_gear_num);
         gear_num := get_gear_num(random_gear_num);
+        check_num := check_gear_num (i, gear_num);
+        if check_num = true
+        then
+          gear_num := NULL;
+        end if;
       end loop;
       insert into vendor_gear (vendor_id, gear_id)
       values (i, gear_num);
@@ -331,7 +361,7 @@ end;
 $$ language plpgsql;
 
 /* Query to show vendor in relation to gear
-select v.first_name, v.surname, g.name as inventory
+select v.first_name, v.surname, g.name as inventory, g.price as cost
 from vendor v, vendor_gear vg, gear g
 where vg.vendor_id = v.id
   and vg.gear_id = g.id;
