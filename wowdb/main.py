@@ -29,23 +29,24 @@ async def handle(request):
         pr_min = request.GET.get('price_min', 0)
         pr_max = request.GET.get('price_max', 999999999)
 
+        region = request.GET.get('region', 'ANY')
         dungeon = request.GET.get('dungeon', 'ANY')
         raid = request.GET.get('raid', 'ANY')
         vendor = request.GET.get('vendor', '')
         boss = request.GET.get('boss', '')
 
-        # if vendor != 'ANY':
-        s = """select g.*, concat_ws(' ', v.first_name, v.surname) as full_name, d.dungeon_name as Dungeon, b.name as Boss, r.raid_name as Raid from gear g\
+        s = """select g.*, concat_ws(' ', v.first_name, v.surname) as full_name, d.dungeon_name as Dungeon, b.name as Boss, r.raid_name as Raid from location l, gear g\
         left join vendor_gear vg on vg.gear_id = g.id left join vendor v on v.id = vg.vendor_id left join boss_gear bg on g.id = bg.gear_id\
         left join bosses b on b.boss_id = bg.boss_id \
         left join boss_dungeon bd on bd.boss_id = b.boss_id left join dungeon d on d.id = bd.dungeon_id\
         left join boss_raid br on br.boss_id = b.boss_id left join raid r on r.id = br.raid_id"""  # """ _ """ is 'superscaping' and allows for multi-line strings
-        # else:
-        #    s = "select * from gear g"
-        # s += " left join boss_dungeon bd on bd.boss_id = b.boss_id left join dungeon d on d.id = bd.dungeon_id "
 
         s += " where g.name ilike '%%'||%s||'%%'"
         l = [search]
+
+        if region != 'ANY':
+            s += " AND (l.map_region ilike '%%'||%s||'%%' and (l.id = br.raid_id OR l.id = bd.dungeon_id))"
+            l.append(region)
 
         if vendor != '':
             s += " AND concat_ws(' ', v.first_name, v.surname) ilike '%%'||%s||'%%'"
