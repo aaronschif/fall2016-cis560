@@ -256,7 +256,8 @@ on conflict do nothing;
 
 /* Gear associated with prices */
 insert into gear (id, name, slot, primary_stat_val, primary_stat, sec_stat_1_val, secondary_stat_1, sec_stat_2_val, secondary_stat_2, material, tradable, price)
-values (154, 'Amulet of Garglefish', 'Neck', 12315, 'Intellect', 6100, 'Critical Strike', 8774, 'Mastery', NULL, True, 1000000),
+values (74, 'Godpiece', 'Neck', 12000, 'Strength', 6250, 'Critical Strike', 8924, 'Mastery', NULL, True, 1000000),
+       (154, 'Amulet of Garglefish', 'Neck', 12315, 'Intellect', 6100, 'Critical Strike', 8774, 'Mastery', NULL, True, 1000000),
        (155, 'Robert''s Head', 'Head', 5317, 'Strength', 4892, 'Versatility', 5048, 'Mastery', 'Plate', True, 999),
        (156, 'Robert''s Shoulders', 'Shoulder', 2216, 'Strength', 1812, 'Haste', 1987, 'Mastery', 'Plate', True, 3456),
        (157, 'Robert''s Chest', 'Chest', 2215, 'Strength', 1812, 'Versatility', 1987, 'Haste', 'Plate', True, 17678),
@@ -268,21 +269,64 @@ values (154, 'Amulet of Garglefish', 'Neck', 12315, 'Intellect', 6100, 'Critical
        (163, 'Casey''s Chest', 'Chest', 2215, 'Intellect', 1812, 'Versatility', 1987, 'Haste', 'Plate', True, 12907),
        (164, 'Casey''s Hands', 'Hands', 2215, 'Intellect', 1812, 'Versatility', 1987, 'Critical Strike', 'Plate', True, 100405),
        (165, 'Casey''s Waist', 'Waist', 2215, 'Intellect', 1812, 'Critical Strike', 1987, 'Versatility', 'Plate', True, 143),
-       (166, 'Casey''s Legs', 'Legs', 2215, 'Intellect', 1812, 'Haste', 1987, 'Critical Strike', 'Plate', True, 376)
+       (166, 'Casey''s Legs', 'Legs', 2215, 'Intellect', 1812, 'Haste', 1987, 'Critical Strike', 'Plate', True, 376),
+       (167, 'Arcanoweave Boots', 'Feet', 270, 'Stamina', 115, 'Haste', 290, 'Versatility', 'Cloth', True, 263),
+       (168, 'Nat Pagle''s Extreme Anglin'' Boots', 'Feet', 120, 'Stamina', 50, 'Versatility', 90, 'Mastery', 'Cloth', True, 58),
+       (169, 'Kodo Rustler Boots', 'Feet', 800, 'Intellect', 300, 'Versatility', 200, 'Critical Strike', 'Cloth', True, 49),
+       (170, 'High Councillor''s Boots', 'Feet', 1048, 'Strength', 780, 'Mastery', 546, 'Haste', 'Cloth', True, 2279),
+       (171, 'Imbued Netherweave Boots', 'Feet', 1173, 'Intellect', 985, 'Versatility', 1011, 'Mastery', 'Cloth', True, 5705),
+       (172, 'Boots of Pure Thought', 'Feet', 2215, 'Intellect', 1490, 'Haste', 1764, 'Critical Strike', 'Cloth', True, 3945),
+       (173, 'Leggings of the Skettis Exile', 'Legs', 2334, 'Stamina', 1257, 'Versatility', 1033, 'Mastery', 'Plate', True, 6104),
+       (174, 'Soulguard Leggings', 'Legs', 3829, 'Stamina', 2367, 'Critical Strike', 3465, 'Mastery', 'Leather', True, 8804),
+       (175, 'Heap Leggings', 'Legs', 2317, 'Stamina', 1811, 'Critical Strike', 1811, 'Haste', 'Cloth', True, 4750),
+       (176, 'Big Voodoo Pants', 'Legs', 1790, 'Intellect', 815, 'Versatility', 1038, 'Haste', 'Leather', True, 1231),
+       (177, 'Leggings of the Fang', 'Legs', 1077, 'Agility', 513, 'Haste', 787, 'Mastery', 'Leather', True, 353),
+       (178, 'Purple Shirt', 'Chest', 577, 'Agility', 213, 'Haste', 389, 'Mastery', 'Leather', True, 153),
+       (179, 'Runecloth Shoulders', 'Shoulder', 1510, 'Intellect', 804, 'Versatility', 899, 'Mastery', 'Cloth', True, 2122),
+       (180, 'Diabollic Mantle', 'Shoulder', 1417, 'Stamina', 952, 'Versatility', 1112, 'Critical Strike', 'Leather', True, 2632),
+       (181, 'Highborne Pauldrons', 'Shoulder', 1211, 'Stamina', 673, 'Mastery', 757, 'Critical Strike', 'Plate', True, 1545),
+       (182, 'Tabard of the Arcane', 'Neck', 500, 'Intellect', 250, 'Haste', 250, 'Mastery', NULL, True, 1000),
+       (183, 'Embroidered Belt', 'Waist', 197, 'Stamina', 83, 'Haste', 107, 'Mastery', 'Cloth', True, 53),
+       (184, 'Mystical Belt', 'Waist', 315, 'Intellect', 208, 'Versatility', 169, 'Mastery', 'Cloth', True, 94),
+       (185, 'Firemaw''s Clutch', 'Waist', 2016, 'Intellect', 1098, 'Versatility', 1567, 'Mastery', 'Cloth', True, 2860),
+       (186, 'Faulty Countermeasure', 'Neck', 3400,'Intellect', 1834, 'Critical Strike', 1976, 'Mastery', Null, True, 46279),
+       (187, 'Swarming Plaguehive', 'Neck', 2353, 'Intellect', 1932, 'Haste', 1779, 'Versatility', NULL, True, 49355),
+       (188, 'Eye of Command', 'Neck', 2353, 'Strength', 2074, 'Critical Strike', 1961, 'Mastery', NULL, True, 51915),
+       (189, 'Unstable Arcanocrystal', 'Neck', 2015, 'Intellect', 1807, 'Versatility', 1807, 'Mastery', NULL, True, 48504),
+       (190, 'Darkmoon Deck: Dominion', 'Neck', 1890, 'Strength', 1015, 'Critical Strike', 1296, 'Haste', NULL, True, 36780),
+       (191, 'Memento of Angerboda', 'Neck', 1933, 'Agility', 1544, 'Versatility', 1544, 'Mastery', NULL, True, 35327),
+       (192, 'Chaos Talisman', 'Neck', 1877, 'Stamina', 1834, 'Haste', 1834, 'Mastery', NULL, True, 35359),
+       (193, 'Hunger of the Pack', 'Neck', 1933, 'Strength', 1834, 'Critical Strike', 1834, 'Haste', NULL, True, 36407),
+       (194, 'Arans''s Relaxing Ruby', 'Neck', 2500, 'Agility', 1968, 'Mastery', 2286, 'Versatility', NULL, True, 47961),
+       (195, 'Helm of Lochness', 'Head', 3000, 'Strength', 2523, 'Mastery', 2523, 'Versatility', 'Plate', True, 50467),
+       (196, 'Mantle of Highrock', 'Shoulder', 2566, 'Strength', 1795, 'Critical Strike', 2057, 'Haste', 'Plate', True, 40789),
+       (197, 'Robes of The Magi', 'Chest', 1745, 'Intellect', 1388, 'Versatility', 1388, 'Mastery', 'Cloth', True, 29518),
+       (198, 'Thief''s Hands', 'Hands', 1344, 'Agility', 890, 'Haste', 890, 'Critical Strike', 'Leather', True, 10500),
+       (199, 'Pant''s of the Swift', 'Legs', 2712, 'Stamina', 2066, 'Haste', 2189, 'Versatility', 'Leather', True, 25900),
+       (200, 'Foundation of Stone', 'Feet', 1989, 'Strength', 1344, 'Mastery', 1344, 'Versatility', 'Plate', True, 19750),
+       (201, 'Whisper of the Nathrezim', 'Chest', 3915, 'Strength', 3591, 'Critical Strike', 3328, 'Haste', 'Plate', True, 66744),
+       (202, 'Liadrin''s Fury Unleashed', 'Neck', 2915, 'Stamina', 2613, 'Critical Strike', 2385, 'Haste', NULL, True, 57646),
+       (203, 'Aggramar''s Stride', 'Feet', 4553, 'Strength', 4437, 'Haste', 3788, 'Mastery', 'Plate', True, 70659),
+       (204, 'Aegisjalmur, the Armguards of Awe', 'Wrist', 2915, 'Intellect', 1525, 'Critical Strike', 1394, 'Mastery', 'Plate', True, 46769),
+       (205, 'Chestplate of Impenetrable Darkness', 'Chest', 4056, 'Intellect', 3839, 'Haste', 3594, 'Mastery', 'Plate', True, 61268),
+       (206, 'Terrorbound Nexus', 'Neck', 2086, 'Intellect', 1043, 'Mastery', 1043, 'Critical Strike', NULL, True, 36283),
+       (207, 'Chrono Shard', 'Neck', 1631, 'Intellect', 1455, 'Haste', 1455, 'Versatility', NULL, True, 34420)
 on conflict do nothing;
 
 insert into "set" (set_id, name, set_bonus)
 values (1, 'Shackled Elements', 'Increase the Critical Strike chance of Lightning Bolt by 10 percent'), /* only wearable by shaman */
        (2, 'Enveloped Dissonance', 'Ironskin Brew increases your stagger amount by an additional 5 percent'), /* only wearable by monks */
        (3, 'Doomblade', 'Mutilate can cause the target to bleed an additional 30 percent over 6 seconds'), /* only wearable by rouges */
-       (4, 'Robert''s Body', 'You shall become the awesomeness that is Robert!')
+       (4, 'Robert''s Body', 'You shall become the awesomeness that is Robert!'),
+       (5, 'Casey''s Body', 'Become Master of all TA''s')
 on conflict do nothing;
 
 insert into set_gear (set_id, gear_id)
 values (1, 136),(1, 137),(1, 138),(1, 139),(1, 140),(1, 141),
        (2, 142),(2, 143),(2, 144),(2, 145),(2, 146),(2, 147),
        (3, 148),(3, 149),(3, 150),(3, 151),(3, 152),(3, 153),
-       (4, 155),(4, 156),(4, 157),(4, 158),(4, 159),(4, 160)
+       (4, 155),(4, 156),(4, 157),(4, 158),(4, 159),(4, 160),
+       (5, 161),(5, 162),(5, 163),(5, 164),(5, 165),(5, 166)
 on conflict do nothing;
 
 insert into spec_set (spec_id, set_id)
