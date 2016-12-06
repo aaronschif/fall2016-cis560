@@ -270,6 +270,8 @@ begin
 end;
 $$ language plpgsql;
 
+/* Source: https://www.if-not-true-then-false.com/2010/postgresql-select-a-random-number-in-a-range-between-two-numbers/
+*/
 create or replace function get_random_num (int, int)
 returns int
 as $$
