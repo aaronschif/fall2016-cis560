@@ -369,6 +369,14 @@ where vg.vendor_id = v.id
   and vg.gear_id = g.id;
 */
 
+/* Query to show vendor in relation to gear, price, and map_region
+select l.map_region, v.first_name, v.surname, g.name as inventory, g.price as cost
+from location l, vendor v, vendor_gear vg, gear g
+where v.id = l.id
+  and vg.vendor_id = v.id
+  and vg.gear_id = g.id;
+*/
+
 /* Queries to show bosses in relation to dungeons
 select distinct d.dungeon_name as Dungeons, string_agg(distinct b.name, ', ') as Bosses
 from bosses b, dungeon d, boss_dungeon bd
