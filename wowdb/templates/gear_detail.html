@@ -3,18 +3,63 @@
 {% block content %}
 
 {% set id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price = detail %}
-    <p><b>Name:</b> {{ name }}<br>
-    <b>Gear ID:</b> {{ id }}<br>
-    <b>Current cost:</b> {{ price }} gold<br>
-    <b>Primary Stat:</b> {{ pval }} {{ pstat }}<br>
-    <b>1st Secondary Stat:</b> {{ s1val }} {{ stat1 }}<br>
-    <b>2nd Secondary Stat:</b> {{ s2val }} {{ stat2 }}<br>
-    <b>Made out of</b> {{ material }}<br>
-    <b>Tradable?</b> {{ tradable }}</p>
+    <!-- The below code displays an image based on the image id of a gear item in the database,
+    images are stored in /static/ArmorImage/ and are .png format with the name being the corresponding gear id -->
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/static/ArmorImage/{{ id|string + '.png' }}" onerror="this.src='/static/ArmorImage/default.png'" width="150" height="150"/>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">Name</div>
+          <div class="col-md-8">{{ name }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Current Cost</div>
+          <div class="col-md-8">{% if price %}{{ price }} gold{% endif %}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Primary Stat</div>
+          <div class="col-md-8">{{ pval }} {{ pstat }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">1st Secondary Stat</div>
+          <div class="col-md-8">{{ s1val }} {{ stat1 }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">2nd Secondary Stat</div>
+          <div class="col-md-8">{{ s2val }} {{ stat2 }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Made of</div>
+          <div class="col-md-8">{{ material }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Tradable?</div>
+          <div class="col-md-8">{{ tradable }}</div>
+        </div>
+      </div>
+    </div>
+    <br><br>
 
+    {% for comment in comments %}
+      <div class="card">
+        <div class="card-block">
+          {{ comment.comment }}
+        </div>
+        <div class="card-footer text-muted">
+          Comment made by {{ comment.username }} on {{ comment.timestamp.strftime('%d %B %Y') }}
+        </div>
+      </div>
+    {% endfor %}
 
-    <p><b>Faction:</b> Any<br>
-    <b>Race:</b> Any<br>
-    <b>Class:</b> Any<br>
-    <b>Specialization:</b> Any</p>
+    {% if username %}
+    <p>Logged in as {{ username }}</p>
+    <form method="POST">
+      <textarea class="form-control" name="comment"></textarea>
+      <button class="form-control btn btn-primary">Submit comment</button>
+    </form>
+    {% else %}
+    <p><a href="/login">Sign in</a> to leave a comment</p>
+    {% endif %}
 {% endblock %}

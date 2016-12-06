@@ -7,6 +7,31 @@ body {
     font-family: overpass, sans-serif;
 }
 
+.navbar {
+    /*background-color: white;*/
+    color: white;
+    display: flex;
+}
+.navbar a {
+    color: white;
+}
+.navbar .primary-nav {
+    flex: 0 auto;
+}
+.navbar .secondary-nav {
+    display: inline-block;
+    text-align: right;
+    flex: 1 auto;
+}
+
+dl {
+    display: flex;
+    flex-direction: column;
+}
+dl dd {
+    align-self: flex-end;
+}
+
 /**
 The container for blocks of readable text.
 */
