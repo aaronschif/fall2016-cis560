@@ -560,7 +560,7 @@ where sg.set_id = s.set_id
   and s.name like '%Doomblade';
 */
 
-/*
+/* (INCOMPLETE) Report Query.
 select l.map_region as region, d.dungeon_name as dungeon, count(b.boss_id) as num_bosses
 from location l, dungeon d, boss_dungeon bd, bosses b
 where d.id = l.id
@@ -572,11 +572,40 @@ having count(b.boss_id) = (select count(*)
                            where bd.dungeon_id = d.id);
 */
 
-/*
-select *
-from gear g
-where g.primary_stat like '%Strength'
-  and g.material like '%Plate';
+/* Query to retrieve all gear in relation to a class, specialization, and set.
+select c.name as class, spec.specialization_name, st.name as set, g.name as set_item
+from class c, specialization spec, spec_set specst, "set" st, set_gear stg, gear g
+where spec.class_id = c.id
+  and specst.spec_id = spec.id
+  and specst.set_id = st.set_id
+  and stg.set_id = st.set_id
+  and stg.gear_id = g.id;
+*/
+
+/* Query to retrieve all gear in relation to a location.
+select l.map_region, g.name
+from location l, vendor v, vendor_gear vg, gear g
+where v.id = l.id
+  and vg.vendor_id = v.id
+  and vg.gear_id = g.id
+union
+select l.map_region, g.name
+from location l, dungeon d, boss_dungeon bd,
+     bosses b, boss_gear bg, gear g
+where d.id = l.id
+  and bd.dungeon_id = d.id
+  and bd.boss_id = b.boss_id
+  and bg.boss_id = b.boss_id
+  and bg.gear_id = g.id
+union
+select l.map_region, g.name
+from location l, raid r, boss_raid br,
+     bosses b, boss_gear bg, gear g
+where r.id = l.id
+  and br.raid_id = r.id
+  and br.boss_id = b.boss_id
+  and bg.boss_id = b.boss_id
+  and bg.gear_id = g.id;
 */
 
 /* Extra boss gear to be populated in boss_gear table
