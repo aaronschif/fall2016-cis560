@@ -110,7 +110,7 @@ async def handle_gear_detail(request):
             select
                 "user".username, comment.comment, comment.commented
             from comment join "user" on "user".id = comment."user" where comment.gear = %s
-        ''', id)
+        ''', [id])
         comments = map(lambda e: Comment(*e), cur.fetchall())
 
     return dict(comments=comments, detail=gear, username=session.get('username'))
