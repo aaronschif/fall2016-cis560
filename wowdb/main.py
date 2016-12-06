@@ -29,12 +29,39 @@ async def handle(request):
         pr_min = request.GET.get('price_min', 0)
         pr_max = request.GET.get('price_max', 999999999)
 
-        dungeon = request.GET.get('dungeon', 'black rook hold')
+        dungeon = request.GET.get('dungeon', 'ANY')
+        raid = request.GET.get('raid', 'ANY')
+        vendor = request.GET.get('vendor', '')
+        boss = request.GET.get('boss', '')
 
-        s = "select * from gear g" #, location l, dungeon d, boss_dungeon bd, bosses b, boss_gear bg where g.name ilike '%%'||%s||'%%'"
+        # if vendor != 'ANY':
+        s = """select g.*, concat_ws(' ', v.first_name, v.surname) as full_name, d.dungeon_name as Dungeon, b.name as Boss, r.raid_name as Raid from gear g\
+        left join vendor_gear vg on vg.gear_id = g.id left join vendor v on v.id = vg.vendor_id left join boss_gear bg on g.id = bg.gear_id\
+        left join bosses b on b.boss_id = bg.boss_id \
+        left join boss_dungeon bd on bd.boss_id = b.boss_id left join dungeon d on d.id = bd.dungeon_id\
+        left join boss_raid br on br.boss_id = b.boss_id left join raid r on r.id = br.raid_id"""  # """ _ """ is 'superscaping' and allows for multi-line strings
+        # else:
+        #    s = "select * from gear g"
+        # s += " left join boss_dungeon bd on bd.boss_id = b.boss_id left join dungeon d on d.id = bd.dungeon_id "
 
-        s += " where name ilike '%%'||%s||'%%'"
+        s += " where g.name ilike '%%'||%s||'%%'"
         l = [search]
+
+        if vendor != '':
+            s += " AND concat_ws(' ', v.first_name, v.surname) ilike '%%'||%s||'%%'"
+            l.append(vendor)
+
+        if raid != 'ANY':
+            s += " AND r.raid_name ilike '%%'||%s||'%%'"
+            l.append(raid)
+
+        if dungeon != 'ANY':
+            s += " AND d.dungeon_name ilike '%%'||%s||'%%'"
+            l.append(dungeon)
+
+        if boss != '':
+            s += " AND b.name ilike '%%'||%s||'%%'"
+            l.append(boss)
 
         if tradable != 'Both':
             tradable = tradable == 'True'
@@ -83,20 +110,8 @@ async def handle(request):
             s += " AND g.price <= %s"
             l.append(pr_max)
 
-        # if dungeon != 'ANY':
-            #    s += " AND (d.id = l.id " \
-            #         "  and bd.dungeon_id = d.id" \
-            #         "  and bd.boss_id = b.boss_id" \
-            #         "  and bg.boss_id = b.boss_id" \
-            #         "  and bg.gear_id = g.id);"
-            # s += "AND (select l.map_region as region, d.dungeon_name as dungeon, b.name as boss, g.name as gear "\
-            #     "from location l, dungeon d, boss_dungeon bd, bosses b, boss_gear bg, gear g "\
-            #     "     where d.id = l.id" \
-            #     "     and bd.dungeon_id = d.id" \
-            #     "     and bd.boss_id = b.boss_id" \
-            #     "     and bg.boss_id = b.boss_id" \
-            #     "     and bg.gear_id = g.id)"
-
+        # s += " group by d.dungeon_name"
+        # s += " distinct"
         # s += ";"
 
         cur.execute(s, l)

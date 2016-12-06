@@ -98,11 +98,13 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th><th>Slot</th><th>Primary Stat</th><th>Secondary Stats</th><th>Material</th><th>Vendor Sold?</th><th>Price</th>
+      <th>Name</th><th>Slot</th><th>Primary Stat</th><th>Secondary Stats</th><th>Material</th><th>Vendor Sold?</th>
+        <th>Price</th><th>Vendor</th><th>Dungeon</th><th>Boss</th>
+        <th>Raid</th>
     </tr>
   </thead>
   <tbody>
-    {% for id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price, location in gears %}
+    {% for id, name, slot, pval, pstat, s1val, stat1, s2val, stat2, material, tradable, price, full_name, dungeon, boss, raid in gears %}
 
     <tr>
       <td><a href="/gear/{{ id }}" style="color:black">{{ name }}</a></td>
@@ -112,12 +114,16 @@
       <td>{{ material|default("", true) }}</td>
       <td>{{ tradable }}</td>
       <td>{{ price|default("", true) }}</td>
+      <td>{{ full_name }}</td>
+      <td>{{ dungeon }}</td>
+      <td>{{ boss }}</td>
+      <td>{{ raid }}</td>
 
 
     </tr>
     {% else %}
     <tr>
-        <td colspan="7" align="center">No Results</td>
+        <td colspan="9" align="center">No Results</td>
     </tr>
     {% endfor %}
   </tbody>
