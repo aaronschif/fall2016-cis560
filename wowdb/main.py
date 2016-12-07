@@ -48,9 +48,11 @@ async def handle(request):
         left join raid r on r.id = br.raid_id"""  # """ _ """ is 'superscaping' and allows for multi-line strings
 
         l = []
-        if search:
-            s += " where g.name ilike '%%'||%s||'%%'"
-            l += [search]
+        # s += " where "
+
+        #if search:
+        s += " where g.name ilike '%%'||%s||'%%'"
+        l += [search]
 
         if vendor != '':
             s += " AND concat_ws(' ', v.first_name, v.surname) ilike '%%'||%s||'%%'"
