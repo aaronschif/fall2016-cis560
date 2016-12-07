@@ -31,14 +31,14 @@ async def login_handler(request):
                     session['username'] = data['username']
 
                     context['error'] = 'User created.'
-
-    if user is not None:
-        id, username, password = user
-        if password == data['password']:
-            session['username'] = username
-        else:
-            context['error'] = 'Password is incorrect.'
     else:
-        context['error'] = 'No user with that name.'
+        if user is not None:
+            id, username, password = user
+            if password == data['password']:
+                session['username'] = username
+            else:
+                context['error'] = 'Password is incorrect.'
+        else:
+            context['error'] = 'No user with that name.'
 
     return context
