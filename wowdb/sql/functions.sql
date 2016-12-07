@@ -588,6 +588,7 @@ from location l, vendor v, vendor_gear vg, gear g
 where v.id = l.id
   and vg.vendor_id = v.id
   and vg.gear_id = g.id
+  and l.map_region like '%Azsuna'
 union
 select l.map_region, g.name
 from location l, dungeon d, boss_dungeon bd,
@@ -597,6 +598,7 @@ where d.id = l.id
   and bd.boss_id = b.boss_id
   and bg.boss_id = b.boss_id
   and bg.gear_id = g.id
+  and l.map_region like '%Azsuna'
 union
 select l.map_region, g.name
 from location l, raid r, boss_raid br,
@@ -605,7 +607,25 @@ where r.id = l.id
   and br.raid_id = r.id
   and br.boss_id = b.boss_id
   and bg.boss_id = b.boss_id
-  and bg.gear_id = g.id;
+  and bg.gear_id = g.id
+  and l.map_region like '%Azsuna';
+*/
+
+/* (STRESS TEST)Query to test randomized data from vendor
+select l.map_region, v.first_name, v.surname, g.name, g.price
+from location l, vendor v, vendor_gear vg, gear g
+where v.id = l.id
+  and vg.vendor_id = v.id
+  and vg.gear_id = g.id;
+*/
+
+/* (STRESS TEST) Query to count the results of the stress test query.
+select count(result)
+from (select l.map_region, v.first_name, v.surname, g.name, g.price
+      from location l, vendor v, vendor_gear vg, gear g
+      where v.id = l.id
+        and vg.vendor_id = v.id
+        and vg.gear_id = g.id) result;
 */
 
 /* Extra boss gear to be populated in boss_gear table
