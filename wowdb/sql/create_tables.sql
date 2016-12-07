@@ -88,6 +88,9 @@ create table gear (
     tradable boolean not null,
     price int DEFAULT NULL /* Currency is gold which acts like an int */
 );
+create index on gear(primary_stat_val);
+create index on gear(sec_stat_1_val);
+create index on gear(sec_stat_2_val);
 
 create table specialization_gear (
     specialization_id int,
@@ -152,6 +155,7 @@ create table vendor (
     foreign key (id)
       references location (id)
 );
+create index on vendor(id);
 
 create table bosses (
     boss_id int primary key,
@@ -185,6 +189,7 @@ create table vendor_gear (
     foreign key (gear_id)
       references gear (id)
 );
+create index on vendor_gear (gear_id);
 
 create table boss_gear (
     boss_id int,

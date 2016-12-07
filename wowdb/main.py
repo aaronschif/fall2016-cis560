@@ -37,18 +37,20 @@ async def handle(request):
         vendor = request.GET.get('vendor', '')
         boss = request.GET.get('boss', '')
 
-        s = """select distinct g.*, concat_ws(' ', v.first_name, v.surname) as full_name, d.dungeon_name as Dungeon, b.name as Boss, r.raid_name as Raid from location l, gear g\
-        left join vendor_gear vg on vg.gear_id = g.id left join vendor v on v.id = vg.vendor_id left join boss_gear bg on g.id = bg.gear_id\
+        s = """select distinct g.*, concat_ws(' ', v.first_name, v.surname) as full_name, d.dungeon_name as Dungeon, b.name as Boss, r.raid_name as Raid from gear g\
+        left join vendor_gear vg on vg.gear_id = g.id
+        left join vendor v on v.id = vg.vendor_id
+        left join boss_gear bg on g.id = bg.gear_id\
         left join bosses b on b.boss_id = bg.boss_id \
-        left join boss_dungeon bd on bd.boss_id = b.boss_id left join dungeon d on d.id = bd.dungeon_id\
-        left join boss_raid br on br.boss_id = b.boss_id left join raid r on r.id = br.raid_id"""  # """ _ """ is 'superscaping' and allows for multi-line strings
+        left join boss_dungeon bd on bd.boss_id = b.boss_id
+        left join dungeon d on d.id = bd.dungeon_id\
+        left join boss_raid br on br.boss_id = b.boss_id
+        left join raid r on r.id = br.raid_id"""  # """ _ """ is 'superscaping' and allows for multi-line strings
 
-        s += " where g.name ilike '%%'||%s||'%%'"
-        l = [search]
-
-        if region != 'ANY':
-            s += " AND (l.map_region ilike '%%'||%s||'%%' and (l.id = br.raid_id OR l.id = bd.dungeon_id))"
-            l.append(region)
+        l = []
+        if search:
+            s += " where g.name ilike '%%'||%s||'%%'"
+            l += [search]
 
         if vendor != '':
             s += " AND concat_ws(' ', v.first_name, v.surname) ilike '%%'||%s||'%%'"
@@ -118,6 +120,7 @@ async def handle(request):
         # s += ";"
 
         cur.execute(s, l)
+        print(cur)
         gears = cur.fetchall()
     context['gears'] = gears
     return context
