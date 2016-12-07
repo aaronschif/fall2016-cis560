@@ -12,7 +12,11 @@
       <nav class="navbar">
         <a href="/" class="primary-nav"><img src="/static/wow-database-logo.png" width="35%"></a>
         <div class="secondary-nav">
-          <a href="/login">Login</a>
+          {% if session.username %}
+            <p>Logged in as {{ session.username }}</p>
+          {% else %}
+            <a href="/login">Login</a>
+          {% endif %}
         </div>
       </nav>
 

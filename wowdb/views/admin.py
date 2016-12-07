@@ -7,9 +7,10 @@ from ..sql import cursor
 @aiohttp_jinja2.template('login.html')
 async def login_handler(request):
     session = await aiohttp_session.get_session(request)
+    context = {'session': session}
 
     if request.method == 'GET':
-        return {}
+        return context
     data = await request.post()
 
     with cursor() as cur:
@@ -21,7 +22,7 @@ async def login_handler(request):
             cur.execute('select * from "user" where "user".username = %s ', [data['username']])
             user = cur.fetchone()
             if user is not None:
-                return {'error': 'User exists'}
+                context['error'] = 'User exists'
             else:
                 with cursor() as cur:
                     cur.execute(
@@ -29,15 +30,15 @@ async def login_handler(request):
                         [data['username'], data['password']])
                     session['username'] = data['username']
 
-                    return {'error': 'User created.'}
+                    context['error'] = 'User created.'
 
     if user is not None:
         id, username, password = user
         if password == data['password']:
             session['username'] = username
         else:
-            return {'error': 'Password is incorrect.', 'username': username}
+            context['error'] = 'Password is incorrect.'
     else:
-        return {'error': 'No user with that name.'}
+        context['error'] = 'No user with that name.'
 
-    return {}
+    return context

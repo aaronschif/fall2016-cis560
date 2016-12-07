@@ -15,6 +15,8 @@ from .views.admin import login_handler
 
 @aiohttp_jinja2.template('index.html')
 async def handle(request):
+    session = await aiohttp_session.get_session(request)
+    context = {'session': session}
     with cursor() as cur:
         search = request.GET.get('search', '')
         tradable = request.GET.get('tradable', 'Both')
@@ -116,14 +118,15 @@ async def handle(request):
         # s += ";"
 
         cur.execute(s, l)
-        print(cur.query)
         gears = cur.fetchall()
-    return dict(gears=gears)
+    context['gears'] = gears
+    return context
 
 
 @aiohttp_jinja2.template('gear_detail.html')
 async def handle_gear_detail(request):
     session = await aiohttp_session.get_session(request)
+    context = {'session': session}
     id = request.match_info.get('id', 0)
     with cursor() as cur:
         cur.execute("select * from gear where gear.id = %s", [id])
@@ -131,13 +134,13 @@ async def handle_gear_detail(request):
 
         if request.method == 'POST':
             data = await request.post()
-            cur.execute("select * from \"user\" where \"user\".username = %s", [session.get('username')])
-            user = cur.fetchone()
+            cur.execute("select \"user\".id from \"user\" where \"user\".username = %s", [session.get('username')])
+            user = cur.fetchone()[0]
             if user is None:
                 raise Exception('User does not exist.')
             cur.execute(
                 '''insert into comment("user", gear, comment) values (%s, %s, %s)''',
-                [user[0], id, data['comment']])
+                [user, id, data['comment']])
 
     Comment = namedtuple('Comment', ['username', 'comment', 'timestamp'])
 
@@ -149,7 +152,9 @@ async def handle_gear_detail(request):
         ''', [id])
         comments = map(lambda e: Comment(*e), cur.fetchall())
 
-    return dict(comments=comments, detail=gear, username=session.get('username'))
+    context['comments'] = comments
+    context['detail'] = gear
+    return context
 
 
 app = web.Application(debug=True)

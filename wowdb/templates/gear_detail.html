@@ -53,11 +53,10 @@
       </div>
     {% endfor %}
 
-    {% if username %}
-    <p>Logged in as {{ username }}</p>
+    {% if session.username %}
     <form method="POST">
       <textarea class="form-control" name="comment"></textarea>
-      <button class="form-control btn btn-primary">Submit comment</button>
+      <button class="form-control btn btn-primary">Submit comment as {{ session.username }}</button>
     </form>
     {% else %}
     <p><a href="/login">Sign in</a> to leave a comment</p>
