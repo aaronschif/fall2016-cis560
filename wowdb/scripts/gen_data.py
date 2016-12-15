@@ -10,7 +10,7 @@ POSSIBLE_LOCATIONS = (
     "Highmountain",
     "Stormheim",
     "Azsuna",
-    "val'sharah",
+    "Val'sharah",
     "Suramar",
     "Dalaran",
     "The Broken Shore",
