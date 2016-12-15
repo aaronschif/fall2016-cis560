@@ -7,13 +7,13 @@ fake = Faker()
 
 LOCATION_NAMESPACE = (1000, 2000)
 POSSIBLE_LOCATIONS = (
-    "highmountain",
-    "stormheim",
-    "azsuna",
+    "Highmountain",
+    "Stormheim",
+    "Azsuna",
     "val'sharah",
-    "suramar",
-    "dalaran",
-    "the broken shore",
+    "Suramar",
+    "Dalaran",
+    "The Broken Shore",
 )
 
 location_file = Path(__file__).parent.parent/'sql'/'location.csv'
